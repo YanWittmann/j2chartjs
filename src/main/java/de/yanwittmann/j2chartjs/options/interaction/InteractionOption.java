@@ -3,7 +3,7 @@ package de.yanwittmann.j2chartjs.options.interaction;
 import de.yanwittmann.j2chartjs.options.AbstractChartOption;
 import org.json.JSONObject;
 
-public class InteractionOptions extends AbstractChartOption {
+public class InteractionOption extends AbstractChartOption {
 
     /**
      * Sets which elements appear in the interaction.<ul>
@@ -25,19 +25,31 @@ public class InteractionOptions extends AbstractChartOption {
      */
     private String axis;
 
-    public InteractionOptions setMode(String mode) {
+    public InteractionOption setMode(String mode) {
         this.mode = mode;
         return this;
     }
 
-    public InteractionOptions setIntersect(Boolean intersect) {
+    public InteractionOption setIntersect(Boolean intersect) {
         this.intersect = intersect;
         return this;
     }
 
-    public InteractionOptions setAxis(String axis) {
+    public InteractionOption setAxis(String axis) {
         this.axis = axis;
         return this;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public Boolean getIntersect() {
+        return intersect;
+    }
+
+    public String getAxis() {
+        return axis;
     }
 
     @Override

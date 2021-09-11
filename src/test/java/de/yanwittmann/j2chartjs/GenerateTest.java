@@ -8,8 +8,13 @@ import de.yanwittmann.j2chartjs.options.animation.AnimationEasingType;
 import de.yanwittmann.j2chartjs.options.animation.AnimationProperty;
 import de.yanwittmann.j2chartjs.options.animation.ChartAnimationOption;
 import de.yanwittmann.j2chartjs.options.animation.PropertyAnimationOption;
-import de.yanwittmann.j2chartjs.options.interaction.InteractionOptions;
+import de.yanwittmann.j2chartjs.options.interaction.InteractionOption;
+import de.yanwittmann.j2chartjs.options.layout.LayoutOption;
+import de.yanwittmann.j2chartjs.options.plugins.legend.LegendOption;
+import de.yanwittmann.j2chartjs.options.plugins.legend.LegendTitleOption;
+import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.scale.ScaleOption;
+import de.yanwittmann.j2chartjs.type.ChartFont;
 import j2html.tags.specialized.HtmlTag;
 import j2html.tags.specialized.ScriptTag;
 import org.apache.commons.io.FileUtils;
@@ -36,12 +41,11 @@ public class GenerateTest {
                 .addBorderWidth(2)
                 .addHoverBorderColor(new Color(0, 0, 0, 100))
                 .setYAxisID("yaxisid")
-                .setBase(10)
-                .setBarPercentage(0.5)
-                .setMinBarLength(400);
+                .setBase(4)
+                .setBarPercentage(0.5);
         BarChartDataset dataset2 = new BarChartDataset()
                 .setLabel("Week 1")
-                .setData(40, 65, 59, 80, 81, 56, 55)
+                .setData(40, 65, 59, 72, 81, 56, 55)
                 .addBackgroundColor(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.ORANGE, Color.GRAY, Color.BLACK)
                 .addBorderRadius(10, 15, 20, 0, 0, 0, 40)
                 .addHoverBorderRadius(0)
@@ -50,8 +54,7 @@ public class GenerateTest {
                 .addHoverBorderColor(new Color(0, 0, 0, 100))
                 .setYAxisID("yaxisid")
                 .setBase(10)
-                .setBarPercentage(0.5)
-                .setMinBarLength(400);
+                .setBarPercentage(0.8);
 
         BarChartData barChartData = new BarChartData()
                 .addLabels("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
@@ -63,9 +66,29 @@ public class GenerateTest {
                 .setResponsive(false)
                 .setAspectRatio(1.5);
 
-        InteractionOptions interactionOptions = new InteractionOptions()
+        InteractionOption interactionOption = new InteractionOption()
                 .setMode("point");
-        options.setInteraction(interactionOptions);
+        options.setInteraction(interactionOption);
+
+        LayoutOption layoutOption = new LayoutOption()
+                .setPadding(15);
+        options.setLayout(layoutOption);
+
+        LegendOption legendOption = new LegendOption()
+                .setAlign("start")
+                .setTitleOption(new LegendTitleOption()
+                        .setText("This is a title")
+                        .setDisplay(true)
+                        .setPadding(10));
+        options.setLegend(legendOption);
+
+        TitleOption titleOption = new TitleOption()
+                .setAlign("end")
+                .setText("Main Title")
+                .setColor(Color.ORANGE)
+                .setDisplay(true)
+                .setFont(new ChartFont().setFamily("Monaco").setSize(25));
+        options.setTitle(titleOption);
 
         ScaleOption scaleOption = new ScaleOption();
         options.setScales(scaleOption);
@@ -108,7 +131,7 @@ public class GenerateTest {
                         script().withSrc("https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js")
                 ),
                 body(
-                        canvas().withId("testChart").withWidth("1000"),//.withHeight("400"),
+                        canvas().withId("testChart").withStyle("border: gray 2px solid;").withWidth("1000"),//.withHeight("400"),
                         chartInitializer
                 )
         );

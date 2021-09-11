@@ -3,7 +3,10 @@ package de.yanwittmann.j2chartjs.options;
 import de.yanwittmann.j2chartjs.options.animation.AnimationProperty;
 import de.yanwittmann.j2chartjs.options.animation.ChartAnimationOption;
 import de.yanwittmann.j2chartjs.options.animation.PropertyAnimationOption;
-import de.yanwittmann.j2chartjs.options.interaction.InteractionOptions;
+import de.yanwittmann.j2chartjs.options.interaction.InteractionOption;
+import de.yanwittmann.j2chartjs.options.layout.LayoutOption;
+import de.yanwittmann.j2chartjs.options.plugins.legend.LegendOption;
+import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.scale.ScaleOption;
 import org.json.JSONObject;
 
@@ -17,9 +20,11 @@ public class ChartOption extends AbstractChartOption {
 
     private AbstractChartOption scales;
     private AbstractChartOption interaction;
+    private AbstractChartOption layout;
+    private AbstractChartOption legend;
+    private AbstractChartOption title;
     private AbstractChartOption animation;
     private final Map<String, AbstractChartOption> animations = new HashMap<>();
-    private AbstractChartOption plugins;
 
     /**
      * When set to false, disables all animations.
@@ -62,9 +67,23 @@ public class ChartOption extends AbstractChartOption {
         return this;
     }
 
-    public ChartOption setInteraction(InteractionOptions interaction) {
+    public ChartOption setInteraction(InteractionOption interaction) {
         this.interaction = interaction;
         return this;
+    }
+
+    public ChartOption setLayout(LayoutOption layout) {
+        this.layout = layout;
+        return this;
+    }
+
+    public ChartOption setLegend(LegendOption legend) {
+        this.legend = legend;
+        return this;
+    }
+
+    public void setTitle(TitleOption title) {
+        this.title = title;
     }
 
     public ChartOption setChartAnimation(ChartAnimationOption animation) {
@@ -115,8 +134,18 @@ public class ChartOption extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
+
         if (scales != null) optionsJson.put("scales", scales.toJson());
         if (interaction != null) optionsJson.put("interaction", interaction.toJson());
+        if (layout != null) optionsJson.put("layout", layout.toJson());
+
+        if (legend != null || title != null) {
+            JSONObject pluginsJson = new JSONObject();
+            if (legend != null) pluginsJson.put("legend", legend.toJson());
+            if (title != null) pluginsJson.put("title", title.toJson());
+            optionsJson.put("plugins", pluginsJson);
+        }
+
         if (Boolean.FALSE.equals(animationsActive)) {
             optionsJson.put("animation", false);
         } else {
@@ -131,13 +160,13 @@ public class ChartOption extends AbstractChartOption {
                 optionsJson.put("animations", animationsJson);
             }
         }
-        if (plugins != null) optionsJson.put("plugins", plugins.toJson());
 
         if (responsive != null) optionsJson.put("responsive", responsive);
         if (maintainAspectRatio != null) optionsJson.put("maintainAspectRatio", maintainAspectRatio);
         if (aspectRatio != null) optionsJson.put("aspectRatio", aspectRatio);
         if (resizeDelay != null) optionsJson.put("resizeDelay", resizeDelay);
         if (devicePixelRatio != null) optionsJson.put("devicePixelRatio", devicePixelRatio);
+
         return optionsJson;
     }
 }
