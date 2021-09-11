@@ -1,0 +1,18 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            ChartJs Builder Test
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js">
+        </script>
+    </head>
+    <body>
+        <canvas id="testChart">
+        </canvas>
+        <script>
+            var ctx = document.getElementById('testChart').getContext('2d'); var myChart = new Chart(ctx, {"data":{"datasets":[{"barPercentage":0.5,"backgroundColor":["rgb(255,0,0)","rgb(0,255,0)","rgb(0,0,255)","rgb(255,255,0)","rgb(255,200,0)","rgb(128,128,128)","rgb(0,0,0)"],"data":[65,59,80,81,56,55,40],"borderRadius":[10,15,20,0,0,0,40],"borderWidth":2,"hoverBorderColor":"rgba(0,0,0,0.392)","minBarLength":400,"label":"Week 1","yAxisID":"yaxisid","hoverBorderWidth":4,"hoverBorderRadius":0,"base":10}],"labels":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]},"type":"bar"} );
+        </script>
+    </body>
+</html>

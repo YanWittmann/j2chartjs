@@ -3,6 +3,8 @@ package de.yanwittmann.j2chartjs;
 import de.yanwittmann.j2chartjs.chart.BarChart;
 import de.yanwittmann.j2chartjs.data.BarChartData;
 import de.yanwittmann.j2chartjs.dataset.BarChartDataset;
+import de.yanwittmann.j2chartjs.options.ChartOptions;
+import de.yanwittmann.j2chartjs.options.ScaleOptions;
 import j2html.tags.specialized.HtmlTag;
 import j2html.tags.specialized.ScriptTag;
 import org.apache.commons.io.FileUtils;
@@ -19,19 +21,36 @@ public class GenerateTest {
 
     @Test
     public void basicChartTest() throws IOException {
-        BarChartDataset dataset = new BarChartDataset()
-                .setLabel("sample chart")
+        BarChartDataset dataset1 = new BarChartDataset()
+                .setLabel("Week 1")
                 .setData(65, 59, 80, 81, 56, 55, 40)
                 .addBackgroundColor(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.ORANGE, Color.GRAY, Color.BLACK)
+                .addBorderRadius(10, 15, 20, 0, 0, 0, 40)
+                .addHoverBorderRadius(0)
+                .addHoverBorderWidth(4)
                 .addBorderWidth(2)
-                .setYAxisID("yaxisid");
+                .addHoverBorderColor(new Color(0, 0, 0, 100))
+                .setYAxisID("yaxisid")
+                .setBase(10)
+                .setBarPercentage(0.5)
+                .setMinBarLength(400);
 
         BarChartData barChartData = new BarChartData()
                 .addLabels("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
-                .addDataset(dataset);
+                .addDataset(dataset1);
+
+
+        ScaleOptions scaleOptions = new ScaleOptions();
+
+        ChartOptions options = new ChartOptions();
+        options.setScales(scaleOptions);
+
 
         BarChart barChart = new BarChart();
         barChart.setChartData(barChartData);
+        barChart.setChartOptions(options);
+
+        System.out.println(barChart.toJson().toString(2));
 
         writePageWithChart(script(join("",
                 "var ctx = document.getElementById('testChart').getContext('2d');",
@@ -54,6 +73,6 @@ public class GenerateTest {
                         chartInitializer
                 )
         );
-        FileUtils.write(new File("src/test/resources/chart_output.html"), page.render(), StandardCharsets.UTF_8);
+        FileUtils.write(new File("src/test/resources/chart_output.html"), page.renderFormatted(), StandardCharsets.UTF_8);
     }
 }

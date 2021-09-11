@@ -16,15 +16,7 @@ public class BarChartData extends ChartData<BarChartData, BarChartDataset, BigDe
         if (datasets != null) {
             JSONArray chartDatasets = new JSONArray();
             for (ChartDataset<BarChartDataset, BigDecimal> genericDataset : datasets) {
-                JSONObject chartDataset = new JSONObject();
-                if (genericDataset instanceof BarChartDataset) {
-                    BarChartDataset castedDataset = ((BarChartDataset) genericDataset);
-                    if (castedDataset.getLabel() != null) chartDataset.put("label", castedDataset.getLabel());
-                    if (castedDataset.getData() != null) chartDataset.put("data", castedDataset.getData());
-                    // TODO: Add other attributes
-                    // TODO: GitHub Repo
-                }
-                chartDatasets.put(chartDataset);
+                chartDatasets.put(genericDataset.toJson());
             }
             chartData.put("datasets", chartDatasets);
         }

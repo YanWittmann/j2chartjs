@@ -1,5 +1,7 @@
 package de.yanwittmann.j2chartjs.dataset;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +20,10 @@ public abstract class ChartDataset<T, D> {
         return data;
     }
 
-    public void clearData() {
+    public T clearData() {
         data.clear();
+        return (T) this;
     }
+
+    public abstract JSONObject toJson();
 }

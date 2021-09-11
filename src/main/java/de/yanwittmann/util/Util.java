@@ -3,9 +3,12 @@ package de.yanwittmann.util;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@SuppressWarnings("unchecked")
 public abstract class Util {
 
     /**
@@ -36,5 +39,52 @@ public abstract class Util {
     public static List initializeListIfNull(List list) {
         if (list == null) return new ArrayList<>();
         return list;
+    }
+
+    public static void smartAddToJsonObject(JSONObject json, String key, List list) {
+        if (json == null || list == null || list.size() == 0) return;
+        if (list.size() == 1) json.put(key, convertColorToJs(list.get(0)));
+        else json.put(key, convertColorToJs(list));
+    }
+
+    private static Object convertColorToJs(Object color) {
+        if (color != null) {
+            if (color instanceof Color) {
+                return convertColorToJs((Color) color);
+            }
+        }
+        return color;
+    }
+
+    private static List convertColorToJs(List color) {
+        if (color != null && color.size() > 0) {
+            if (color.get(0) instanceof Color) {
+                return (List<String>) color.stream().map(c -> convertColorToJs((Color) c)).collect(Collectors.toList());
+            }
+        }
+        return color;
+    }
+
+    public static String convertColorToJs(Color color) {
+        if (color.getAlpha() != 255)
+            return "rgba(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue() + "," + roundToDecimals(mapRange(0, 255, 0, 1, color.getAlpha()), 3) + ")";
+        return "rgb(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue() + ")";
+    }
+
+    /**
+     * @param a1 The lower end of the original range.
+     * @param a2 The upper end of the original range.
+     * @param b1 The lower end of the destination range.
+     * @param b2 The upper end of the destination range.
+     * @param s  The number to convert from the original range to the destination range.
+     * @return The number converted from the original range to the destination range.
+     * @author <a href="https://rosettacode.org/wiki/Map_range#Java">rosettacode.org</a>
+     */
+    public static double mapRange(double a1, double a2, double b1, double b2, double s) {
+        return b1 + ((s - a1) * (b2 - b1)) / (a2 - a1);
+    }
+
+    public static double roundToDecimals(double d, int c) {
+        return ((double) (int) (d * Math.pow(10, c))) / Math.pow(10, c);
     }
 }
