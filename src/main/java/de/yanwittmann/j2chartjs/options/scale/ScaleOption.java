@@ -1,8 +1,9 @@
-package de.yanwittmann.j2chartjs.options;
+package de.yanwittmann.j2chartjs.options.scale;
 
+import de.yanwittmann.j2chartjs.options.AbstractChartOption;
 import org.json.JSONObject;
 
-public class ScaleOptions extends AbstractChartOptions {
+public class ScaleOption extends AbstractChartOption {
 
     @Override
     public JSONObject toJson() {

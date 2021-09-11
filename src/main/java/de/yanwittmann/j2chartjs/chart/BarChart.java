@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 import java.math.BigDecimal;
 
-public class BarChart extends Chart<BarChartData, BarChartDataset, BigDecimal> {
+public class BarChart extends Chart<BarChart, BarChartData, BarChartDataset, BigDecimal> {
 
     public BarChart() {
         super("bar");
@@ -17,6 +17,7 @@ public class BarChart extends Chart<BarChartData, BarChartDataset, BigDecimal> {
         JSONObject chartDefinition = new JSONObject();
         chartDefinition.put("type", typeIdentifier);
         if (chartData != null) chartDefinition.put("data", chartData.toJson());
+        if (chartOption != null) chartDefinition.put("options", chartOption.toJson());
         return chartDefinition;
     }
 }

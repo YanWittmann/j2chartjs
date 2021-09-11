@@ -47,6 +47,11 @@ public abstract class Util {
         else json.put(key, convertColorToJs(list));
     }
 
+    public static void smartAddToJsonObject(JSONObject json, String key, Object element) {
+        if (json == null || element == null) return;
+        json.put(key, convertColorToJs(element));
+    }
+
     private static Object convertColorToJs(Object color) {
         if (color != null) {
             if (color instanceof Color) {

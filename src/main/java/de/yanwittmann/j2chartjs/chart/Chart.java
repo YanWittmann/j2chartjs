@@ -1,14 +1,21 @@
 package de.yanwittmann.j2chartjs.chart;
 
 import de.yanwittmann.j2chartjs.data.ChartData;
-import de.yanwittmann.j2chartjs.options.ChartOptions;
+import de.yanwittmann.j2chartjs.options.ChartOption;
 import org.json.JSONObject;
 
-public abstract class Chart<T, DT, D> {
+/**
+ * @param <C>  Supertype of this class
+ * @param <T>  Supertype of the <code>ChartData</code>
+ * @param <DT> Supertype of the <code>ChartDataset</code>
+ * @param <D>  Datatype of the <code>ChartDataset</code>
+ */
+@SuppressWarnings("unchecked")
+public abstract class Chart<C, T, DT, D> {
 
     protected final String typeIdentifier;
     protected ChartData<T, DT, D> chartData;
-    protected ChartOptions chartOptions;
+    protected ChartOption chartOption;
 
     protected Chart(String typeIdentifier) {
         this.typeIdentifier = typeIdentifier;
@@ -18,16 +25,18 @@ public abstract class Chart<T, DT, D> {
         return chartData;
     }
 
-    public void setChartData(ChartData<T, DT, D> chartData) {
+    public C setChartData(ChartData<T, DT, D> chartData) {
         this.chartData = chartData;
+        return (C) this;
     }
 
-    public ChartOptions getChartOptions() {
-        return chartOptions;
+    public ChartOption getChartOptions() {
+        return chartOption;
     }
 
-    public void setChartOptions(ChartOptions chartOptions) {
-        this.chartOptions = chartOptions;
+    public C setChartOptions(ChartOption chartOption) {
+        this.chartOption = chartOption;
+        return (C) this;
     }
 
     public abstract JSONObject toJson();
