@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * For an overview of all configuration values, see the <a href="https://www.chartjs.org/docs/next/configuration/">documentation</a>.
  */
-public class ChartOption extends AbstractChartOption {
+public class ChartOptions extends AbstractChartOption {
 
     private AbstractChartOption interaction;
     private AbstractChartOption layout;
@@ -65,50 +65,52 @@ public class ChartOption extends AbstractChartOption {
      */
     private String locale;
 
-    public ChartOption setInteraction(InteractionOption interaction) {
+    public ChartOptions setInteraction(InteractionOption interaction) {
         this.interaction = interaction;
         return this;
     }
 
-    public ChartOption setLayout(LayoutOption layout) {
+    public ChartOptions setLayout(LayoutOption layout) {
         this.layout = layout;
         return this;
     }
 
-    public ChartOption setLegend(LegendOption legend) {
+    public ChartOptions setLegend(LegendOption legend) {
         this.legend = legend;
         return this;
     }
 
-    public void setTitle(TitleOption title) {
+    public ChartOptions setTitle(TitleOption title) {
         this.title = title;
+        return this;
     }
 
-    public void setSubtitle(AbstractChartOption subtitle) {
+    public ChartOptions setSubtitle(AbstractChartOption subtitle) {
         this.subtitle = subtitle;
+        return this;
     }
 
-    public ChartOption setTooltip(TooltipOption tooltip) {
+    public ChartOptions setTooltip(TooltipOption tooltip) {
         this.tooltip = tooltip;
         return this;
     }
 
-    public ChartOption setChartAnimation(ChartAnimationOption animation) {
+    public ChartOptions setChartAnimation(ChartAnimationOption animation) {
         this.animation = animation;
         return this;
     }
 
-    public ChartOption addPropertyAnimation(AnimationProperty key, PropertyAnimationOption animation) {
+    public ChartOptions addPropertyAnimation(AnimationProperty key, PropertyAnimationOption animation) {
         this.animations.put(key.getKey(), animation);
         return this;
     }
 
-    public ChartOption addScale(String key, ScaleOption scaleOption) {
+    public ChartOptions addScale(String key, ScaleOption scaleOption) {
         this.scales.put(key, scaleOption);
         return this;
     }
 
-    public ChartOption setOption(AbstractChartOption option) {
+    public ChartOptions setOption(AbstractChartOption option) {
         if (option instanceof InteractionOption) {
             interaction = option;
         } else if (option instanceof LayoutOption) {
@@ -125,37 +127,37 @@ public class ChartOption extends AbstractChartOption {
         return this;
     }
 
-    public ChartOption setAnimationsActive(boolean active) {
+    public ChartOptions setAnimationsActive(boolean active) {
         animationsActive = active;
         return this;
     }
 
-    public ChartOption setResponsive(Boolean responsive) {
+    public ChartOptions setResponsive(Boolean responsive) {
         this.responsive = responsive;
         return this;
     }
 
-    public ChartOption setMaintainAspectRatio(Boolean maintainAspectRatio) {
+    public ChartOptions setMaintainAspectRatio(Boolean maintainAspectRatio) {
         this.maintainAspectRatio = maintainAspectRatio;
         return this;
     }
 
-    public ChartOption setAspectRatio(Double aspectRatio) {
+    public ChartOptions setAspectRatio(Double aspectRatio) {
         this.aspectRatio = aspectRatio;
         return this;
     }
 
-    public ChartOption setResizeDelay(Integer resizeDelay) {
+    public ChartOptions setResizeDelay(Integer resizeDelay) {
         this.resizeDelay = resizeDelay;
         return this;
     }
 
-    public ChartOption setDevicePixelRatio(Integer devicePixelRatio) {
+    public ChartOptions setDevicePixelRatio(Integer devicePixelRatio) {
         this.devicePixelRatio = devicePixelRatio;
         return this;
     }
 
-    public ChartOption setLocale(String locale) {
+    public ChartOptions setLocale(String locale) {
         this.locale = locale;
         return this;
     }

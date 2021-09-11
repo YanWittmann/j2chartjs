@@ -1,7 +1,7 @@
 package de.yanwittmann.j2chartjs.chart;
 
 import de.yanwittmann.j2chartjs.data.ChartData;
-import de.yanwittmann.j2chartjs.options.ChartOption;
+import de.yanwittmann.j2chartjs.options.ChartOptions;
 import org.json.JSONObject;
 
 /**
@@ -15,7 +15,7 @@ public abstract class Chart<C, T, DT, D> {
 
     protected final String typeIdentifier;
     protected ChartData<T, DT, D> chartData;
-    protected ChartOption chartOption;
+    protected ChartOptions chartOptions;
 
     protected Chart(String typeIdentifier) {
         this.typeIdentifier = typeIdentifier;
@@ -30,12 +30,12 @@ public abstract class Chart<C, T, DT, D> {
         return (C) this;
     }
 
-    public ChartOption getChartOptions() {
-        return chartOption;
+    public ChartOptions getChartOptions() {
+        return chartOptions;
     }
 
-    public C setChartOptions(ChartOption chartOption) {
-        this.chartOption = chartOption;
+    public C setChartOptions(ChartOptions chartOptions) {
+        this.chartOptions = chartOptions;
         return (C) this;
     }
 

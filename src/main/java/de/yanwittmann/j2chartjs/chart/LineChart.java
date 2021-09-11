@@ -1,15 +1,15 @@
 package de.yanwittmann.j2chartjs.chart;
 
-import de.yanwittmann.j2chartjs.data.BarChartData;
-import de.yanwittmann.j2chartjs.dataset.BarChartDataset;
+import de.yanwittmann.j2chartjs.data.LineChartData;
+import de.yanwittmann.j2chartjs.dataset.LineChartDataset;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
 
-public class BarChart extends Chart<BarChart, BarChartData, BarChartDataset, BigDecimal> {
+public class LineChart extends Chart<LineChart, LineChartData, LineChartDataset, BigDecimal> {
 
-    public BarChart() {
-        super("bar");
+    public LineChart() {
+        super("line");
     }
 
     @Override

@@ -1,9 +1,12 @@
 package de.yanwittmann.j2chartjs;
 
 import de.yanwittmann.j2chartjs.chart.BarChart;
+import de.yanwittmann.j2chartjs.chart.LineChart;
 import de.yanwittmann.j2chartjs.data.BarChartData;
+import de.yanwittmann.j2chartjs.data.LineChartData;
 import de.yanwittmann.j2chartjs.dataset.BarChartDataset;
-import de.yanwittmann.j2chartjs.options.ChartOption;
+import de.yanwittmann.j2chartjs.dataset.LineChartDataset;
+import de.yanwittmann.j2chartjs.options.ChartOptions;
 import de.yanwittmann.j2chartjs.options.animation.AnimationEasingType;
 import de.yanwittmann.j2chartjs.options.animation.AnimationProperty;
 import de.yanwittmann.j2chartjs.options.animation.ChartAnimationOption;
@@ -34,7 +37,51 @@ import static j2html.TagCreator.*;
 public class GenerateTest {
 
     @Test
-    public void basicChartTest() throws IOException {
+    public void lineChartTest() throws IOException {
+        LineChartDataset datasetY = new LineChartDataset()
+                .setData(10, 20, 15)
+                .setIndexAxis("x")
+                .setLabel("Day 1");
+        LineChartDataset datasetX = new LineChartDataset()
+                .setData(17, 23, 5)
+                .addPointBackgroundColor(Color.ORANGE)
+                .setTension(0.3)
+                .setBorderColor(Color.ORANGE)
+                .addPointHoverBorderColor(Color.GREEN)
+                .addPointRadius(5)
+                .addPointHoverBorderWidth(8)
+                .addPointStyle("triangle")
+                .setIndexAxis("x")
+                .setLabel("Day 2");
+
+        LineChartData barChartData = new LineChartData()
+                .addLabels("Shoes", "T-Shirts", "Pants")
+                .addDataset(datasetY)
+                .addDataset(datasetX);
+
+        ChartOptions chartOptions = new ChartOptions()
+                .setInteraction(new InteractionOption()
+                        .setMode("index"))
+                .setTitle(new TitleOption()
+                        .setText("# Items sold")
+                        .setDisplay(true));
+
+        LineChart lineChart = new LineChart()
+                .setChartOptions(chartOptions)
+                .setChartData(barChartData);
+
+        System.out.println(lineChart.toJson().toString(2));
+
+        writePageWithChart(script(join("",
+                "var ctx = document.getElementById('testChart').getContext('2d');",
+                "var myChart = new Chart(ctx,",
+                String.valueOf(lineChart.toJson()),
+                ");"
+        )));
+    }
+
+    @Test
+    public void largeBarChartTest() throws IOException {
         BarChartDataset dataset1 = new BarChartDataset()
                 .setLabel("Week 1")
                 .setData(65, 59, 80, 81, 56, 55, 40)
@@ -44,7 +91,7 @@ public class GenerateTest {
                 .addHoverBorderWidth(4)
                 .addBorderWidth(2)
                 .addHoverBorderColor(new Color(0, 0, 0, 100))
-                .setYAxisID("A")
+                .setyAxisID("A")
                 .setBase(4)
                 .setBarPercentage(0.5)
                 .setMinBarLength(10);
@@ -57,7 +104,7 @@ public class GenerateTest {
                 .addHoverBorderWidth(4)
                 .addBorderWidth(2)
                 .addHoverBorderColor(new Color(0, 0, 0, 100))
-                .setYAxisID("B")
+                .setyAxisID("B")
                 .setBase(10)
                 .setBarPercentage(0.8);
 
@@ -67,7 +114,7 @@ public class GenerateTest {
                 .addDataset(dataset2);
 
 
-        ChartOption options = new ChartOption()
+        ChartOptions options = new ChartOptions()
                 .setResponsive(false)
                 .setAspectRatio(1.5);
 
