@@ -13,7 +13,11 @@ import de.yanwittmann.j2chartjs.options.layout.LayoutOption;
 import de.yanwittmann.j2chartjs.options.plugins.legend.LegendOption;
 import de.yanwittmann.j2chartjs.options.plugins.legend.LegendTitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
+import de.yanwittmann.j2chartjs.options.plugins.tooltip.TooltipOption;
+import de.yanwittmann.j2chartjs.options.scale.ScaleGridOption;
 import de.yanwittmann.j2chartjs.options.scale.ScaleOption;
+import de.yanwittmann.j2chartjs.options.scale.ScaleTicksOption;
+import de.yanwittmann.j2chartjs.options.scale.ScaleTitleOption;
 import de.yanwittmann.j2chartjs.type.ChartFont;
 import j2html.tags.specialized.HtmlTag;
 import j2html.tags.specialized.ScriptTag;
@@ -40,11 +44,11 @@ public class GenerateTest {
                 .addHoverBorderWidth(4)
                 .addBorderWidth(2)
                 .addHoverBorderColor(new Color(0, 0, 0, 100))
-                .setYAxisID("yaxisid")
+                .setYAxisID("A")
                 .setBase(4)
                 .setBarPercentage(0.5);
         BarChartDataset dataset2 = new BarChartDataset()
-                .setLabel("Week 1")
+                .setLabel("Week 2")
                 .setData(40, 65, 59, 72, 81, 56, 55)
                 .addBackgroundColor(Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW, Color.ORANGE, Color.GRAY, Color.BLACK)
                 .addBorderRadius(10, 15, 20, 0, 0, 0, 40)
@@ -52,7 +56,7 @@ public class GenerateTest {
                 .addHoverBorderWidth(4)
                 .addBorderWidth(2)
                 .addHoverBorderColor(new Color(0, 0, 0, 100))
-                .setYAxisID("yaxisid")
+                .setYAxisID("B")
                 .setBase(10)
                 .setBarPercentage(0.8);
 
@@ -66,13 +70,45 @@ public class GenerateTest {
                 .setResponsive(false)
                 .setAspectRatio(1.5);
 
-        InteractionOption interactionOption = new InteractionOption()
-                .setMode("point");
-        options.setInteraction(interactionOption);
+        ScaleOption scaleOptionA = new ScaleOption()
+                .setType("linear")
+                .setPosition("left")
+                .setSuggestedMax(100)
+                .setGrid(new ScaleGridOption()
+                        .setDisplay(true)
+                        .setColor(Color.RED)
+                        .setTickColor(Color.PINK)
+                        .setZ(1));
+        ScaleOption scaleOptionB = new ScaleOption()
+                .setType("linear")
+                .setPosition("right")
+                .setBeginAtZero(false)
+                .setTicks(new ScaleTicksOption()
+                        .setColor(Color.BLUE))
+                .setGrid(new ScaleGridOption()
+                        .setDisplay(false));
+        options.addScale("A", scaleOptionA);
+        options.addScale("B", scaleOptionB);
+        ScaleOption scaleOptionX = new ScaleOption()
+                .setGrid(new ScaleGridOption()
+                        .setColor(Color.GREEN)
+                        .setZ(1))
+                .setTitle(new ScaleTitleOption()
+                        .setText("Weekday")
+                        .setDisplay(true)
+                        .setFont(new ChartFont()
+                                .setStyle("italic")
+                                .setSize(24)))
+                .setPosition("center");
+        options.addScale("x", scaleOptionX);
 
-        LayoutOption layoutOption = new LayoutOption()
-                .setPadding(15);
-        options.setLayout(layoutOption);
+        InteractionOption interactionOption = new InteractionOption()
+                .setMode("index");
+        options.setOption(interactionOption);
+
+        LayoutOption layoutOption = new LayoutOption();
+        layoutOption.setPadding(15);
+        options.setOption(layoutOption);
 
         LegendOption legendOption = new LegendOption()
                 .setAlign("start")
@@ -80,7 +116,16 @@ public class GenerateTest {
                         .setText("This is a title")
                         .setDisplay(true)
                         .setPadding(10));
-        options.setLegend(legendOption);
+        options.setOption(legendOption);
+
+        TooltipOption tooltipOption = new TooltipOption()
+                .setBodyColor(Color.WHITE)
+                .setBackgroundColor(Color.BLUE)
+                .setBodySpacing(10)
+                .setCornerRadius(0)
+                .setTitleColor(Color.CYAN)
+                .setTitleMarginBottom(30);
+        options.setOption(tooltipOption);
 
         TitleOption titleOption = new TitleOption()
                 .setAlign("end")
@@ -88,15 +133,12 @@ public class GenerateTest {
                 .setColor(Color.ORANGE)
                 .setDisplay(true)
                 .setFont(new ChartFont().setFamily("Monaco").setSize(25));
-        options.setTitle(titleOption);
-
-        ScaleOption scaleOption = new ScaleOption();
-        options.setScales(scaleOption);
+        options.setOption(titleOption);
 
         ChartAnimationOption chartAnimationOption = new ChartAnimationOption()
                 .setDuration(1000)
                 .setDelay(500);
-        options.setChartAnimation(chartAnimationOption);
+        options.setOption(chartAnimationOption);
 
         PropertyAnimationOption<Integer> propertyAnimationOption = new PropertyAnimationOption<Integer>()
                 .setFrom(10)

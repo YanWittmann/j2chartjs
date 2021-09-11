@@ -7,6 +7,7 @@ import de.yanwittmann.j2chartjs.options.interaction.InteractionOption;
 import de.yanwittmann.j2chartjs.options.layout.LayoutOption;
 import de.yanwittmann.j2chartjs.options.plugins.legend.LegendOption;
 import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
+import de.yanwittmann.j2chartjs.options.plugins.tooltip.TooltipOption;
 import de.yanwittmann.j2chartjs.options.scale.ScaleOption;
 import org.json.JSONObject;
 
@@ -18,12 +19,13 @@ import java.util.Map;
  */
 public class ChartOption extends AbstractChartOption {
 
-    private AbstractChartOption scales;
     private AbstractChartOption interaction;
     private AbstractChartOption layout;
     private AbstractChartOption legend;
     private AbstractChartOption title;
+    private AbstractChartOption tooltip;
     private AbstractChartOption animation;
+    private final Map<String, AbstractChartOption> scales = new HashMap<>();
     private final Map<String, AbstractChartOption> animations = new HashMap<>();
 
     /**
@@ -62,11 +64,6 @@ public class ChartOption extends AbstractChartOption {
      */
     private String locale;
 
-    public ChartOption setScales(ScaleOption scales) {
-        this.scales = scales;
-        return this;
-    }
-
     public ChartOption setInteraction(InteractionOption interaction) {
         this.interaction = interaction;
         return this;
@@ -86,6 +83,11 @@ public class ChartOption extends AbstractChartOption {
         this.title = title;
     }
 
+    public ChartOption setTooltip(TooltipOption tooltip) {
+        this.tooltip = tooltip;
+        return this;
+    }
+
     public ChartOption setChartAnimation(ChartAnimationOption animation) {
         this.animation = animation;
         return this;
@@ -93,6 +95,28 @@ public class ChartOption extends AbstractChartOption {
 
     public ChartOption addPropertyAnimation(AnimationProperty key, PropertyAnimationOption animation) {
         this.animations.put(key.getKey(), animation);
+        return this;
+    }
+
+    public ChartOption addScale(String key, ScaleOption scaleOption) {
+        this.scales.put(key, scaleOption);
+        return this;
+    }
+
+    public ChartOption setOption(AbstractChartOption option) {
+        if (option instanceof InteractionOption) {
+            interaction = option;
+        } else if (option instanceof LayoutOption) {
+            layout = option;
+        } else if (option instanceof LegendOption) {
+            legend = option;
+        } else if (option instanceof TitleOption) {
+            title = option;
+        } else if (option instanceof TooltipOption) {
+            tooltip = option;
+        } else if (option instanceof ChartAnimationOption) {
+            animation = option;
+        }
         return this;
     }
 
@@ -135,14 +159,14 @@ public class ChartOption extends AbstractChartOption {
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
 
-        if (scales != null) optionsJson.put("scales", scales.toJson());
         if (interaction != null) optionsJson.put("interaction", interaction.toJson());
         if (layout != null) optionsJson.put("layout", layout.toJson());
 
-        if (legend != null || title != null) {
+        if (legend != null || title != null || tooltip != null) {
             JSONObject pluginsJson = new JSONObject();
             if (legend != null) pluginsJson.put("legend", legend.toJson());
             if (title != null) pluginsJson.put("title", title.toJson());
+            if (tooltip != null) pluginsJson.put("tooltip", tooltip.toJson());
             optionsJson.put("plugins", pluginsJson);
         }
 
@@ -159,6 +183,16 @@ public class ChartOption extends AbstractChartOption {
                 }
                 optionsJson.put("animations", animationsJson);
             }
+        }
+
+        if (scales.size() > 0) {
+            JSONObject scalesJson = new JSONObject();
+            for (Map.Entry<String, AbstractChartOption> entry : scales.entrySet()) {
+                if (entry != null && entry.getKey() != null && entry.getValue() != null) {
+                    scalesJson.put(entry.getKey(), entry.getValue().toJson());
+                }
+            }
+            optionsJson.put("scales", scalesJson);
         }
 
         if (responsive != null) optionsJson.put("responsive", responsive);

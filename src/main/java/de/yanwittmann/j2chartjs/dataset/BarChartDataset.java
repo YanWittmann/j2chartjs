@@ -182,7 +182,8 @@ public class BarChartDataset extends BackgroundBorderHoverChartDataset<BarChartD
         if (stack != null) datasetJson.put("stack", stack);
         if (indexAxis != null) datasetJson.put("indexAxis", indexAxis);
         if (base != null) datasetJson.put("base", base);
-        if (barPercentage != null) datasetJson.put("barPercentage", barPercentage);
+        if (barPercentage != null)
+            datasetJson.put("barPercentage", Util.roundToDecimals(Double.parseDouble(barPercentage.toString()), 3));
         if (barThickness != null) datasetJson.put("barThickness", barThickness);
         if (categoryPercentage != null) datasetJson.put("categoryPercentage", categoryPercentage);
         if (minBarLength != null) datasetJson.put("minBarLength", minBarLength);
