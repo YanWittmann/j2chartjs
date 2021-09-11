@@ -6,6 +6,11 @@ import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 import java.awt.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 public class TitleOption extends AbstractChartOption {
 
@@ -49,7 +54,7 @@ public class TitleOption extends AbstractChartOption {
     /**
      * The title text.
      */
-    private String text;
+    private List<String> text;
 
     public String getAlign() {
         return align;
@@ -114,12 +119,22 @@ public class TitleOption extends AbstractChartOption {
         return this;
     }
 
-    public String getText() {
+    public List<String> getText() {
         return text;
     }
 
-    public TitleOption setText(String text) {
+    public TitleOption setText(List<String> text) {
         this.text = text;
+        return this;
+    }
+
+    public TitleOption setText(String... text) {
+        this.text = Arrays.stream(text).collect(Collectors.toList());
+        return this;
+    }
+
+    public TitleOption setText(String text) {
+        this.text = Collections.singletonList(text);
         return this;
     }
 

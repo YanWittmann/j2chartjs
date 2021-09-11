@@ -138,9 +138,25 @@ public class TooltipOption extends AbstractChartOption {
      */
     private Boolean rtl;
     /**
-     * This will force the text direction 'rtl' or 'ltr on the canvas for rendering the tooltips, regardless of the css specified on the canvas
+     * This will force the text direction 'rtl' or 'ltr on the canvas for rendering the tooltips, regardless of the css specified on the canvas.
      */
     private String textDirection;
+    /**
+     * Position of the tooltip caret in the X direction.<ul>
+     * <li>left</li>
+     * <li>center</li>
+     * <li>right</li>
+     * </ul>
+     */
+    private String xAlign;
+    /**
+     * Position of the tooltip caret in the Y direction.<ul>
+     * <li>top</li>
+     * <li>center</li>
+     * <li>bottom</li>
+     * </ul>
+     */
+    private String yAlign;
 
     public Boolean getEnabled() {
         return enabled;
@@ -403,6 +419,24 @@ public class TooltipOption extends AbstractChartOption {
         return this;
     }
 
+    public String getxAlign() {
+        return xAlign;
+    }
+
+    public TooltipOption setxAlign(String xAlign) {
+        this.xAlign = xAlign;
+        return this;
+    }
+
+    public String getyAlign() {
+        return yAlign;
+    }
+
+    public TooltipOption setyAlign(String yAlign) {
+        this.yAlign = yAlign;
+        return this;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
@@ -435,6 +469,8 @@ public class TooltipOption extends AbstractChartOption {
         if (borderWidth != null) optionsJson.put("borderWidth", borderWidth);
         if (rtl != null) optionsJson.put("rtl", rtl);
         if (textDirection != null) optionsJson.put("textDirection", textDirection);
+        if (xAlign != null) optionsJson.put("xAlign", xAlign);
+        if (yAlign != null) optionsJson.put("yAlign", yAlign);
         return optionsJson;
     }
 }

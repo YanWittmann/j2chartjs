@@ -46,7 +46,8 @@ public class GenerateTest {
                 .addHoverBorderColor(new Color(0, 0, 0, 100))
                 .setYAxisID("A")
                 .setBase(4)
-                .setBarPercentage(0.5);
+                .setBarPercentage(0.5)
+                .setMinBarLength(10);
         BarChartDataset dataset2 = new BarChartDataset()
                 .setLabel("Week 2")
                 .setData(40, 65, 59, 72, 81, 56, 55)
@@ -129,11 +130,19 @@ public class GenerateTest {
 
         TitleOption titleOption = new TitleOption()
                 .setAlign("end")
-                .setText("Main Title")
-                .setColor(Color.ORANGE)
+                .setText("Demo Chart")
+                .setColor(Color.BLUE)
                 .setDisplay(true)
                 .setFont(new ChartFont().setFamily("Monaco").setSize(25));
         options.setOption(titleOption);
+
+        TitleOption subtitleOption = new TitleOption()
+                .setAlign("end")
+                .setText("Ugly as hell but", "it's automatically generated!")
+                .setColor(Color.ORANGE)
+                .setDisplay(true)
+                .setFont(new ChartFont().setFamily("Monaco").setSize(20));
+        options.setSubtitle(subtitleOption);
 
         ChartAnimationOption chartAnimationOption = new ChartAnimationOption()
                 .setDuration(1000)

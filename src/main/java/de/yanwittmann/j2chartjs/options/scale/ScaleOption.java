@@ -22,7 +22,7 @@ public class ScaleOption extends AbstractChartOption {
     private ScaleTitleOption title;
     /**
      * Type of scale being employed.<br>Custom scales can be created and registered with a string key. This allows changing the type of axis for a chart.<br>
-     * Example: <code>linear</code>
+     * Example: <code>linear</code>, <code>logarithmic</code>, <code>time</code>, <code>radar</code>
      */
     private String type;
     /**

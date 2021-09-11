@@ -6,8 +6,10 @@ import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 import java.awt.*;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ScaleTitleOption extends AbstractChartOption {
 
@@ -64,6 +66,11 @@ public class ScaleTitleOption extends AbstractChartOption {
 
     public ScaleTitleOption setText(List<String> text) {
         this.text = text;
+        return this;
+    }
+
+    public ScaleTitleOption setText(String... text) {
+        this.text = Arrays.stream(text).collect(Collectors.toList());
         return this;
     }
 

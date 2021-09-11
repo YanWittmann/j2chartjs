@@ -23,6 +23,7 @@ public class ChartOption extends AbstractChartOption {
     private AbstractChartOption layout;
     private AbstractChartOption legend;
     private AbstractChartOption title;
+    private AbstractChartOption subtitle;
     private AbstractChartOption tooltip;
     private AbstractChartOption animation;
     private final Map<String, AbstractChartOption> scales = new HashMap<>();
@@ -81,6 +82,10 @@ public class ChartOption extends AbstractChartOption {
 
     public void setTitle(TitleOption title) {
         this.title = title;
+    }
+
+    public void setSubtitle(AbstractChartOption subtitle) {
+        this.subtitle = subtitle;
     }
 
     public ChartOption setTooltip(TooltipOption tooltip) {
@@ -162,10 +167,11 @@ public class ChartOption extends AbstractChartOption {
         if (interaction != null) optionsJson.put("interaction", interaction.toJson());
         if (layout != null) optionsJson.put("layout", layout.toJson());
 
-        if (legend != null || title != null || tooltip != null) {
+        if (legend != null || title != null || subtitle != null || tooltip != null) {
             JSONObject pluginsJson = new JSONObject();
             if (legend != null) pluginsJson.put("legend", legend.toJson());
             if (title != null) pluginsJson.put("title", title.toJson());
+            if (subtitle != null) pluginsJson.put("subtitle", subtitle.toJson());
             if (tooltip != null) pluginsJson.put("tooltip", tooltip.toJson());
             optionsJson.put("plugins", pluginsJson);
         }

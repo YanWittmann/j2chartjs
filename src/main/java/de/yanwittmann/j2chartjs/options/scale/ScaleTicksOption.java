@@ -2,6 +2,7 @@ package de.yanwittmann.j2chartjs.options.scale;
 
 import de.yanwittmann.j2chartjs.options.AbstractChartOption;
 import de.yanwittmann.j2chartjs.type.ChartFont;
+import de.yanwittmann.j2chartjs.type.ChartPadding;
 import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
@@ -42,6 +43,14 @@ public class ScaleTicksOption extends AbstractChartOption {
      * Useful when ticks are drawn on chart area. Values smaller or equals 0 are drawn under datasets, larger 0 on top.
      */
     private Integer z;
+    /**
+     * Color of label backdrops.
+     */
+    private Color backdropColor;
+    /**
+     * Padding of label backdrop.
+     */
+    private ChartPadding backdropPadding;
 
     public Boolean getDisplay() {
         return display;
@@ -115,6 +124,24 @@ public class ScaleTicksOption extends AbstractChartOption {
         return this;
     }
 
+    public Color getBackdropColor() {
+        return backdropColor;
+    }
+
+    public ScaleTicksOption setBackdropColor(Color backdropColor) {
+        this.backdropColor = backdropColor;
+        return this;
+    }
+
+    public ChartPadding getBackdropPadding() {
+        return backdropPadding;
+    }
+
+    public ScaleTicksOption setBackdropPadding(ChartPadding backdropPadding) {
+        this.backdropPadding = backdropPadding;
+        return this;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
@@ -125,6 +152,8 @@ public class ScaleTicksOption extends AbstractChartOption {
         if (textStrokeColor != null) optionsJson.put("textStrokeColor", Util.convertColorToJs(textStrokeColor));
         if (textStrokeWidth != null) optionsJson.put("textStrokeWidth", textStrokeWidth);
         if (z != null) optionsJson.put("z", z);
+        if (backdropColor != null) optionsJson.put("backdropColor", Util.convertColorToJs(backdropColor));
+        if (backdropPadding != null) optionsJson.put("backdropPadding", backdropPadding.toJson());
         if (major != null) {
             JSONObject majorJson = new JSONObject();
             majorJson.put("enabled", major.booleanValue());
