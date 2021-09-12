@@ -17,18 +17,11 @@ import de.yanwittmann.j2chartjs.options.scale.*;
 import de.yanwittmann.j2chartjs.preset.ChartColors;
 import de.yanwittmann.j2chartjs.type.ChartFont;
 import de.yanwittmann.j2chartjs.type.ChartPadding;
-import j2html.tags.specialized.HtmlTag;
-import org.apache.commons.io.FileUtils;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Random;
-
-import static j2html.TagCreator.*;
 
 public class GenerateTest {
 
@@ -54,10 +47,6 @@ public class GenerateTest {
         BarChart chart = new BarChart()
                 .setChartOptions(options)
                 .setChartData(data);
-
-        JSONObject chartConfiguration = chart.toJson();
-
-        writePageWithChart(chart);
     }
 
     @Test
@@ -81,8 +70,6 @@ public class GenerateTest {
         ScatterChart chart = new ScatterChart()
                 .setChartOptions(options)
                 .setChartData(data);
-
-        writePageWithChart(chart);
     }
 
     @Test
@@ -106,8 +93,6 @@ public class GenerateTest {
         BubbleChart chart = new BubbleChart()
                 .setChartOptions(options)
                 .setChartData(data);
-
-        writePageWithChart(chart);
     }
 
     @Test
@@ -131,8 +116,6 @@ public class GenerateTest {
         PolarAreaChart polarAreaChart = new PolarAreaChart()
                 .setChartOptions(options)
                 .setChartData(data);
-
-        writePageWithChart(polarAreaChart);
     }
 
     @Test
@@ -167,9 +150,6 @@ public class GenerateTest {
         PieChart pieChart = new PieChart()
                 .setChartOptions(options)
                 .setChartData(data);
-
-        //writePageWithChart(doughnutChart);
-        writePageWithChart(pieChart);
     }
 
     @Test
@@ -204,8 +184,6 @@ public class GenerateTest {
         RadarChart radarChart = new RadarChart()
                 .setChartOptions(options)
                 .setChartData(chartData);
-
-        writePageWithChart(radarChart);
     }
 
     @Test
@@ -241,8 +219,6 @@ public class GenerateTest {
         LineChart lineChart = new LineChart()
                 .setChartOptions(chartOptions)
                 .setChartData(barChartData);
-
-        writePageWithChart(lineChart);
     }
 
     @Test
@@ -373,30 +349,5 @@ public class GenerateTest {
         BarChart barChart = new BarChart()
                 .setChartData(barChartData)
                 .setChartOptions(options);
-
-        writePageWithChart(barChart);
-    }
-
-    private void writePageWithChart(Chart chart) throws IOException {
-        System.out.println(chart.toJson().toString(2));
-
-        HtmlTag page = html().attr("lang", "en").with(
-                head().with(
-                        meta().withCharset("UTF-8"),
-                        title("ChartJs Builder Test"),
-                        meta().withName("viewport").withContent("width=device-width, initial-scale=1.0"),
-                        script().withSrc("https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js")
-                ),
-                body(
-                        canvas().withId("testChart").withStyle("border: gray 2px solid;").withWidth("1000"),//.withHeight("400"),
-                        script(join("",
-                                "var ctx = document.getElementById('testChart').getContext('2d');",
-                                "var myChart = new Chart(ctx,",
-                                String.valueOf(chart.toJson()),
-                                ");"
-                        ))
-                )
-        );
-        FileUtils.write(new File("src/test/resources/chart_output.html"), page.renderFormatted(), StandardCharsets.UTF_8);
     }
 }

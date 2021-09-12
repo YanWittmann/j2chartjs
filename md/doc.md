@@ -155,7 +155,7 @@ new Chart(ctx, jsonChartConfiguration);
 ```
 
 ### Other useful tips & tricks
-- To apply default colors to the chart dataset entries, use the ChartColor class.
+- To apply default colors to the chart dataset entries, use the `ChartColor` class.
   ```java
   BarChartDataset dataset = new BarChartDataset()
       .setData(12, 32, 8, 45, 27, 23)
