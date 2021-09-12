@@ -22,6 +22,7 @@ import de.yanwittmann.j2chartjs.type.ChartPadding;
 import de.yanwittmann.j2chartjs.type.ScatterChartDatapoint;
 import j2html.tags.specialized.HtmlTag;
 import org.apache.commons.io.FileUtils;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -33,6 +34,31 @@ import java.util.Random;
 import static j2html.TagCreator.*;
 
 public class GenerateTest {
+
+    @Test
+    public void simpleTest() throws IOException {
+        BarChartDataset dataset = new BarChartDataset()
+                .setData(12, 32, 8, 45, 27, 23)
+                .setLabel("Sample Dataset")
+                .setBackgroundColor(ChartColors.BACKGROUNDS)
+                .setBorderColor(ChartColors.BORDERS)
+                .addBorderWidth(1);
+
+        BarChartData data = new BarChartData()
+                .addDataset(dataset)
+                .addLabels("Entry 1", "Entry 2", "Entry 3", "Entry 4", "Entry 5", "Entry 6");
+
+        ChartOptions options = new ChartOptions()
+                .setTitle(new TitleOption().setText("Sample Chart").setDisplay(true));
+
+        BarChart chart = new BarChart()
+                .setChartOptions(options)
+                .setChartData(data);
+
+        JSONObject chartConfiguration = chart.toJson();
+
+        writePageWithChart(chart);
+    }
 
     @Test
     public void scatterTest() throws IOException {
@@ -175,11 +201,11 @@ public class GenerateTest {
                         .setMode("index"))
                 .addScale("r", scale);
 
-        RadarChart lineChart = new RadarChart()
+        RadarChart radarChart = new RadarChart()
                 .setChartOptions(options)
                 .setChartData(chartData);
 
-        writePageWithChart(lineChart);
+        writePageWithChart(radarChart);
     }
 
     @Test

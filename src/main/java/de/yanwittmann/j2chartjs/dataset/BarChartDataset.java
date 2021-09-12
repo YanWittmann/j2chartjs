@@ -173,6 +173,96 @@ public class BarChartDataset extends ChartDataset<BarChartDataset, BigDecimal> {
         return this;
     }
 
+    public List<Color> getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public BarChartDataset setBackgroundColor(List<Color> backgroundColor) {
+        this.backgroundColor = backgroundColor;
+        return this;
+    }
+
+    public List<Color> getBorderColor() {
+        return borderColor;
+    }
+
+    public BarChartDataset setBorderColor(List<Color> borderColor) {
+        this.borderColor = borderColor;
+        return this;
+    }
+
+    public List<Integer> getBorderWidth() {
+        return borderWidth;
+    }
+
+    public BarChartDataset setBorderWidth(List<Integer> borderWidth) {
+        this.borderWidth = borderWidth;
+        return this;
+    }
+
+    public List<Integer> getBorderRadius() {
+        return borderRadius;
+    }
+
+    public BarChartDataset setBorderRadius(List<Integer> borderRadius) {
+        this.borderRadius = borderRadius;
+        return this;
+    }
+
+    public List<String> getBorderSkipped() {
+        return borderSkipped;
+    }
+
+    public BarChartDataset setBorderSkipped(List<String> borderSkipped) {
+        this.borderSkipped = borderSkipped;
+        return this;
+    }
+
+    public List<Color> getHoverBackgroundColor() {
+        return hoverBackgroundColor;
+    }
+
+    public BarChartDataset setHoverBackgroundColor(List<Color> hoverBackgroundColor) {
+        this.hoverBackgroundColor = hoverBackgroundColor;
+        return this;
+    }
+
+    public List<Color> getHoverBorderColor() {
+        return hoverBorderColor;
+    }
+
+    public BarChartDataset setHoverBorderColor(List<Color> hoverBorderColor) {
+        this.hoverBorderColor = hoverBorderColor;
+        return this;
+    }
+
+    public List<Integer> getHoverBorderWidth() {
+        return hoverBorderWidth;
+    }
+
+    public BarChartDataset setHoverBorderWidth(List<Integer> hoverBorderWidth) {
+        this.hoverBorderWidth = hoverBorderWidth;
+        return this;
+    }
+
+    public List<Integer> getHoverBorderRadius() {
+        return hoverBorderRadius;
+    }
+
+    public BarChartDataset setHoverBorderRadius(List<Integer> hoverBorderRadius) {
+        this.hoverBorderRadius = hoverBorderRadius;
+        return this;
+    }
+
+    public List<String> getHoverBorderSkipped() {
+        return hoverBorderSkipped;
+    }
+
+    public BarChartDataset setHoverBorderSkipped(List<String> hoverBorderSkipped) {
+        this.hoverBorderSkipped = hoverBorderSkipped;
+        return this;
+    }
+
     public BarChartDataset addBackgroundColor(Color... colors) {
         backgroundColor = Util.initializeListIfNull(backgroundColor);
         backgroundColor.addAll(Arrays.asList(colors));
