@@ -19,6 +19,7 @@ import de.yanwittmann.j2chartjs.preset.ChartColors;
 import de.yanwittmann.j2chartjs.type.BubbleChartDatapoint;
 import de.yanwittmann.j2chartjs.type.ChartFont;
 import de.yanwittmann.j2chartjs.type.ChartPadding;
+import de.yanwittmann.j2chartjs.type.ScatterChartDatapoint;
 import j2html.tags.specialized.HtmlTag;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
@@ -35,6 +36,31 @@ public class GenerateTest {
 
     @Test
     public void scatterTest() throws IOException {
+        Random random = new Random();
+        ScatterChartDataset dataset = new ScatterChartDataset()
+                .setLabel("Points everywhere")
+                .setBackgroundColor(ChartColors.BACKGROUNDS)
+                .setBorderColor(ChartColors.BORDERS)
+                .addPointStyle("star");
+        for (int i = 0; i < 500; i++)
+            dataset.addData(new ScatterChartDatapoint(random.nextInt(100), random.nextInt(100)));
+
+        ScatterChartData data = new ScatterChartData()
+                .addDataset(dataset);
+
+        ChartOptions options = new ChartOptions()
+                .addScale("y", new LinearScaleOption().setSuggestedMin(0))
+                .addScale("x", new LinearScaleOption().setSuggestedMin(0));
+
+        ScatterChart chart = new ScatterChart()
+                .setChartOptions(options)
+                .setChartData(data);
+
+        writePageWithChart(chart);
+    }
+
+    @Test
+    public void bubbleTest() throws IOException {
         Random random = new Random();
         BubbleChartDataset dataset = new BubbleChartDataset()
                 .setLabel("Points in time and space")
