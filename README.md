@@ -11,6 +11,5 @@ To do:
 
 - https://www.chartjs.org/docs/next/configuration/elements.html
 - https://www.chartjs.org/docs/next/configuration/decimation.html
-- https://www.chartjs.org/docs/latest/axes/radial/linear.html#point-label-options
-- add custom colors from the ChartJs examples
+- automatically add colors function
 - smart add to json object for everything

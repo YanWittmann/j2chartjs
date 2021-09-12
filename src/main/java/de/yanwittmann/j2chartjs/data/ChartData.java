@@ -1,6 +1,7 @@
 package de.yanwittmann.j2chartjs.data;
 
 import de.yanwittmann.j2chartjs.dataset.ChartDataset;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -48,5 +49,16 @@ public abstract class ChartData<T, DT, D> {
         return labels;
     }
 
-    public abstract JSONObject toJson();
+    public JSONObject toJson() {
+        JSONObject chartData = new JSONObject();
+        chartData.put("labels", getLabels());
+        if (datasets != null) {
+            JSONArray chartDatasets = new JSONArray();
+            for (ChartDataset<DT, D> genericDataset : datasets) {
+                chartDatasets.put(genericDataset.toJson());
+            }
+            chartData.put("datasets", chartDatasets);
+        }
+        return chartData;
+    }
 }

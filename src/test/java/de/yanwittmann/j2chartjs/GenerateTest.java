@@ -1,14 +1,8 @@
 package de.yanwittmann.j2chartjs;
 
 import de.yanwittmann.j2chartjs.chart.*;
-import de.yanwittmann.j2chartjs.data.BarChartData;
-import de.yanwittmann.j2chartjs.data.DoughnutPieChartData;
-import de.yanwittmann.j2chartjs.data.LineChartData;
-import de.yanwittmann.j2chartjs.data.RadarChartData;
-import de.yanwittmann.j2chartjs.dataset.BarChartDataset;
-import de.yanwittmann.j2chartjs.dataset.DoughnutPieChartDataset;
-import de.yanwittmann.j2chartjs.dataset.LineChartDataset;
-import de.yanwittmann.j2chartjs.dataset.RadarChartDataset;
+import de.yanwittmann.j2chartjs.data.*;
+import de.yanwittmann.j2chartjs.dataset.*;
 import de.yanwittmann.j2chartjs.options.ChartOptions;
 import de.yanwittmann.j2chartjs.options.animation.AnimationEasingType;
 import de.yanwittmann.j2chartjs.options.animation.AnimationProperty;
@@ -38,7 +32,32 @@ import static j2html.TagCreator.*;
 public class GenerateTest {
 
     @Test
-    public void DoughnutPieTest() throws IOException {
+    public void polarAreaTest() throws IOException {
+        PolarAreaChartDataset dataset = new PolarAreaChartDataset()
+                .addData(10, 34, 23)
+                .setBackgroundColor(ChartColors.BACKGROUNDS)
+                .setBorderColor(ChartColors.BORDERS)
+                .addOffset(10)
+                .addSpacing(30)
+                .addBorderAlign("center", "inner", "center");
+
+        PolarAreaChartData data = new PolarAreaChartData()
+                .addDataset(dataset)
+                .addLabels("First", "Second", "Third");
+
+        ChartOptions options = new ChartOptions()
+                .setInteraction(new InteractionOption()
+                        .setMode("index"));
+
+        PolarAreaChart polarAreaChart = new PolarAreaChart()
+                .setChartOptions(options)
+                .setChartData(data);
+
+        writePageWithChart(polarAreaChart);
+    }
+
+    @Test
+    public void doughnutPieTest() throws IOException {
         DoughnutPieChartDataset dataset1 = new DoughnutPieChartDataset()
                 .addData(10, 34, 23)
                 .setBackgroundColor(ChartColors.BACKGROUNDS)
@@ -50,7 +69,8 @@ public class GenerateTest {
                 .setBackgroundColor(ChartColors.BACKGROUNDS)
                 .setBorderColor(ChartColors.BORDERS)
                 .setCutout("10%")
-                .addHoverOffset(10);
+                .addHoverOffset(10)
+                .addSpacing(10);
 
         DoughnutPieChartData data = new DoughnutPieChartData()
                 .addDataset(dataset1)
