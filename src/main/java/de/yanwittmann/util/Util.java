@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 public abstract class Util {
 
     /**
+     * Written by <a href="https://stackoverflow.com/users/827927/erel-segal-halevi">erel-segal-halevi</a> from this <a href="https://stackoverflow.com/a/15070484/15925251">Stack Overflow answer</a><br>
      * Merge "source" into "target". If fields have equal name, merge them recursively.
      *
      * @return the merged object (target).
-     * @author <a href="https://stackoverflow.com/users/827927/erel-segal-halevi">erel-segal-halevi</a> from this <a href="https://stackoverflow.com/a/15070484/15925251">Stack Overflow answer</a>
      */
     public static JSONObject deepMerge(JSONObject source, JSONObject target) throws JSONException {
         if (source == null || target == null || source.length() == 0) return target;
@@ -76,13 +76,14 @@ public abstract class Util {
     }
 
     /**
+     * Written by <a href="https://rosettacode.org/wiki/Map_range#Java">rosettacode.org</a>
+     *
      * @param a1 The lower end of the original range.
      * @param a2 The upper end of the original range.
      * @param b1 The lower end of the destination range.
      * @param b2 The upper end of the destination range.
      * @param s  The number to convert from the original range to the destination range.
      * @return The number converted from the original range to the destination range.
-     * @author <a href="https://rosettacode.org/wiki/Map_range#Java">rosettacode.org</a>
      */
     public static double mapRange(double a1, double a2, double b1, double b2, double s) {
         return b1 + ((s - a1) * (b2 - b1)) / (a2 - a1);
