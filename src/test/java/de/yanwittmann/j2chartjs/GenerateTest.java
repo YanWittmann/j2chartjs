@@ -275,8 +275,7 @@ public class GenerateTest {
 
         BarChartData barChartData = new BarChartData()
                 .addLabels("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
-                .addDataset(dataset1)
-                .addDataset(dataset2);
+                .addDataset(dataset1, dataset2);
 
 
         ChartOptions options = new ChartOptions()

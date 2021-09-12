@@ -20,8 +20,8 @@ public abstract class ChartData<T, DT, D> {
     protected List<String> labels = new ArrayList<>();
     protected List<ChartDataset<DT, D>> datasets = new ArrayList<>();
 
-    public T addDataset(ChartDataset<DT, D> dataset) {
-        datasets.add(dataset);
+    public T addDataset(ChartDataset<DT, D>... dataset) {
+        datasets.addAll(Arrays.asList(dataset));
         return (T) this;
     }
 
