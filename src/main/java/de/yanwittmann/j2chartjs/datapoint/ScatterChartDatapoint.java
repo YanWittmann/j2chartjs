@@ -1,4 +1,4 @@
-package de.yanwittmann.j2chartjs.type;
+package de.yanwittmann.j2chartjs.datapoint;
 
 import org.json.JSONObject;
 

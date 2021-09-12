@@ -1,6 +1,6 @@
 package de.yanwittmann.j2chartjs.dataset;
 
-import de.yanwittmann.j2chartjs.type.ScatterChartDatapoint;
+import de.yanwittmann.j2chartjs.datapoint.ScatterChartDatapoint;
 import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 

@@ -4,6 +4,9 @@ j2ChartJs allows generating configuration objects for the fantastic [Chart.js](h
 library from your Java code.  
 Uses ChartJs 3.x
 
+[Project Documentation](md/doc.md).  
+[More examples](md/example.md).
+
 ## Sample usage
 
 Java:
@@ -40,9 +43,6 @@ JavaScript:
 var ctx = document.getElementById('canvasId');
 new Chart(ctx, jsonChartConfiguration);
 ```
-
-[More examples](md/example.md).  
-[Project Documentation](md/doc.md).
 
 ## To do:
 

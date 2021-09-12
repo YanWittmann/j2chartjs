@@ -2,12 +2,11 @@ package de.yanwittmann.j2chartjs;
 
 import de.yanwittmann.j2chartjs.chart.*;
 import de.yanwittmann.j2chartjs.data.*;
+import de.yanwittmann.j2chartjs.datapoint.BubbleChartDatapoint;
+import de.yanwittmann.j2chartjs.datapoint.ScatterChartDatapoint;
 import de.yanwittmann.j2chartjs.dataset.*;
 import de.yanwittmann.j2chartjs.options.ChartOptions;
-import de.yanwittmann.j2chartjs.options.animation.AnimationEasingType;
-import de.yanwittmann.j2chartjs.options.animation.AnimationProperty;
-import de.yanwittmann.j2chartjs.options.animation.ChartAnimationOption;
-import de.yanwittmann.j2chartjs.options.animation.PropertyAnimationOption;
+import de.yanwittmann.j2chartjs.options.animation.*;
 import de.yanwittmann.j2chartjs.options.interaction.InteractionOption;
 import de.yanwittmann.j2chartjs.options.layout.LayoutOption;
 import de.yanwittmann.j2chartjs.options.plugins.legend.LegendOption;
@@ -16,10 +15,8 @@ import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.tooltip.TooltipOption;
 import de.yanwittmann.j2chartjs.options.scale.*;
 import de.yanwittmann.j2chartjs.preset.ChartColors;
-import de.yanwittmann.j2chartjs.type.BubbleChartDatapoint;
 import de.yanwittmann.j2chartjs.type.ChartFont;
 import de.yanwittmann.j2chartjs.type.ChartPadding;
-import de.yanwittmann.j2chartjs.type.ScatterChartDatapoint;
 import j2html.tags.specialized.HtmlTag;
 import org.apache.commons.io.FileUtils;
 import org.json.JSONObject;
@@ -49,7 +46,10 @@ public class GenerateTest {
                 .addLabels("Entry 1", "Entry 2", "Entry 3", "Entry 4", "Entry 5", "Entry 6");
 
         ChartOptions options = new ChartOptions()
-                .setTitle(new TitleOption().setText("Sample Chart").setDisplay(true));
+                .setTitle(new TitleOption().setText("Sample Chart").setDisplay(true))
+                .addTransition(TransitionAnimationType.HIDE, new TransitionAnimationOption()
+                        .addPropertyAnimation(AnimationPropertyOption.X, new PropertyAnimationOption<Integer>().setTo(0))
+                        .addPropertyAnimation(AnimationPropertyOption.Y, new PropertyAnimationOption<Integer>().setTo(0)));
 
         BarChart chart = new BarChart()
                 .setChartOptions(options)
@@ -293,7 +293,7 @@ public class GenerateTest {
                         .setTickColor(Color.PINK)
                         .setZ(1));
         LinearScaleOption linearScaleOptionB = new LinearScaleOption()
-                .setType("linear")
+                .setType("logarithmic")
                 .setPosition("right")
                 .setBeginAtZero(false)
                 .setTicks(new LinearScaleTicksOption()
@@ -368,7 +368,7 @@ public class GenerateTest {
                 .setDelay(1000)
                 .setEasing(AnimationEasingType.EASE_IN_OUT_QUART)
                 .setLoop(false);
-        options.addPropertyAnimation(AnimationProperty.BORDER_WIDTH, propertyAnimationOption);
+        options.addPropertyAnimation(AnimationPropertyOption.BORDER_WIDTH, propertyAnimationOption);
 
 
         BarChart barChart = new BarChart()

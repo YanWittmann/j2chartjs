@@ -18,13 +18,12 @@ public abstract class Util {
      * @author <a href="https://stackoverflow.com/users/827927/erel-segal-halevi">erel-segal-halevi</a> from this <a href="https://stackoverflow.com/a/15070484/15925251">Stack Overflow answer</a>
      */
     public static JSONObject deepMerge(JSONObject source, JSONObject target) throws JSONException {
+        if (source == null || target == null || source.length() == 0) return target;
         for (String key : JSONObject.getNames(source)) {
             Object value = source.get(key);
             if (!target.has(key)) {
-                // new value for "key":
                 target.put(key, value);
             } else {
-                // existing value for "key" - recursively deep merge:
                 if (value instanceof JSONObject) {
                     JSONObject valueJson = (JSONObject) value;
                     deepMerge(valueJson, target.getJSONObject(key));

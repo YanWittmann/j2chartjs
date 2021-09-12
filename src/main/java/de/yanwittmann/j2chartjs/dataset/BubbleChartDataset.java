@@ -1,6 +1,6 @@
 package de.yanwittmann.j2chartjs.dataset;
 
-import de.yanwittmann.j2chartjs.type.BubbleChartDatapoint;
+import de.yanwittmann.j2chartjs.datapoint.BubbleChartDatapoint;
 import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 

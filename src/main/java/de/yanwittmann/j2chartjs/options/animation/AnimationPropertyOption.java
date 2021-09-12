@@ -1,6 +1,6 @@
 package de.yanwittmann.j2chartjs.options.animation;
 
-public enum AnimationProperty {
+public enum AnimationPropertyOption {
     X("x"),
     Y("y"),
     BORDER_WIDTH("borderWidth"),
@@ -12,7 +12,7 @@ public enum AnimationProperty {
 
     private final String key;
 
-    AnimationProperty(java.lang.String key) {
+    AnimationPropertyOption(java.lang.String key) {
         this.key = key;
     }
 

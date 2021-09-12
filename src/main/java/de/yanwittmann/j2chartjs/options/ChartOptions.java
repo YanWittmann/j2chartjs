@@ -1,8 +1,6 @@
 package de.yanwittmann.j2chartjs.options;
 
-import de.yanwittmann.j2chartjs.options.animation.AnimationProperty;
-import de.yanwittmann.j2chartjs.options.animation.ChartAnimationOption;
-import de.yanwittmann.j2chartjs.options.animation.PropertyAnimationOption;
+import de.yanwittmann.j2chartjs.options.animation.*;
 import de.yanwittmann.j2chartjs.options.interaction.InteractionOption;
 import de.yanwittmann.j2chartjs.options.layout.LayoutOption;
 import de.yanwittmann.j2chartjs.options.plugins.legend.LegendOption;
@@ -29,6 +27,7 @@ public class ChartOptions extends AbstractChartOption {
     private AbstractChartOption animation;
     private final Map<String, AbstractChartOption> scales = new HashMap<>();
     private final Map<String, AbstractChartOption> animations = new HashMap<>();
+    private final Map<String, AbstractChartOption> transitions = new HashMap<>();
 
     /**
      * When set to false, disables all animations.
@@ -101,8 +100,13 @@ public class ChartOptions extends AbstractChartOption {
         return this;
     }
 
-    public ChartOptions addPropertyAnimation(AnimationProperty key, PropertyAnimationOption animation) {
+    public ChartOptions addPropertyAnimation(AnimationPropertyOption key, PropertyAnimationOption animation) {
         this.animations.put(key.getKey(), animation);
+        return this;
+    }
+
+    public ChartOptions addTransition(TransitionAnimationType key, TransitionAnimationOption transitions) {
+        this.transitions.put(key.getKey(), transitions);
         return this;
     }
 
@@ -226,6 +230,16 @@ public class ChartOptions extends AbstractChartOption {
                 }
             }
             optionsJson.put("scales", scalesJson);
+        }
+
+        if (transitions.size() > 0) {
+            JSONObject transitionsJson = new JSONObject();
+            for (Map.Entry<String, AbstractChartOption> entry : transitions.entrySet()) {
+                if (entry != null && entry.getKey() != null && entry.getValue() != null) {
+                    transitionsJson.put(entry.getKey(), entry.getValue().toJson());
+                }
+            }
+            optionsJson.put("transitions", transitionsJson);
         }
 
         if (responsive != null) optionsJson.put("responsive", responsive);
