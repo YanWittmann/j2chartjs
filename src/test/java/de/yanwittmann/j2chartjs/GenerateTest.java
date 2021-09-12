@@ -16,6 +16,7 @@ import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.tooltip.TooltipOption;
 import de.yanwittmann.j2chartjs.options.scale.*;
 import de.yanwittmann.j2chartjs.preset.ChartColors;
+import de.yanwittmann.j2chartjs.type.BubbleChartDatapoint;
 import de.yanwittmann.j2chartjs.type.ChartFont;
 import de.yanwittmann.j2chartjs.type.ChartPadding;
 import j2html.tags.specialized.HtmlTag;
@@ -26,10 +27,36 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
 import static j2html.TagCreator.*;
 
 public class GenerateTest {
+
+    @Test
+    public void scatterTest() throws IOException {
+        Random random = new Random();
+        BubbleChartDataset dataset = new BubbleChartDataset()
+                .setLabel("Points in time and space")
+                .setBackgroundColor(ChartColors.BACKGROUNDS)
+                .setBorderColor(ChartColors.BORDERS)
+                .addPointStyle("star");
+        for (int i = 0; i < 500; i++)
+            dataset.addData(new BubbleChartDatapoint(random.nextInt(100), random.nextInt(100), random.nextInt(30) + 10));
+
+        BubbleChartData data = new BubbleChartData()
+                .addDataset(dataset);
+
+        ChartOptions options = new ChartOptions()
+                .addScale("y", new LinearScaleOption().setSuggestedMin(0))
+                .addScale("x", new LinearScaleOption().setSuggestedMin(0));
+
+        BubbleChart chart = new BubbleChart()
+                .setChartOptions(options)
+                .setChartData(data);
+
+        writePageWithChart(chart);
+    }
 
     @Test
     public void polarAreaTest() throws IOException {
