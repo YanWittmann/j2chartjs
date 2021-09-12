@@ -1,13 +1,12 @@
 package de.yanwittmann.j2chartjs;
 
-import de.yanwittmann.j2chartjs.chart.BarChart;
-import de.yanwittmann.j2chartjs.chart.Chart;
-import de.yanwittmann.j2chartjs.chart.LineChart;
-import de.yanwittmann.j2chartjs.chart.RadarChart;
+import de.yanwittmann.j2chartjs.chart.*;
 import de.yanwittmann.j2chartjs.data.BarChartData;
+import de.yanwittmann.j2chartjs.data.DoughnutPieChartData;
 import de.yanwittmann.j2chartjs.data.LineChartData;
 import de.yanwittmann.j2chartjs.data.RadarChartData;
 import de.yanwittmann.j2chartjs.dataset.BarChartDataset;
+import de.yanwittmann.j2chartjs.dataset.DoughnutPieChartDataset;
 import de.yanwittmann.j2chartjs.dataset.LineChartDataset;
 import de.yanwittmann.j2chartjs.dataset.RadarChartDataset;
 import de.yanwittmann.j2chartjs.options.ChartOptions;
@@ -22,6 +21,7 @@ import de.yanwittmann.j2chartjs.options.plugins.legend.LegendTitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.tooltip.TooltipOption;
 import de.yanwittmann.j2chartjs.options.scale.*;
+import de.yanwittmann.j2chartjs.preset.ChartColors;
 import de.yanwittmann.j2chartjs.type.ChartFont;
 import de.yanwittmann.j2chartjs.type.ChartPadding;
 import j2html.tags.specialized.HtmlTag;
@@ -36,6 +36,42 @@ import java.nio.charset.StandardCharsets;
 import static j2html.TagCreator.*;
 
 public class GenerateTest {
+
+    @Test
+    public void DoughnutPieTest() throws IOException {
+        DoughnutPieChartDataset dataset1 = new DoughnutPieChartDataset()
+                .addData(10, 34, 23)
+                .setBackgroundColor(ChartColors.BACKGROUNDS)
+                .setBorderColor(ChartColors.BORDERS)
+                .setCutout("20%")
+                .addHoverOffset(10);
+        DoughnutPieChartDataset dataset2 = new DoughnutPieChartDataset()
+                .addData(18, 45, 35)
+                .setBackgroundColor(ChartColors.BACKGROUNDS)
+                .setBorderColor(ChartColors.BORDERS)
+                .setCutout("10%")
+                .addHoverOffset(10);
+
+        DoughnutPieChartData data = new DoughnutPieChartData()
+                .addDataset(dataset1)
+                .addDataset(dataset2)
+                .addLabels("First", "Second", "Third");
+
+        ChartOptions options = new ChartOptions()
+                .setInteraction(new InteractionOption()
+                        .setMode("index"));
+
+        DoughnutChart doughnutChart = new DoughnutChart()
+                .setChartOptions(options)
+                .setChartData(data);
+
+        PieChart pieChart = new PieChart()
+                .setChartOptions(options)
+                .setChartData(data);
+
+        //writePageWithChart(doughnutChart);
+        writePageWithChart(pieChart);
+    }
 
     @Test
     public void radarChartTest() throws IOException {
