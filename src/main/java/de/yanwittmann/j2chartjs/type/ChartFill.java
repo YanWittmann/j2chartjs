@@ -22,6 +22,33 @@ public class ChartFill extends AbstractChartOption {
      */
     private Color below;
 
+    public String getTarget() {
+        return target;
+    }
+
+    public ChartFill setTarget(String target) {
+        this.target = target;
+        return this;
+    }
+
+    public Color getAbove() {
+        return above;
+    }
+
+    public ChartFill setAbove(Color above) {
+        this.above = above;
+        return this;
+    }
+
+    public Color getBelow() {
+        return below;
+    }
+
+    public ChartFill setBelow(Color below) {
+        this.below = below;
+        return this;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject fillJson = new JSONObject();

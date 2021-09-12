@@ -38,10 +38,18 @@ public class ChartPadding extends AbstractChartOption {
         return this;
     }
 
+    public boolean isIdentical() {
+        return paddingTop != null && paddingTop.equals(paddingBottom) && paddingTop.equals(paddingRight) && paddingTop.equals(paddingLeft);
+    }
+
+    public Integer getPaddingBottom() {
+        return paddingBottom;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject mainPaddingJson = new JSONObject();
-        if (paddingTop != null && paddingTop.equals(paddingBottom) && paddingTop.equals(paddingRight) && paddingTop.equals(paddingLeft)) {
+        if (isIdentical()) {
             mainPaddingJson.put("padding", paddingTop);
         } else if (paddingTop != null || paddingBottom != null || paddingRight != null || paddingLeft != null) {
             JSONObject paddingJson = new JSONObject();

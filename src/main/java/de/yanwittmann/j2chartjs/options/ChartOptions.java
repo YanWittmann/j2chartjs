@@ -8,7 +8,8 @@ import de.yanwittmann.j2chartjs.options.layout.LayoutOption;
 import de.yanwittmann.j2chartjs.options.plugins.legend.LegendOption;
 import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.tooltip.TooltipOption;
-import de.yanwittmann.j2chartjs.options.scale.ScaleOption;
+import de.yanwittmann.j2chartjs.options.scale.LinearScaleOption;
+import de.yanwittmann.j2chartjs.options.scale.RadialScaleOption;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -105,8 +106,32 @@ public class ChartOptions extends AbstractChartOption {
         return this;
     }
 
-    public ChartOptions addScale(String key, ScaleOption scaleOption) {
-        this.scales.put(key, scaleOption);
+    /**
+     * Default keys for scales are:<ul>
+     * <li>x</li>
+     * <li>y</li>
+     * </ul>
+     *
+     * @param key               The key to use to store the scale.
+     * @param linearScaleOption The linear scale options to use for the key.
+     * @return This instance to allow for API chaining.
+     */
+    public ChartOptions addScale(String key, LinearScaleOption linearScaleOption) {
+        this.scales.put(key, linearScaleOption);
+        return this;
+    }
+
+    /**
+     * Default keys for scales are:<ul>
+     * <li>r</li>
+     * </ul>
+     *
+     * @param key               The key to use to store the scale.
+     * @param radialScaleOption The radial scale options to use for the key.
+     * @return This instance to allow for API chaining.
+     */
+    public ChartOptions addScale(String key, RadialScaleOption radialScaleOption) {
+        this.scales.put(key, radialScaleOption);
         return this;
     }
 

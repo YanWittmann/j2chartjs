@@ -6,12 +6,20 @@ import org.json.JSONObject;
 
 import java.awt.*;
 
-public class ScaleOption extends AbstractChartOption {
+public class RadialScaleOption extends AbstractChartOption {
 
     /**
      * Options regarding the scale ticks.
      */
-    private ScaleTicksOption ticks;
+    private RadialScaleTicksOption ticks;
+    /**
+     * Options regarding the scale ticks.
+     */
+    private RadialScaleAngleLinesOption angleLines;
+    /**
+     * Configure the point labels that are shown on the perimeter of the scale
+     */
+    private RadialScalePointLabelOption pointLabels;
     /**
      * Options regarding the scale grid.
      */
@@ -80,11 +88,29 @@ public class ScaleOption extends AbstractChartOption {
      */
     private Boolean beginAtZero;
 
-    public ScaleTicksOption getTicks() {
+    public RadialScaleAngleLinesOption getAngleLines() {
+        return angleLines;
+    }
+
+    public RadialScaleOption setAngleLines(RadialScaleAngleLinesOption angleLines) {
+        this.angleLines = angleLines;
+        return this;
+    }
+
+    public RadialScalePointLabelOption getPointLabels() {
+        return pointLabels;
+    }
+
+    public RadialScaleOption setPointLabels(RadialScalePointLabelOption pointLabels) {
+        this.pointLabels = pointLabels;
+        return this;
+    }
+
+    public RadialScaleTicksOption getTicks() {
         return ticks;
     }
 
-    public ScaleOption setTicks(ScaleTicksOption ticks) {
+    public RadialScaleOption setTicks(RadialScaleTicksOption ticks) {
         this.ticks = ticks;
         return this;
     }
@@ -93,7 +119,7 @@ public class ScaleOption extends AbstractChartOption {
         return grid;
     }
 
-    public ScaleOption setGrid(ScaleGridOption grid) {
+    public RadialScaleOption setGrid(ScaleGridOption grid) {
         this.grid = grid;
         return this;
     }
@@ -102,7 +128,7 @@ public class ScaleOption extends AbstractChartOption {
         return title;
     }
 
-    public ScaleOption setTitle(ScaleTitleOption title) {
+    public RadialScaleOption setTitle(ScaleTitleOption title) {
         this.title = title;
         return this;
     }
@@ -111,7 +137,7 @@ public class ScaleOption extends AbstractChartOption {
         return type;
     }
 
-    public ScaleOption setType(String type) {
+    public RadialScaleOption setType(String type) {
         this.type = type;
         return this;
     }
@@ -120,7 +146,7 @@ public class ScaleOption extends AbstractChartOption {
         return alignToPixels;
     }
 
-    public ScaleOption setAlignToPixels(Boolean alignToPixels) {
+    public RadialScaleOption setAlignToPixels(Boolean alignToPixels) {
         this.alignToPixels = alignToPixels;
         return this;
     }
@@ -129,7 +155,7 @@ public class ScaleOption extends AbstractChartOption {
         return backgroundColor;
     }
 
-    public ScaleOption setBackgroundColor(Color backgroundColor) {
+    public RadialScaleOption setBackgroundColor(Color backgroundColor) {
         this.backgroundColor = backgroundColor;
         return this;
     }
@@ -138,7 +164,7 @@ public class ScaleOption extends AbstractChartOption {
         return display;
     }
 
-    public ScaleOption setDisplay(Boolean display) {
+    public RadialScaleOption setDisplay(Boolean display) {
         this.display = display;
         return this;
     }
@@ -147,7 +173,7 @@ public class ScaleOption extends AbstractChartOption {
         return min;
     }
 
-    public ScaleOption setMin(Integer min) {
+    public RadialScaleOption setMin(Integer min) {
         this.min = min;
         return this;
     }
@@ -156,7 +182,7 @@ public class ScaleOption extends AbstractChartOption {
         return max;
     }
 
-    public ScaleOption setMax(Integer max) {
+    public RadialScaleOption setMax(Integer max) {
         this.max = max;
         return this;
     }
@@ -165,7 +191,7 @@ public class ScaleOption extends AbstractChartOption {
         return suggestedMin;
     }
 
-    public ScaleOption setSuggestedMin(Integer suggestedMin) {
+    public RadialScaleOption setSuggestedMin(Integer suggestedMin) {
         this.suggestedMin = suggestedMin;
         return this;
     }
@@ -174,7 +200,7 @@ public class ScaleOption extends AbstractChartOption {
         return suggestedMax;
     }
 
-    public ScaleOption setSuggestedMax(Integer suggestedMax) {
+    public RadialScaleOption setSuggestedMax(Integer suggestedMax) {
         this.suggestedMax = suggestedMax;
         return this;
     }
@@ -183,7 +209,7 @@ public class ScaleOption extends AbstractChartOption {
         return reverse;
     }
 
-    public ScaleOption setReverse(Boolean reverse) {
+    public RadialScaleOption setReverse(Boolean reverse) {
         this.reverse = reverse;
         return this;
     }
@@ -192,7 +218,7 @@ public class ScaleOption extends AbstractChartOption {
         return stacked;
     }
 
-    public ScaleOption setStacked(Boolean stacked) {
+    public RadialScaleOption setStacked(Boolean stacked) {
         this.stacked = stacked;
         return this;
     }
@@ -201,7 +227,7 @@ public class ScaleOption extends AbstractChartOption {
         return weight;
     }
 
-    public ScaleOption setWeight(Integer weight) {
+    public RadialScaleOption setWeight(Integer weight) {
         this.weight = weight;
         return this;
     }
@@ -210,7 +236,7 @@ public class ScaleOption extends AbstractChartOption {
         return position;
     }
 
-    public ScaleOption setPosition(String position) {
+    public RadialScaleOption setPosition(String position) {
         this.position = position;
         return this;
     }
@@ -219,7 +245,7 @@ public class ScaleOption extends AbstractChartOption {
         return beginAtZero;
     }
 
-    public ScaleOption setBeginAtZero(Boolean beginAtZero) {
+    public RadialScaleOption setBeginAtZero(Boolean beginAtZero) {
         this.beginAtZero = beginAtZero;
         return this;
     }
@@ -228,6 +254,8 @@ public class ScaleOption extends AbstractChartOption {
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
         if (ticks != null) optionsJson.put("ticks", ticks.toJson());
+        if (pointLabels != null) optionsJson.put("pointLabels", pointLabels.toJson());
+        if (angleLines != null) optionsJson.put("angleLines", angleLines.toJson());
         if (grid != null) optionsJson.put("grid", grid.toJson());
         if (title != null) optionsJson.put("title", title.toJson());
         if (type != null) optionsJson.put("type", type);

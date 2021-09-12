@@ -12,7 +12,7 @@
         <canvas id="testChart" style="border: gray 2px solid;" width="1000">
         </canvas>
         <script>
-            var ctx = document.getElementById('testChart').getContext('2d'); var myChart = new Chart(ctx, {"data":{"datasets":[{"data":[10,20,15],"indexAxis":"x","label":"Day 1"},{"pointBackgroundColor":"rgb(255,200,0)","pointStyle":"triangle","borderColor":"rgb(255,200,0)","tension":0.3,"data":[17,23,5],"indexAxis":"x","pointHoverBorderWidth":8,"pointHoverBorderColor":"rgb(0,255,0)","label":"Day 2","pointRadius":5}],"labels":["Shoes","T-Shirts","Pants"]},"options":{"plugins":{"title":{"display":true,"text":["# Items sold"]}},"interaction":{"mode":"index"}},"type":"line"} );
+            var ctx = document.getElementById('testChart').getContext('2d'); var myChart = new Chart(ctx, {"data":{"datasets":[{"backgroundColor":"rgba(255,120,120,0.36)","borderColor":"rgb(255,120,120)","tension":0.4,"data":[23,33,4.5,27]}],"labels":["1","2","3","4"]},"options":{"scales":{"r":{"angleLines":{"color":"rgb(255,0,0)"},"grid":{"color":"rgb(0,0,255)"},"suggestedMax":40,"pointLabels":{"padding":5,"color":"rgb(255,255,255)","backdropPadding":15,"backdropColor":"rgb(0,0,255)"}}},"interaction":{"mode":"index"}},"type":"radar"} );
         </script>
     </body>
 </html>

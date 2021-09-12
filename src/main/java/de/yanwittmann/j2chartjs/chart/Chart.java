@@ -39,5 +39,11 @@ public abstract class Chart<C, T, DT, D> {
         return (C) this;
     }
 
-    public abstract JSONObject toJson();
+    public JSONObject toJson() {
+        JSONObject chartDefinition = new JSONObject();
+        chartDefinition.put("type", typeIdentifier);
+        if (chartData != null) chartDefinition.put("data", chartData.toJson());
+        if (chartOptions != null) chartDefinition.put("options", chartOptions.toJson());
+        return chartDefinition;
+    }
 }

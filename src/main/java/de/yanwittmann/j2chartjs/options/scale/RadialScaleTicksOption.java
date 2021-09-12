@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 import java.awt.*;
 
-public class ScaleTicksOption extends AbstractChartOption {
+public class RadialScaleTicksOption extends AbstractChartOption {
 
     /**
      * If true, show tick labels.
@@ -51,12 +51,28 @@ public class ScaleTicksOption extends AbstractChartOption {
      * Padding of label backdrop.
      */
     private ChartPadding backdropPadding;
+    /**
+     * The number of ticks to generate. If specified, this overrides the automatic generation.
+     */
+    private Integer count;
+    /**
+     * Maximum number of ticks and gridlines to show.
+     */
+    private Integer maxTicksLimit;
+    /**
+     * If defined and stepSize is not specified, the step size will be rounded to this many decimal places.
+     */
+    private Integer precision;
+    /**
+     * User defined fixed step size for the scale.
+     */
+    private Integer stepSize;
 
     public Boolean getDisplay() {
         return display;
     }
 
-    public ScaleTicksOption setDisplay(Boolean display) {
+    public RadialScaleTicksOption setDisplay(Boolean display) {
         this.display = display;
         return this;
     }
@@ -65,7 +81,7 @@ public class ScaleTicksOption extends AbstractChartOption {
         return color;
     }
 
-    public ScaleTicksOption setColor(Color color) {
+    public RadialScaleTicksOption setColor(Color color) {
         this.color = color;
         return this;
     }
@@ -74,7 +90,7 @@ public class ScaleTicksOption extends AbstractChartOption {
         return font;
     }
 
-    public ScaleTicksOption setFont(ChartFont font) {
+    public RadialScaleTicksOption setFont(ChartFont font) {
         this.font = font;
         return this;
     }
@@ -83,7 +99,7 @@ public class ScaleTicksOption extends AbstractChartOption {
         return major;
     }
 
-    public ScaleTicksOption setMajor(Boolean major) {
+    public RadialScaleTicksOption setMajor(Boolean major) {
         this.major = major;
         return this;
     }
@@ -92,7 +108,7 @@ public class ScaleTicksOption extends AbstractChartOption {
         return padding;
     }
 
-    public ScaleTicksOption setPadding(Integer padding) {
+    public RadialScaleTicksOption setPadding(Integer padding) {
         this.padding = padding;
         return this;
     }
@@ -101,7 +117,7 @@ public class ScaleTicksOption extends AbstractChartOption {
         return textStrokeColor;
     }
 
-    public ScaleTicksOption setTextStrokeColor(Color textStrokeColor) {
+    public RadialScaleTicksOption setTextStrokeColor(Color textStrokeColor) {
         this.textStrokeColor = textStrokeColor;
         return this;
     }
@@ -110,7 +126,7 @@ public class ScaleTicksOption extends AbstractChartOption {
         return textStrokeWidth;
     }
 
-    public ScaleTicksOption setTextStrokeWidth(Integer textStrokeWidth) {
+    public RadialScaleTicksOption setTextStrokeWidth(Integer textStrokeWidth) {
         this.textStrokeWidth = textStrokeWidth;
         return this;
     }
@@ -119,7 +135,7 @@ public class ScaleTicksOption extends AbstractChartOption {
         return z;
     }
 
-    public ScaleTicksOption setZ(Integer z) {
+    public RadialScaleTicksOption setZ(Integer z) {
         this.z = z;
         return this;
     }
@@ -128,7 +144,7 @@ public class ScaleTicksOption extends AbstractChartOption {
         return backdropColor;
     }
 
-    public ScaleTicksOption setBackdropColor(Color backdropColor) {
+    public RadialScaleTicksOption setBackdropColor(Color backdropColor) {
         this.backdropColor = backdropColor;
         return this;
     }
@@ -137,8 +153,44 @@ public class ScaleTicksOption extends AbstractChartOption {
         return backdropPadding;
     }
 
-    public ScaleTicksOption setBackdropPadding(ChartPadding backdropPadding) {
+    public RadialScaleTicksOption setBackdropPadding(ChartPadding backdropPadding) {
         this.backdropPadding = backdropPadding;
+        return this;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public RadialScaleTicksOption setCount(Integer count) {
+        this.count = count;
+        return this;
+    }
+
+    public Integer getMaxTicksLimit() {
+        return maxTicksLimit;
+    }
+
+    public RadialScaleTicksOption setMaxTicksLimit(Integer maxTicksLimit) {
+        this.maxTicksLimit = maxTicksLimit;
+        return this;
+    }
+
+    public Integer getPrecision() {
+        return precision;
+    }
+
+    public RadialScaleTicksOption setPrecision(Integer precision) {
+        this.precision = precision;
+        return this;
+    }
+
+    public Integer getStepSize() {
+        return stepSize;
+    }
+
+    public RadialScaleTicksOption setStepSize(Integer stepSize) {
+        this.stepSize = stepSize;
         return this;
     }
 
@@ -153,7 +205,15 @@ public class ScaleTicksOption extends AbstractChartOption {
         if (textStrokeWidth != null) optionsJson.put("textStrokeWidth", textStrokeWidth);
         if (z != null) optionsJson.put("z", z);
         if (backdropColor != null) optionsJson.put("backdropColor", Util.convertColorToJs(backdropColor));
-        if (backdropPadding != null) optionsJson.put("backdropPadding", backdropPadding.toJson());
+        if (backdropPadding != null) {
+            if (backdropPadding.isIdentical())
+                optionsJson.put("backdropPadding", backdropPadding.getPaddingBottom());
+            else optionsJson.put("backdropPadding", backdropPadding.toJson());
+        }
+        if (count != null) optionsJson.put("count", count);
+        if (maxTicksLimit != null) optionsJson.put("maxTicksLimit", maxTicksLimit);
+        if (precision != null) optionsJson.put("precision", precision);
+        if (stepSize != null) optionsJson.put("stepSize", stepSize);
         if (major != null) {
             JSONObject majorJson = new JSONObject();
             majorJson.put("enabled", major.booleanValue());

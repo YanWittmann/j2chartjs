@@ -1,11 +1,15 @@
 package de.yanwittmann.j2chartjs;
 
 import de.yanwittmann.j2chartjs.chart.BarChart;
+import de.yanwittmann.j2chartjs.chart.Chart;
 import de.yanwittmann.j2chartjs.chart.LineChart;
+import de.yanwittmann.j2chartjs.chart.RadarChart;
 import de.yanwittmann.j2chartjs.data.BarChartData;
 import de.yanwittmann.j2chartjs.data.LineChartData;
+import de.yanwittmann.j2chartjs.data.RadarChartData;
 import de.yanwittmann.j2chartjs.dataset.BarChartDataset;
 import de.yanwittmann.j2chartjs.dataset.LineChartDataset;
+import de.yanwittmann.j2chartjs.dataset.RadarChartDataset;
 import de.yanwittmann.j2chartjs.options.ChartOptions;
 import de.yanwittmann.j2chartjs.options.animation.AnimationEasingType;
 import de.yanwittmann.j2chartjs.options.animation.AnimationProperty;
@@ -17,13 +21,10 @@ import de.yanwittmann.j2chartjs.options.plugins.legend.LegendOption;
 import de.yanwittmann.j2chartjs.options.plugins.legend.LegendTitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.tooltip.TooltipOption;
-import de.yanwittmann.j2chartjs.options.scale.ScaleGridOption;
-import de.yanwittmann.j2chartjs.options.scale.ScaleOption;
-import de.yanwittmann.j2chartjs.options.scale.ScaleTicksOption;
-import de.yanwittmann.j2chartjs.options.scale.ScaleTitleOption;
+import de.yanwittmann.j2chartjs.options.scale.*;
 import de.yanwittmann.j2chartjs.type.ChartFont;
+import de.yanwittmann.j2chartjs.type.ChartPadding;
 import j2html.tags.specialized.HtmlTag;
-import j2html.tags.specialized.ScriptTag;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 
@@ -35,6 +36,42 @@ import java.nio.charset.StandardCharsets;
 import static j2html.TagCreator.*;
 
 public class GenerateTest {
+
+    @Test
+    public void radarChartTest() throws IOException {
+        RadarChartDataset chartDataset = new RadarChartDataset()
+                .addData(23, 33, 4.5, 27)
+                .setTension(0.4)
+                .setBackgroundColor(new Color(255, 120, 120, 92))
+                .setBorderColor(new Color(255, 120, 120));
+
+        RadarChartData chartData = new RadarChartData()
+                .addDataset(chartDataset)
+                .addLabels("1", "2", "3", "4");
+
+        RadialScaleOption scale = new RadialScaleOption()
+                .setSuggestedMax(40)
+                .setAngleLines(new RadialScaleAngleLinesOption()
+                        .setColor(Color.RED))
+                .setGrid(new ScaleGridOption()
+                        .setColor(Color.BLUE))
+                .setPointLabels(new RadialScalePointLabelOption()
+                        .setBackdropColor(Color.BLUE)
+                        .setColor(Color.WHITE)
+                        .setBackdropPadding(new ChartPadding().setPadding(15))
+                        .setPadding(5));
+
+        ChartOptions options = new ChartOptions();
+        options.setInteraction(new InteractionOption()
+                        .setMode("index"))
+                .addScale("r", scale);
+
+        RadarChart lineChart = new RadarChart()
+                .setChartOptions(options)
+                .setChartData(chartData);
+
+        writePageWithChart(lineChart);
+    }
 
     @Test
     public void lineChartTest() throws IOException {
@@ -70,14 +107,7 @@ public class GenerateTest {
                 .setChartOptions(chartOptions)
                 .setChartData(barChartData);
 
-        System.out.println(lineChart.toJson().toString(2));
-
-        writePageWithChart(script(join("",
-                "var ctx = document.getElementById('testChart').getContext('2d');",
-                "var myChart = new Chart(ctx,",
-                String.valueOf(lineChart.toJson()),
-                ");"
-        )));
+        writePageWithChart(lineChart);
     }
 
     @Test
@@ -118,7 +148,7 @@ public class GenerateTest {
                 .setResponsive(false)
                 .setAspectRatio(1.5);
 
-        ScaleOption scaleOptionA = new ScaleOption()
+        LinearScaleOption linearScaleOptionA = new LinearScaleOption()
                 .setType("linear")
                 .setPosition("left")
                 .setSuggestedMax(100)
@@ -127,17 +157,17 @@ public class GenerateTest {
                         .setColor(Color.RED)
                         .setTickColor(Color.PINK)
                         .setZ(1));
-        ScaleOption scaleOptionB = new ScaleOption()
+        LinearScaleOption linearScaleOptionB = new LinearScaleOption()
                 .setType("linear")
                 .setPosition("right")
                 .setBeginAtZero(false)
-                .setTicks(new ScaleTicksOption()
+                .setTicks(new LinearScaleTicksOption()
                         .setColor(Color.BLUE))
                 .setGrid(new ScaleGridOption()
                         .setDisplay(false));
-        options.addScale("A", scaleOptionA);
-        options.addScale("B", scaleOptionB);
-        ScaleOption scaleOptionX = new ScaleOption()
+        options.addScale("A", linearScaleOptionA);
+        options.addScale("B", linearScaleOptionB);
+        LinearScaleOption linearScaleOptionX = new LinearScaleOption()
                 .setGrid(new ScaleGridOption()
                         .setColor(Color.GREEN)
                         .setZ(1))
@@ -148,7 +178,7 @@ public class GenerateTest {
                                 .setStyle("italic")
                                 .setSize(24)))
                 .setPosition("center");
-        options.addScale("x", scaleOptionX);
+        options.addScale("x", linearScaleOptionX);
 
         InteractionOption interactionOption = new InteractionOption()
                 .setMode("index");
@@ -210,17 +240,12 @@ public class GenerateTest {
                 .setChartData(barChartData)
                 .setChartOptions(options);
 
-        System.out.println(barChart.toJson().toString(2));
-
-        writePageWithChart(script(join("",
-                "var ctx = document.getElementById('testChart').getContext('2d');",
-                "var myChart = new Chart(ctx,",
-                String.valueOf(barChart.toJson()),
-                ");"
-        )));
+        writePageWithChart(barChart);
     }
 
-    private void writePageWithChart(ScriptTag chartInitializer) throws IOException {
+    private void writePageWithChart(Chart chart) throws IOException {
+        System.out.println(chart.toJson().toString(2));
+
         HtmlTag page = html().attr("lang", "en").with(
                 head().with(
                         meta().withCharset("UTF-8"),
@@ -230,7 +255,12 @@ public class GenerateTest {
                 ),
                 body(
                         canvas().withId("testChart").withStyle("border: gray 2px solid;").withWidth("1000"),//.withHeight("400"),
-                        chartInitializer
+                        script(join("",
+                                "var ctx = document.getElementById('testChart').getContext('2d');",
+                                "var myChart = new Chart(ctx,",
+                                String.valueOf(chart.toJson()),
+                                ");"
+                        ))
                 )
         );
         FileUtils.write(new File("src/test/resources/chart_output.html"), page.renderFormatted(), StandardCharsets.UTF_8);
