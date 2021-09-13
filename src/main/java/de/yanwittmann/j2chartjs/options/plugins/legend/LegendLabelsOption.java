@@ -95,12 +95,12 @@ public class LegendLabelsOption extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
-        if (boxWidth != null) optionsJson.put("boxWidth", boxWidth);
-        if (boxHeight != null) optionsJson.put("boxHeight", boxHeight);
-        if (color != null) optionsJson.put("color", Util.convertColorToJs(color));
-        if (font != null) optionsJson.put("font", font.toJson());
-        if (padding != null) optionsJson.put("padding", padding);
-        if (textAlign != null) optionsJson.put("textAlign", textAlign);
+        Util.addToJson(optionsJson, "boxWidth", boxWidth);
+        Util.addToJson(optionsJson, "boxHeight", boxHeight);
+        Util.addToJson(optionsJson, "color", color);
+        Util.addToJson(optionsJson, "font", font);
+        Util.addToJson(optionsJson, "padding", padding);
+        Util.addToJson(optionsJson, "textAlign", textAlign);
         return optionsJson;
     }
 }

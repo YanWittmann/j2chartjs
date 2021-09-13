@@ -1,6 +1,7 @@
 package de.yanwittmann.j2chartjs.options.animation;
 
 import de.yanwittmann.j2chartjs.options.AbstractChartOption;
+import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
@@ -72,10 +73,10 @@ public class AnimationOption<T> extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject animationJson = new JSONObject();
-        if (duration != null) animationJson.put("duration", duration);
-        if (delay != null) animationJson.put("delay", delay);
-        if (easing != null) animationJson.put("easing", easing.getKey());
-        if (loop != null) animationJson.put("loop", loop);
+        Util.addToJson(animationJson, "duration", duration);
+        Util.addToJson(animationJson, "delay", delay);
+        Util.addToJson(animationJson, "easing", easing);
+        Util.addToJson(animationJson, "loop", loop);
         return animationJson;
     }
 }

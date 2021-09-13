@@ -248,24 +248,24 @@ public class ScaleGridOption extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
-        if (textStrokeColor != null) optionsJson.put("textStrokeColor", Util.convertColorToJs(textStrokeColor));
-        if (borderWidth != null) optionsJson.put("borderWidth", borderWidth);
-        if (borderDash != null) optionsJson.put("borderDash", borderDash);
-        if (borderDashOffset != null) optionsJson.put("borderDashOffset", borderDashOffset);
-        if (circular != null) optionsJson.put("circular", circular);
-        if (color != null) optionsJson.put("color", Util.convertColorToJs(color));
-        if (display != null) optionsJson.put("display", display);
-        if (drawBorder != null) optionsJson.put("drawBorder", drawBorder);
-        if (drawOnChartArea != null) optionsJson.put("drawOnChartArea", drawOnChartArea);
-        if (drawTicks != null) optionsJson.put("drawTicks", drawTicks);
-        if (lineWidth != null) optionsJson.put("lineWidth", lineWidth);
-        if (offset != null) optionsJson.put("offset", offset);
-        if (tickBorderDash != null) optionsJson.put("tickBorderDash", tickBorderDash);
-        if (tickBorderDashOffset != null) optionsJson.put("tickBorderDashOffset", tickBorderDashOffset);
-        if (tickColor != null) optionsJson.put("tickColor", Util.convertColorToJs(tickColor));
-        if (tickLength != null) optionsJson.put("tickLength", tickLength);
-        if (tickWidth != null) optionsJson.put("tickWidth", tickWidth);
-        if (z != null) optionsJson.put("z", z);
+        Util.addToJson(optionsJson, "textStrokeColor", textStrokeColor);
+        Util.addToJson(optionsJson, "borderWidth", borderWidth);
+        Util.addToJson(optionsJson, "borderDash", borderDash);
+        Util.addToJson(optionsJson, "borderDashOffset", borderDashOffset);
+        Util.addToJson(optionsJson, "circular", circular);
+        Util.addToJson(optionsJson, "color", color);
+        Util.addToJson(optionsJson, "display", display);
+        Util.addToJson(optionsJson, "drawBorder", drawBorder);
+        Util.addToJson(optionsJson, "drawOnChartArea", drawOnChartArea);
+        Util.addToJson(optionsJson, "drawTicks", drawTicks);
+        Util.addToJson(optionsJson, "lineWidth", lineWidth);
+        Util.addToJson(optionsJson, "offset", offset);
+        Util.addToJson(optionsJson, "tickBorderDash", tickBorderDash);
+        Util.addToJson(optionsJson, "tickBorderDashOffset", tickBorderDashOffset);
+        Util.addToJson(optionsJson, "tickColor", tickColor);
+        Util.addToJson(optionsJson, "tickLength", tickLength);
+        Util.addToJson(optionsJson, "tickWidth", tickWidth);
+        Util.addToJson(optionsJson, "z", z);
         return optionsJson;
     }
 }

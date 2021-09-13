@@ -39,9 +39,9 @@ public class PropertyAnimationOption<D> extends AnimationOption<PropertyAnimatio
     @Override
     public JSONObject toJson() {
         JSONObject animationJson = Util.deepMerge(super.toJson(), new JSONObject());
-        if (type != null) animationJson.put("type", type);
-        Util.smartAddToJsonObject(animationJson, "from", from);
-        Util.smartAddToJsonObject(animationJson, "to", to);
+        Util.addToJson(animationJson, "type", type);
+        Util.addToJson(animationJson, "from", from);
+        Util.addToJson(animationJson, "to", to);
         return animationJson;
     }
 }

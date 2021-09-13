@@ -1,6 +1,7 @@
 package de.yanwittmann.j2chartjs.type;
 
 import de.yanwittmann.j2chartjs.options.AbstractChartOption;
+import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 @SuppressWarnings("unchecked")
@@ -53,10 +54,10 @@ public class ChartPadding extends AbstractChartOption {
             mainPaddingJson.put("padding", paddingTop);
         } else if (paddingTop != null || paddingBottom != null || paddingRight != null || paddingLeft != null) {
             JSONObject paddingJson = new JSONObject();
-            if (paddingTop != null) paddingJson.put("top", paddingTop);
-            if (paddingBottom != null) paddingJson.put("bottom", paddingBottom);
-            if (paddingRight != null) paddingJson.put("right", paddingRight);
-            if (paddingLeft != null) paddingJson.put("left", paddingLeft);
+            Util.addToJson(paddingJson, "top", paddingTop);
+            Util.addToJson(paddingJson, "bottom", paddingBottom);
+            Util.addToJson(paddingJson, "right", paddingRight);
+            Util.addToJson(paddingJson, "left", paddingLeft);
             mainPaddingJson.put("padding", paddingJson);
         }
         return mainPaddingJson;

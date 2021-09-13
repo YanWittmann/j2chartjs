@@ -78,11 +78,11 @@ public class RadialScaleAngleLinesOption extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
-        if (display != null) optionsJson.put("display", display);
-        if (color != null) optionsJson.put("color", Util.convertColorToJs(color));
-        if (lineWidth != null) optionsJson.put("lineWidth", lineWidth);
-        if (borderDash != null) optionsJson.put("borderDash", borderDash);
-        if (borderDashOffset != null) optionsJson.put("borderDashOffset", borderDashOffset);
+        Util.addToJson(optionsJson, "display", display);
+        Util.addToJson(optionsJson, "color", color);
+        Util.addToJson(optionsJson, "lineWidth", lineWidth);
+        Util.addToJson(optionsJson, "borderDash", borderDash);
+        Util.addToJson(optionsJson, "borderDashOffset", borderDashOffset);
         return optionsJson;
     }
 }

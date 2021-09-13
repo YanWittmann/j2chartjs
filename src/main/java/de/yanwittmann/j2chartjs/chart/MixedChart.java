@@ -29,8 +29,8 @@ public class MixedChart {
 
     public JSONObject toJson() {
         JSONObject chartDefinition = new JSONObject();
-        if (chartData != null) chartDefinition.put("data", chartData.toJson());
-        if (chartOptions != null) chartDefinition.put("options", chartOptions.toJson());
+        if (chartData != null) chartDefinition.put("data", chartData);
+        if (chartOptions != null) chartDefinition.put("options", chartOptions);
         return chartDefinition;
     }
 

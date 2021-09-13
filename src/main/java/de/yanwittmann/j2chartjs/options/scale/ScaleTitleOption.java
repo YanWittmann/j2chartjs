@@ -109,12 +109,12 @@ public class ScaleTitleOption extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
-        if (display != null) optionsJson.put("display", display);
-        if (align != null) optionsJson.put("align", align);
-        if (text != null) optionsJson.put("text", text);
-        if (color != null) optionsJson.put("color", Util.convertColorToJs(color));
-        if (font != null) optionsJson.put("font", font.toJson());
-        if (padding != null) optionsJson.put("padding", padding);
+        Util.addToJson(optionsJson, "display", display);
+        Util.addToJson(optionsJson, "align", align);
+        Util.addToJson(optionsJson, "text", text);
+        Util.addToJson(optionsJson, "color", color);
+        Util.addToJson(optionsJson, "font", font);
+        Util.addToJson(optionsJson, "padding", padding);
         return optionsJson;
     }
 }

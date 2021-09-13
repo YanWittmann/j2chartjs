@@ -51,14 +51,13 @@ public class ChartPointStyling extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject pointsJson = new JSONObject();
-        if (pointBackgroundColor != null)
-            pointsJson.put("pointBackgroundColor", Util.convertColorToJs(pointBackgroundColor));
-        if (pointBorderColor != null) pointsJson.put("pointBorderColor", Util.convertColorToJs(pointBorderColor));
-        if (pointBorderWidth != null) pointsJson.put("pointBorderWidth", pointBorderWidth);
-        if (pointHitRadius != null) pointsJson.put("pointHitRadius", pointHitRadius);
-        if (pointRadius != null) pointsJson.put("pointRadius", pointRadius);
-        if (pointRotation != null) pointsJson.put("pointRotation", pointRotation);
-        if (pointStyle != null) pointsJson.put("pointStyle", pointStyle);
+        Util.addToJson(pointsJson, "pointBackgroundColor", pointBackgroundColor);
+        Util.addToJson(pointsJson, "pointBorderColor", pointBorderColor);
+        Util.addToJson(pointsJson, "pointBorderWidth", pointBorderWidth);
+        Util.addToJson(pointsJson, "pointHitRadius", pointHitRadius);
+        Util.addToJson(pointsJson, "pointRadius", pointRadius);
+        Util.addToJson(pointsJson, "pointRotation", pointRotation);
+        Util.addToJson(pointsJson, "pointStyle", pointStyle);
         return pointsJson;
     }
 }

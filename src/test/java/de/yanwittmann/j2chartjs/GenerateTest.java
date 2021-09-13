@@ -25,7 +25,7 @@ import java.util.Random;
 public class GenerateTest {
 
     @Test
-    public void mixedChart2Test() {
+    public void mixedChartTest() {
         BarChartDataset barChartDataset = new BarChartDataset()
                 .setData(10, 20, 30, 40)
                 .setLabel("Bar Dataset")
@@ -71,7 +71,7 @@ public class GenerateTest {
                 .setChartOptions(options)
                 .setChartData(data);
 
-        System.out.println(chart.toJson());
+        System.out.println(chart);
     }
 
     @Test
@@ -89,7 +89,7 @@ public class GenerateTest {
         ScatterChartData data = new ScatterChartData()
                 .addDataset(dataset1)
                 .addDataset(dataset2)
-                .applyDefaultStylePerDatapoint();
+                .applyDefaultStylePerDataset();
 
         ChartOptions options = new ChartOptions()
                 .addScale("y", new LinearScaleOption().setSuggestedMin(0))
@@ -117,7 +117,7 @@ public class GenerateTest {
         BubbleChartData data = new BubbleChartData()
                 .addDataset(dataset1)
                 .addDataset(dataset2)
-                .applyDefaultStylePerDatapoint();
+                .applyDefaultStylePerDataset();
 
         ChartOptions options = new ChartOptions()
                 .addScale("y", new LinearScaleOption().setSuggestedMin(0))
@@ -127,7 +127,7 @@ public class GenerateTest {
                 .setChartOptions(options)
                 .setChartData(data);
 
-        System.out.println(chart.toJson());
+        System.out.println(chart);
     }
 
     @Test
@@ -184,7 +184,7 @@ public class GenerateTest {
                 .setChartOptions(options)
                 .setChartData(data);
 
-        System.out.println(doughnutChart.toJson());
+        System.out.println(doughnutChart);
     }
 
     @Test
@@ -232,7 +232,7 @@ public class GenerateTest {
         LineChartData barChartData = new LineChartData()
                 .addLabels("Shoes", "T-Shirts", "Pants");
         barChartData.addDataset(new LineChartDataset()
-                .setData(17, 23, 5)
+                .setData(17, 23, 9)
                 .addPointBackgroundColor(Color.ORANGE)
                 .setTension(0.3)
                 .setBorderColor(Color.ORANGE)
@@ -260,7 +260,7 @@ public class GenerateTest {
                 .setChartOptions(chartOptions)
                 .setChartData(barChartData);
 
-        System.out.println(lineChart.toJson());
+        System.out.println(lineChart);
     }
 
     @Test
@@ -387,9 +387,10 @@ public class GenerateTest {
                 .setLoop(false);
         options.addPropertyAnimation(AnimationPropertyOption.BORDER_WIDTH, propertyAnimationOption);
 
-
         BarChart barChart = new BarChart()
                 .setChartData(barChartData)
                 .setChartOptions(options);
+
+        System.out.println(barChart);
     }
 }

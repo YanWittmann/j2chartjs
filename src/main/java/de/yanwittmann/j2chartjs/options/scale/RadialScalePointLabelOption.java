@@ -88,16 +88,16 @@ public class RadialScalePointLabelOption extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
-        if (backdropColor != null) optionsJson.put("backdropColor", Util.convertColorToJs(backdropColor));
+        Util.addToJson(optionsJson, "backdropColor", backdropColor);
         if (backdropPadding != null) {
             if (backdropPadding.isIdentical())
                 optionsJson.put("backdropPadding", backdropPadding.getPaddingBottom());
-            else optionsJson.put("backdropPadding", backdropPadding.toJson());
+            else Util.addToJson(optionsJson, "backdropPadding", backdropPadding);
         }
-        if (display != null) optionsJson.put("display", display);
-        if (color != null) optionsJson.put("color", Util.convertColorToJs(color));
-        if (font != null) optionsJson.put("font", font.toJson());
-        if (padding != null) optionsJson.put("padding", padding);
+        Util.addToJson(optionsJson, "display", display);
+        Util.addToJson(optionsJson, "color", color);
+        Util.addToJson(optionsJson, "font", font);
+        Util.addToJson(optionsJson, "padding", padding);
         return optionsJson;
     }
 }

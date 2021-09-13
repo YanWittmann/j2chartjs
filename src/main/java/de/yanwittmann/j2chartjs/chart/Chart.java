@@ -2,6 +2,7 @@ package de.yanwittmann.j2chartjs.chart;
 
 import de.yanwittmann.j2chartjs.data.ChartData;
 import de.yanwittmann.j2chartjs.options.ChartOptions;
+import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 /**
@@ -41,9 +42,9 @@ public abstract class Chart<C, T, DT, D> {
 
     public JSONObject toJson() {
         JSONObject chartDefinition = new JSONObject();
-        if (typeIdentifier != null) chartDefinition.put("type", typeIdentifier);
-        if (chartData != null) chartDefinition.put("data", chartData.toJson());
-        if (chartOptions != null) chartDefinition.put("options", chartOptions.toJson());
+        Util.addToJson(chartDefinition, "type", typeIdentifier);
+        Util.addToJson(chartDefinition, "data", chartData);
+        Util.addToJson(chartDefinition, "options", chartOptions);
         return chartDefinition;
     }
 

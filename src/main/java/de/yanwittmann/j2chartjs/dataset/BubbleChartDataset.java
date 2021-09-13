@@ -261,22 +261,22 @@ public class BubbleChartDataset extends ChartDataset<BubbleChartDataset, BubbleC
     @Override
     public JSONObject toJson() {
         JSONObject datasetJson = new JSONObject();
-        datasetJson.put("data", data.stream().map(BubbleChartDatapoint::toJson).collect(Collectors.toList()));
-        if (label != null) datasetJson.put("label", label);
-        if (xAxisID != null) datasetJson.put("xAxisID", xAxisID);
-        if (yAxisID != null) datasetJson.put("yAxisID", yAxisID);
-        Util.smartAddToJsonObject(datasetJson, "backgroundColor", backgroundColor);
-        Util.smartAddToJsonObject(datasetJson, "borderColor", borderColor);
-        Util.smartAddToJsonObject(datasetJson, "borderWidth", borderWidth);
-        Util.smartAddToJsonObject(datasetJson, "borderRadius", borderRadius);
-        Util.smartAddToJsonObject(datasetJson, "borderSkipped", borderSkipped);
-        Util.smartAddToJsonObject(datasetJson, "hoverBackgroundColor", hoverBackgroundColor);
-        Util.smartAddToJsonObject(datasetJson, "hoverBorderColor", hoverBorderColor);
-        Util.smartAddToJsonObject(datasetJson, "hoverBorderWidth", hoverBorderWidth);
-        Util.smartAddToJsonObject(datasetJson, "hoverBorderRadius", hoverBorderRadius);
-        Util.smartAddToJsonObject(datasetJson, "hoverBorderSkipped", hoverBorderSkipped);
-        Util.smartAddToJsonObject(datasetJson, "rotation", rotation);
-        Util.smartAddToJsonObject(datasetJson, "pointStyle", pointStyle);
+        Util.addToJson(datasetJson, "data", data.stream().map(BubbleChartDatapoint::toJson).collect(Collectors.toList()));
+        Util.addToJson(datasetJson, "label", label);
+        Util.addToJson(datasetJson, "xAxisID", xAxisID);
+        Util.addToJson(datasetJson, "yAxisID", yAxisID);
+        Util.addToJson(datasetJson, "backgroundColor", backgroundColor);
+        Util.addToJson(datasetJson, "borderColor", borderColor);
+        Util.addToJson(datasetJson, "borderWidth", borderWidth);
+        Util.addToJson(datasetJson, "borderRadius", borderRadius);
+        Util.addToJson(datasetJson, "borderSkipped", borderSkipped);
+        Util.addToJson(datasetJson, "hoverBackgroundColor", hoverBackgroundColor);
+        Util.addToJson(datasetJson, "hoverBorderColor", hoverBorderColor);
+        Util.addToJson(datasetJson, "hoverBorderWidth", hoverBorderWidth);
+        Util.addToJson(datasetJson, "hoverBorderRadius", hoverBorderRadius);
+        Util.addToJson(datasetJson, "hoverBorderSkipped", hoverBorderSkipped);
+        Util.addToJson(datasetJson, "rotation", rotation);
+        Util.addToJson(datasetJson, "pointStyle", pointStyle);
         return datasetJson;
     }
 }

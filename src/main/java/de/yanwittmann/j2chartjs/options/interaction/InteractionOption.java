@@ -1,6 +1,7 @@
 package de.yanwittmann.j2chartjs.options.interaction;
 
 import de.yanwittmann.j2chartjs.options.AbstractChartOption;
+import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 public class InteractionOption extends AbstractChartOption {
@@ -55,9 +56,9 @@ public class InteractionOption extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
-        if (mode != null) optionsJson.put("mode", mode);
-        if (intersect != null) optionsJson.put("intersect", intersect);
-        if (axis != null) optionsJson.put("mode", axis);
+        Util.addToJson(optionsJson, "mode", mode);
+        Util.addToJson(optionsJson, "intersect", intersect);
+        Util.addToJson(optionsJson, "mode", axis);
         return optionsJson;
     }
 }

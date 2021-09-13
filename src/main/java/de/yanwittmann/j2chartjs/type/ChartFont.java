@@ -1,6 +1,7 @@
 package de.yanwittmann.j2chartjs.type;
 
 import de.yanwittmann.j2chartjs.options.AbstractChartOption;
+import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
@@ -88,11 +89,11 @@ public class ChartFont extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject fontJson = new JSONObject();
-        if (family != null) fontJson.put("family", family);
-        if (size != null) fontJson.put("size", size);
-        if (style != null) fontJson.put("style", style);
-        if (weight != null) fontJson.put("weight", weight);
-        if (lineHeight != null) fontJson.put("lineHeight", lineHeight);
+        Util.addToJson(fontJson, "family", family);
+        Util.addToJson(fontJson, "size", size);
+        Util.addToJson(fontJson, "style", style);
+        Util.addToJson(fontJson, "weight", weight);
+        Util.addToJson(fontJson, "lineHeight", lineHeight);
         return fontJson;
     }
 }

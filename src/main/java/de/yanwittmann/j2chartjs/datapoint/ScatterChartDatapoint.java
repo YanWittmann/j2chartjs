@@ -1,5 +1,6 @@
 package de.yanwittmann.j2chartjs.datapoint;
 
+import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
@@ -54,8 +55,8 @@ public class ScatterChartDatapoint {
 
     public JSONObject toJson() {
         JSONObject datapointJson = new JSONObject();
-        if (x != null) datapointJson.put("x", x);
-        if (y != null) datapointJson.put("y", y);
+        Util.addToJson(datapointJson, "x", x);
+        Util.addToJson(datapointJson, "y", y);
         return datapointJson;
     }
 }

@@ -78,11 +78,11 @@ public class LegendTitleOption extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
-        if (display != null) optionsJson.put("display", display);
-        if (color != null) optionsJson.put("color", Util.convertColorToJs(color));
-        if (font != null) optionsJson.put("font", font.toJson());
-        if (padding != null) optionsJson.put("padding", padding);
-        if (text != null) optionsJson.put("text", text);
+        Util.addToJson(optionsJson, "display", display);
+        Util.addToJson(optionsJson, "color", color);
+        Util.addToJson(optionsJson, "font", font);
+        Util.addToJson(optionsJson, "padding", padding);
+        Util.addToJson(optionsJson, "text", text);
         return optionsJson;
     }
 }

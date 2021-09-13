@@ -13,7 +13,6 @@ public class PolarAreaChartDataset extends ChartDataset<PolarAreaChartDataset, B
 
     private String label;
 
-
     /**
      * Arc background color.
      */
@@ -239,18 +238,18 @@ public class PolarAreaChartDataset extends ChartDataset<PolarAreaChartDataset, B
     @Override
     public JSONObject toJson() {
         JSONObject datasetJson = new JSONObject();
-        datasetJson.put("data", data);
-        if (label != null) datasetJson.put("label", label);
-        Util.smartAddToJsonObject(datasetJson, "backgroundColor", backgroundColor);
-        Util.smartAddToJsonObject(datasetJson, "borderColor", borderColor);
-        Util.smartAddToJsonObject(datasetJson, "borderWidth", borderWidth);
-        Util.smartAddToJsonObject(datasetJson, "offset", offset);
-        Util.smartAddToJsonObject(datasetJson, "hoverBackgroundColor", hoverBackgroundColor);
-        Util.smartAddToJsonObject(datasetJson, "hoverBorderColor", hoverBorderColor);
-        Util.smartAddToJsonObject(datasetJson, "hoverBorderWidth", hoverBorderWidth);
-        Util.smartAddToJsonObject(datasetJson, "hoverOffset", hoverOffset);
-        Util.smartAddToJsonObject(datasetJson, "spacing", spacing);
-        Util.smartAddToJsonObject(datasetJson, "borderAlign", borderAlign);
+        Util.addToJson(datasetJson, "data", data);
+        Util.addToJson(datasetJson, "label", label);
+        Util.addToJson(datasetJson, "backgroundColor", backgroundColor);
+        Util.addToJson(datasetJson, "borderColor", borderColor);
+        Util.addToJson(datasetJson, "borderWidth", borderWidth);
+        Util.addToJson(datasetJson, "offset", offset);
+        Util.addToJson(datasetJson, "hoverBackgroundColor", hoverBackgroundColor);
+        Util.addToJson(datasetJson, "hoverBorderColor", hoverBorderColor);
+        Util.addToJson(datasetJson, "hoverBorderWidth", hoverBorderWidth);
+        Util.addToJson(datasetJson, "hoverOffset", hoverOffset);
+        Util.addToJson(datasetJson, "spacing", spacing);
+        Util.addToJson(datasetJson, "borderAlign", borderAlign);
         return datasetJson;
     }
 }

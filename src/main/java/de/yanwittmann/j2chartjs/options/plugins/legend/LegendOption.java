@@ -1,6 +1,7 @@
 package de.yanwittmann.j2chartjs.options.plugins.legend;
 
 import de.yanwittmann.j2chartjs.options.AbstractChartOption;
+import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 public class LegendOption extends AbstractChartOption {
@@ -162,17 +163,17 @@ public class LegendOption extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
-        if (display != null) optionsJson.put("display", display);
-        if (position != null) optionsJson.put("position", position);
-        if (align != null) optionsJson.put("align", align);
-        if (maxHeight != null) optionsJson.put("maxHeight", maxHeight);
-        if (maxWidth != null) optionsJson.put("display", maxWidth);
-        if (fullSize != null) optionsJson.put("fullSize", fullSize);
-        if (reverse != null) optionsJson.put("reverse", reverse);
-        if (rtl != null) optionsJson.put("rtl", rtl);
-        if (textDirection != null) optionsJson.put("textDirection", textDirection);
-        if (labelsOption != null) optionsJson.put("labels", labelsOption.toJson());
-        if (titleOption != null) optionsJson.put("title", titleOption.toJson());
+        Util.addToJson(optionsJson, "display", display);
+        Util.addToJson(optionsJson, "position", position);
+        Util.addToJson(optionsJson, "align", align);
+        Util.addToJson(optionsJson, "maxHeight", maxHeight);
+        Util.addToJson(optionsJson, "display", maxWidth);
+        Util.addToJson(optionsJson, "fullSize", fullSize);
+        Util.addToJson(optionsJson, "reverse", reverse);
+        Util.addToJson(optionsJson, "rtl", rtl);
+        Util.addToJson(optionsJson, "textDirection", textDirection);
+        Util.addToJson(optionsJson, "labels", labelsOption);
+        Util.addToJson(optionsJson, "title", titleOption);
         return optionsJson;
     }
 }

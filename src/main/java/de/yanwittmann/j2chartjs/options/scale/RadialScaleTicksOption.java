@@ -197,23 +197,23 @@ public class RadialScaleTicksOption extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
-        if (display != null) optionsJson.put("display", display);
-        if (color != null) optionsJson.put("color", Util.convertColorToJs(color));
-        if (font != null) optionsJson.put("font", font.toJson());
-        if (padding != null) optionsJson.put("padding", padding);
-        if (textStrokeColor != null) optionsJson.put("textStrokeColor", Util.convertColorToJs(textStrokeColor));
-        if (textStrokeWidth != null) optionsJson.put("textStrokeWidth", textStrokeWidth);
-        if (z != null) optionsJson.put("z", z);
-        if (backdropColor != null) optionsJson.put("backdropColor", Util.convertColorToJs(backdropColor));
+        Util.addToJson(optionsJson, "display", display);
+        Util.addToJson(optionsJson, "color", color);
+        Util.addToJson(optionsJson, "font", font);
+        Util.addToJson(optionsJson, "padding", padding);
+        Util.addToJson(optionsJson, "textStrokeColor", textStrokeColor);
+        Util.addToJson(optionsJson, "textStrokeWidth", textStrokeWidth);
+        Util.addToJson(optionsJson, "z", z);
+        Util.addToJson(optionsJson, "backdropColor", backdropColor);
         if (backdropPadding != null) {
             if (backdropPadding.isIdentical())
                 optionsJson.put("backdropPadding", backdropPadding.getPaddingBottom());
-            else optionsJson.put("backdropPadding", backdropPadding.toJson());
+            else Util.addToJson(optionsJson, "backdropPadding", backdropPadding);
         }
-        if (count != null) optionsJson.put("count", count);
-        if (maxTicksLimit != null) optionsJson.put("maxTicksLimit", maxTicksLimit);
-        if (precision != null) optionsJson.put("precision", precision);
-        if (stepSize != null) optionsJson.put("stepSize", stepSize);
+        Util.addToJson(optionsJson, "count", count);
+        Util.addToJson(optionsJson, "maxTicksLimit", maxTicksLimit);
+        Util.addToJson(optionsJson, "precision", precision);
+        Util.addToJson(optionsJson, "stepSize", stepSize);
         if (major != null) {
             JSONObject majorJson = new JSONObject();
             majorJson.put("enabled", major.booleanValue());

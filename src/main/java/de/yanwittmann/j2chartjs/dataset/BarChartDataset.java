@@ -347,30 +347,29 @@ public class BarChartDataset extends ChartDataset<BarChartDataset, BigDecimal> {
     @Override
     public JSONObject toJson() {
         JSONObject datasetJson = new JSONObject();
-        datasetJson.put("data", data);
-        if (label != null) datasetJson.put("label", label);
-        if (xAxisID != null) datasetJson.put("xAxisID", xAxisID);
-        if (yAxisID != null) datasetJson.put("yAxisID", yAxisID);
-        if (stack != null) datasetJson.put("stack", stack);
-        if (indexAxis != null) datasetJson.put("indexAxis", indexAxis);
-        if (base != null) datasetJson.put("base", base);
-        if (barPercentage != null)
-            datasetJson.put("barPercentage", Util.roundToDecimals(Double.parseDouble(barPercentage.toString()), 3));
-        if (barThickness != null) datasetJson.put("barThickness", barThickness);
-        if (categoryPercentage != null) datasetJson.put("categoryPercentage", categoryPercentage);
-        if (minBarLength != null) datasetJson.put("minBarLength", minBarLength);
-        if (grouped != null) datasetJson.put("grouped", grouped);
-        if (stack != null) datasetJson.put("skipNull", skipNull);
-        Util.smartAddToJsonObject(datasetJson, "backgroundColor", backgroundColor);
-        Util.smartAddToJsonObject(datasetJson, "borderColor", borderColor);
-        Util.smartAddToJsonObject(datasetJson, "borderWidth", borderWidth);
-        Util.smartAddToJsonObject(datasetJson, "borderRadius", borderRadius);
-        Util.smartAddToJsonObject(datasetJson, "borderSkipped", borderSkipped);
-        Util.smartAddToJsonObject(datasetJson, "hoverBackgroundColor", hoverBackgroundColor);
-        Util.smartAddToJsonObject(datasetJson, "hoverBorderColor", hoverBorderColor);
-        Util.smartAddToJsonObject(datasetJson, "hoverBorderWidth", hoverBorderWidth);
-        Util.smartAddToJsonObject(datasetJson, "hoverBorderRadius", hoverBorderRadius);
-        Util.smartAddToJsonObject(datasetJson, "hoverBorderSkipped", hoverBorderSkipped);
+        Util.addToJson(datasetJson, "data", data);
+        Util.addToJson(datasetJson, "label", label);
+        Util.addToJson(datasetJson, "xAxisID", xAxisID);
+        Util.addToJson(datasetJson, "yAxisID", yAxisID);
+        Util.addToJson(datasetJson, "stack", stack);
+        Util.addToJson(datasetJson, "indexAxis", indexAxis);
+        Util.addToJson(datasetJson, "base", base);
+        Util.addToJson(datasetJson, "barPercentage", barPercentage);
+        Util.addToJson(datasetJson, "barThickness", barThickness);
+        Util.addToJson(datasetJson, "categoryPercentage", categoryPercentage);
+        Util.addToJson(datasetJson, "minBarLength", minBarLength);
+        Util.addToJson(datasetJson, "grouped", grouped);
+        Util.addToJson(datasetJson, "skipNull", skipNull);
+        Util.addToJson(datasetJson, "backgroundColor", backgroundColor);
+        Util.addToJson(datasetJson, "borderColor", borderColor);
+        Util.addToJson(datasetJson, "borderWidth", borderWidth);
+        Util.addToJson(datasetJson, "borderRadius", borderRadius);
+        Util.addToJson(datasetJson, "borderSkipped", borderSkipped);
+        Util.addToJson(datasetJson, "hoverBackgroundColor", hoverBackgroundColor);
+        Util.addToJson(datasetJson, "hoverBorderColor", hoverBorderColor);
+        Util.addToJson(datasetJson, "hoverBorderWidth", hoverBorderWidth);
+        Util.addToJson(datasetJson, "hoverBorderRadius", hoverBorderRadius);
+        Util.addToJson(datasetJson, "hoverBorderSkipped", hoverBorderSkipped);
         return datasetJson;
     }
 }

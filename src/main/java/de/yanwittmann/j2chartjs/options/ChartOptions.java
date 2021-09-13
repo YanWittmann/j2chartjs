@@ -8,6 +8,7 @@ import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.tooltip.TooltipOption;
 import de.yanwittmann.j2chartjs.options.scale.LinearScaleOption;
 import de.yanwittmann.j2chartjs.options.scale.RadialScaleOption;
+import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -195,15 +196,15 @@ public class ChartOptions extends AbstractChartOption {
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
 
-        if (interaction != null) optionsJson.put("interaction", interaction.toJson());
-        if (layout != null) optionsJson.put("layout", layout.toJson());
+        Util.addToJson(optionsJson, "interaction", interaction);
+        Util.addToJson(optionsJson, "layout", layout);
 
         if (legend != null || title != null || subtitle != null || tooltip != null) {
             JSONObject pluginsJson = new JSONObject();
-            if (legend != null) pluginsJson.put("legend", legend.toJson());
-            if (title != null) pluginsJson.put("title", title.toJson());
-            if (subtitle != null) pluginsJson.put("subtitle", subtitle.toJson());
-            if (tooltip != null) pluginsJson.put("tooltip", tooltip.toJson());
+            Util.addToJson(pluginsJson, "legend", legend);
+            Util.addToJson(pluginsJson, "title", title);
+            Util.addToJson(pluginsJson, "subtitle", subtitle);
+            Util.addToJson(pluginsJson, "tooltip", tooltip);
             optionsJson.put("plugins", pluginsJson);
         }
 
@@ -242,11 +243,11 @@ public class ChartOptions extends AbstractChartOption {
             optionsJson.put("transitions", transitionsJson);
         }
 
-        if (responsive != null) optionsJson.put("responsive", responsive);
-        if (maintainAspectRatio != null) optionsJson.put("maintainAspectRatio", maintainAspectRatio);
-        if (aspectRatio != null) optionsJson.put("aspectRatio", aspectRatio);
-        if (resizeDelay != null) optionsJson.put("resizeDelay", resizeDelay);
-        if (devicePixelRatio != null) optionsJson.put("devicePixelRatio", devicePixelRatio);
+        Util.addToJson(optionsJson, "responsive", responsive);
+        Util.addToJson(optionsJson, "maintainAspectRatio", maintainAspectRatio);
+        Util.addToJson(optionsJson, "aspectRatio", aspectRatio);
+        Util.addToJson(optionsJson, "resizeDelay", resizeDelay);
+        Util.addToJson(optionsJson, "devicePixelRatio", devicePixelRatio);
 
         return optionsJson;
     }

@@ -227,22 +227,22 @@ public class LinearScaleOption extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
-        if (ticks != null) optionsJson.put("ticks", ticks.toJson());
-        if (grid != null) optionsJson.put("grid", grid.toJson());
-        if (title != null) optionsJson.put("title", title.toJson());
-        if (type != null) optionsJson.put("type", type);
-        if (alignToPixels != null) optionsJson.put("alignToPixels", alignToPixels);
-        if (backgroundColor != null) optionsJson.put("backgroundColor", Util.convertColorToJs(backgroundColor));
-        if (display != null) optionsJson.put("display", display);
-        if (min != null) optionsJson.put("min", min);
-        if (max != null) optionsJson.put("max", max);
-        if (suggestedMin != null) optionsJson.put("suggestedMin", suggestedMin);
-        if (suggestedMax != null) optionsJson.put("suggestedMax", suggestedMax);
-        if (reverse != null) optionsJson.put("reverse", reverse);
-        if (stacked != null) optionsJson.put("stacked", stacked);
-        if (weight != null) optionsJson.put("weight", weight);
-        if (position != null) optionsJson.put("position", position);
-        if (beginAtZero != null) optionsJson.put("beginAtZero", beginAtZero);
+        Util.addToJson(optionsJson, "ticks", ticks);
+        Util.addToJson(optionsJson, "grid", grid);
+        Util.addToJson(optionsJson, "title", title);
+        Util.addToJson(optionsJson, "type", type);
+        Util.addToJson(optionsJson, "alignToPixels", alignToPixels);
+        Util.addToJson(optionsJson, "backgroundColor", backgroundColor);
+        Util.addToJson(optionsJson, "display", display);
+        Util.addToJson(optionsJson, "min", min);
+        Util.addToJson(optionsJson, "max", max);
+        Util.addToJson(optionsJson, "suggestedMin", suggestedMin);
+        Util.addToJson(optionsJson, "suggestedMax", suggestedMax);
+        Util.addToJson(optionsJson, "reverse", reverse);
+        Util.addToJson(optionsJson, "stacked", stacked);
+        Util.addToJson(optionsJson, "weight", weight);
+        Util.addToJson(optionsJson, "position", position);
+        Util.addToJson(optionsJson, "beginAtZero", beginAtZero);
         return optionsJson;
     }
 }

@@ -52,9 +52,9 @@ public class ChartFill extends AbstractChartOption {
     @Override
     public JSONObject toJson() {
         JSONObject fillJson = new JSONObject();
-        if (target != null) fillJson.put("target", target);
-        if (above != null) fillJson.put("above", Util.convertColorToJs(above));
-        if (below != null) fillJson.put("below", Util.convertColorToJs(below));
+        Util.addToJson(fillJson, "target", target);
+        Util.addToJson(fillJson, "above", above);
+        Util.addToJson(fillJson, "below", below);
         return fillJson;
     }
 }

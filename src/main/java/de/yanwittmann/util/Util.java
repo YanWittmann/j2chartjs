@@ -1,12 +1,16 @@
 package de.yanwittmann.util;
 
+import de.yanwittmann.j2chartjs.data.ChartData;
+import de.yanwittmann.j2chartjs.options.AbstractChartOption;
+import de.yanwittmann.j2chartjs.options.animation.AnimationEasingType;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.awt.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @SuppressWarnings("unchecked")
 public abstract class Util {
@@ -40,36 +44,52 @@ public abstract class Util {
         return list;
     }
 
-    public static void smartAddToJsonObject(JSONObject json, String key, List list) {
-        if (json == null || list == null || list.size() == 0) return;
-        if (list.size() == 1) json.put(key, convertColorToJs(list.get(0)));
-        else json.put(key, convertColorToJs(list));
-    }
-
-    public static void smartAddToJsonObject(JSONObject json, String key, Object element) {
-        if (json == null || element == null) return;
-        json.put(key, convertColorToJs(element));
-    }
-
-    private static Object convertColorToJs(Object color) {
-        if (color != null) {
-            if (color instanceof Color) {
-                return convertColorToJs((Color) color);
+    /**
+     * Will convert the passed data into a configuration-friendly format and add it to the JSON Object under the
+     * given key.
+     *
+     * @param json    The JSON Object to add the data to.
+     * @param key     The key under which to add the data.
+     * @param element The element to convert and add to the JSON Object.
+     */
+    public static void addToJson(JSONObject json, String key, Object element) {
+        if (json == null || element == null || key == null) return;
+        if (element instanceof List) {
+            if (((List<?>) element).size() > 0) {
+                List<Object> convertedElements = new ArrayList<>();
+                for (Object o : (List<?>) element) {
+                    convertedElements.add(smartAddToJsonForConfigurationConverter(o));
+                }
+                json.put(key, convertedElements);
+            } else {
+                json.put(key, new ArrayList<>());
             }
+        } else {
+            json.put(key, smartAddToJsonForConfigurationConverter(element));
         }
-        return color;
     }
 
-    private static List convertColorToJs(List color) {
-        if (color != null && color.size() > 0) {
-            if (color.get(0) instanceof Color) {
-                return (List<String>) color.stream().map(c -> convertColorToJs((Color) c)).collect(Collectors.toList());
-            }
+    private static Object smartAddToJsonForConfigurationConverter(Object object) {
+        if (object == null) return null;
+        if (object instanceof Color) {
+            return convertColorToJs((Color) object);
+        } else if (object instanceof Double) {
+            return roundToDecimals((Double) object, 3);
+        } else if (object instanceof BigDecimal) {
+            return roundToDecimals(((BigDecimal) object).doubleValue(), 3);
+        } else if (object instanceof JSONObject || object instanceof JSONArray) {
+            return object;
+        } else if (object instanceof AbstractChartOption) {
+            return ((AbstractChartOption) object).toJson();
+        } else if (object instanceof ChartData) {
+            return ((ChartData) object).toJson();
+        } else if (object instanceof AnimationEasingType) {
+            return ((AnimationEasingType) object).getKey();
         }
-        return color;
+        return object;
     }
 
-    public static String convertColorToJs(Color color) {
+    private static String convertColorToJs(Color color) {
         if (color.getAlpha() != 255)
             return "rgba(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue() + "," + roundToDecimals(mapRange(0, 255, 0, 1, color.getAlpha()), 3) + ")";
         return "rgb(" + color.getRed() + "," + color.getGreen() + "," + color.getBlue() + ")";
