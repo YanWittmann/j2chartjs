@@ -61,4 +61,6 @@ public abstract class ChartData<T, DT, D> {
         }
         return chartData;
     }
+
+    public abstract T applyDefaultStyle();
 }

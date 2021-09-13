@@ -14,29 +14,26 @@ import de.yanwittmann.j2chartjs.options.plugins.legend.LegendTitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.tooltip.TooltipOption;
 import de.yanwittmann.j2chartjs.options.scale.*;
-import de.yanwittmann.j2chartjs.preset.ChartColors;
 import de.yanwittmann.j2chartjs.type.ChartFont;
 import de.yanwittmann.j2chartjs.type.ChartPadding;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.Random;
 
 public class GenerateTest {
 
     @Test
-    public void simpleTest() throws IOException {
+    public void simpleTest() {
         BarChartDataset dataset = new BarChartDataset()
                 .setData(12, 32, 8, 45, 27, 23)
                 .setLabel("Sample Dataset")
-                .setBackgroundColor(ChartColors.BACKGROUNDS)
-                .setBorderColor(ChartColors.BORDERS)
                 .addBorderWidth(1);
 
         BarChartData data = new BarChartData()
                 .addDataset(dataset)
-                .addLabels("Entry 1", "Entry 2", "Entry 3", "Entry 4", "Entry 5", "Entry 6");
+                .addLabels("Entry 1", "Entry 2", "Entry 3", "Entry 4", "Entry 5", "Entry 6")
+                .applyDefaultStyle();
 
         ChartOptions options = new ChartOptions()
                 .setTitle(new TitleOption().setText("Sample Chart").setDisplay(true))
@@ -47,21 +44,26 @@ public class GenerateTest {
         BarChart chart = new BarChart()
                 .setChartOptions(options)
                 .setChartData(data);
+
+        System.out.println(chart.toJson());
     }
 
     @Test
-    public void scatterTest() throws IOException {
+    public void scatterTest() {
         Random random = new Random();
-        ScatterChartDataset dataset = new ScatterChartDataset()
-                .setLabel("Points everywhere")
-                .setBackgroundColor(ChartColors.BACKGROUNDS)
-                .setBorderColor(ChartColors.BORDERS)
-                .addPointStyle("star");
-        for (int i = 0; i < 500; i++)
-            dataset.addData(new ScatterChartDatapoint(random.nextInt(100), random.nextInt(100)));
+        ScatterChartDataset dataset1 = new ScatterChartDataset()
+                .setLabel("Points in time and space p.1");
+        for (int i = 0; i < 250; i++)
+            dataset1.addData(new ScatterChartDatapoint(random.nextInt(100), random.nextInt(100)));
+        ScatterChartDataset dataset2 = new ScatterChartDataset()
+                .setLabel("Points in time and space p.2");
+        for (int i = 0; i < 250; i++)
+            dataset2.addData(new ScatterChartDatapoint(random.nextInt(100), random.nextInt(100)));
 
         ScatterChartData data = new ScatterChartData()
-                .addDataset(dataset);
+                .addDataset(dataset1)
+                .addDataset(dataset2)
+                .applyDefaultStyle();
 
         ChartOptions options = new ChartOptions()
                 .addScale("y", new LinearScaleOption().setSuggestedMin(0))
@@ -70,21 +72,26 @@ public class GenerateTest {
         ScatterChart chart = new ScatterChart()
                 .setChartOptions(options)
                 .setChartData(data);
+
+        System.out.println(chart);
     }
 
     @Test
-    public void bubbleTest() throws IOException {
+    public void bubbleTest() {
         Random random = new Random();
-        BubbleChartDataset dataset = new BubbleChartDataset()
-                .setLabel("Points in time and space")
-                .setBackgroundColor(ChartColors.BACKGROUNDS)
-                .setBorderColor(ChartColors.BORDERS)
-                .addPointStyle("star");
-        for (int i = 0; i < 500; i++)
-            dataset.addData(new BubbleChartDatapoint(random.nextInt(100), random.nextInt(100), random.nextInt(30) + 10));
+        BubbleChartDataset dataset1 = new BubbleChartDataset()
+                .setLabel("Points in time and space p.1");
+        for (int i = 0; i < 250; i++)
+            dataset1.addData(new BubbleChartDatapoint(random.nextInt(100), random.nextInt(100), random.nextInt(30) + 10));
+        BubbleChartDataset dataset2 = new BubbleChartDataset()
+                .setLabel("Points in time and space p.2");
+        for (int i = 0; i < 250; i++)
+            dataset2.addData(new BubbleChartDatapoint(random.nextInt(100), random.nextInt(100), random.nextInt(30) + 10));
 
         BubbleChartData data = new BubbleChartData()
-                .addDataset(dataset);
+                .addDataset(dataset1)
+                .addDataset(dataset2)
+                .applyDefaultStyle();
 
         ChartOptions options = new ChartOptions()
                 .addScale("y", new LinearScaleOption().setSuggestedMin(0))
@@ -93,21 +100,22 @@ public class GenerateTest {
         BubbleChart chart = new BubbleChart()
                 .setChartOptions(options)
                 .setChartData(data);
+
+        System.out.println(chart.toJson());
     }
 
     @Test
-    public void polarAreaTest() throws IOException {
+    public void polarAreaTest() {
         PolarAreaChartDataset dataset = new PolarAreaChartDataset()
                 .addData(10, 34, 23)
-                .setBackgroundColor(ChartColors.BACKGROUNDS)
-                .setBorderColor(ChartColors.BORDERS)
                 .addOffset(10)
                 .addSpacing(30)
                 .addBorderAlign("center", "inner", "center");
 
         PolarAreaChartData data = new PolarAreaChartData()
                 .addDataset(dataset)
-                .addLabels("First", "Second", "Third");
+                .addLabels("First", "Second", "Third")
+                .applyDefaultStyle();
 
         ChartOptions options = new ChartOptions()
                 .setInteraction(new InteractionOption()
@@ -116,20 +124,18 @@ public class GenerateTest {
         PolarAreaChart polarAreaChart = new PolarAreaChart()
                 .setChartOptions(options)
                 .setChartData(data);
+
+        System.out.println(polarAreaChart);
     }
 
     @Test
-    public void doughnutPieTest() throws IOException {
+    public void doughnutPieTest() {
         DoughnutPieChartDataset dataset1 = new DoughnutPieChartDataset()
                 .addData(10, 34, 23)
-                .setBackgroundColor(ChartColors.BACKGROUNDS)
-                .setBorderColor(ChartColors.BORDERS)
                 .setCutout("20%")
                 .addHoverOffset(10);
         DoughnutPieChartDataset dataset2 = new DoughnutPieChartDataset()
                 .addData(18, 45, 35)
-                .setBackgroundColor(ChartColors.BACKGROUNDS)
-                .setBorderColor(ChartColors.BORDERS)
                 .setCutout("10%")
                 .addHoverOffset(10)
                 .addSpacing(10);
@@ -137,7 +143,8 @@ public class GenerateTest {
         DoughnutPieChartData data = new DoughnutPieChartData()
                 .addDataset(dataset1)
                 .addDataset(dataset2)
-                .addLabels("First", "Second", "Third");
+                .addLabels("First", "Second", "Third")
+                .applyDefaultStyle();
 
         ChartOptions options = new ChartOptions()
                 .setInteraction(new InteractionOption()
@@ -150,19 +157,24 @@ public class GenerateTest {
         PieChart pieChart = new PieChart()
                 .setChartOptions(options)
                 .setChartData(data);
+
+        System.out.println(doughnutChart.toJson());
     }
 
     @Test
-    public void radarChartTest() throws IOException {
-        RadarChartDataset chartDataset = new RadarChartDataset()
+    public void radarChartTest() {
+        RadarChartDataset chartDataset1 = new RadarChartDataset()
                 .addData(23, 33, 4.5, 27)
-                .setTension(0.4)
-                .setBackgroundColor(new Color(255, 120, 120, 92))
-                .setBorderColor(new Color(255, 120, 120));
+                .setTension(0.4);
+        RadarChartDataset chartDataset2 = new RadarChartDataset()
+                .addData(19, 25, 47, 32)
+                .setTension(0.4);
 
         RadarChartData chartData = new RadarChartData()
-                .addDataset(chartDataset)
-                .addLabels("1", "2", "3", "4");
+                .addDataset(chartDataset1)
+                .addDataset(chartDataset2)
+                .addLabels("1", "2", "3", "4")
+                .applyDefaultStyle();
 
         RadialScaleOption scale = new RadialScaleOption()
                 .setSuggestedMax(40)
@@ -184,15 +196,16 @@ public class GenerateTest {
         RadarChart radarChart = new RadarChart()
                 .setChartOptions(options)
                 .setChartData(chartData);
+
+        System.out.println(radarChart);
     }
 
     @Test
-    public void lineChartTest() throws IOException {
-        LineChartDataset datasetY = new LineChartDataset()
-                .setData(10, 20, 15)
-                .setIndexAxis("x")
-                .setLabel("Day 1");
-        LineChartDataset datasetX = new LineChartDataset()
+    public void lineChartTest() {
+        Random random = new Random();
+        LineChartData barChartData = new LineChartData()
+                .addLabels("Shoes", "T-Shirts", "Pants");
+        barChartData.addDataset(new LineChartDataset()
                 .setData(17, 23, 5)
                 .addPointBackgroundColor(Color.ORANGE)
                 .setTension(0.3)
@@ -201,13 +214,14 @@ public class GenerateTest {
                 .addPointRadius(5)
                 .addPointHoverBorderWidth(8)
                 .addPointStyle("triangle")
-                .setIndexAxis("x")
-                .setLabel("Day 2");
-
-        LineChartData barChartData = new LineChartData()
-                .addLabels("Shoes", "T-Shirts", "Pants")
-                .addDataset(datasetY)
-                .addDataset(datasetX);
+                .setLabel("Day 1"));
+        for (int i = 2; i < 12; i++) {
+            barChartData.addDataset(new LineChartDataset()
+                    .setData(random.nextInt(30) + 5, random.nextInt(30) + 5, random.nextInt(30) + 5)
+                    .setTension(0.3)
+                    .setLabel("Day " + i));
+        }
+        barChartData.applyDefaultStyle();
 
         ChartOptions chartOptions = new ChartOptions()
                 .setInteraction(new InteractionOption()
@@ -219,10 +233,12 @@ public class GenerateTest {
         LineChart lineChart = new LineChart()
                 .setChartOptions(chartOptions)
                 .setChartData(barChartData);
+
+        System.out.println(lineChart.toJson());
     }
 
     @Test
-    public void largeBarChartTest() throws IOException {
+    public void largeBarChartTest() {
         BarChartDataset dataset1 = new BarChartDataset()
                 .setLabel("Week 1")
                 .setData(65, 59, 80, 81, 56, 55, 40)

@@ -46,4 +46,9 @@ public abstract class Chart<C, T, DT, D> {
         if (chartOptions != null) chartDefinition.put("options", chartOptions.toJson());
         return chartDefinition;
     }
+
+    @Override
+    public String toString() {
+        return toJson().toString();
+    }
 }
