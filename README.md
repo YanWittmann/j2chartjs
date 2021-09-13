@@ -29,7 +29,7 @@ BarChart chart = new BarChart()
     .setChartOptions(options)
     .setChartData(data);
 
-JSONObject jsonChartConfiguration=chart.toJson();
+JSONObject jsonChartConfiguration = chart.toJson();
 ```
 
 HTML:
