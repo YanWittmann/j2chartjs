@@ -11,25 +11,25 @@ library from your Java code.
 Java:
 
 ```Java
-BarChartDataset dataset=new BarChartDataset()
-        .setData(12,32,8,45,27,23)
-        .setLabel("Sample Dataset")
-        .setBackgroundColor(ChartColors.BACKGROUNDS)
-        .setBorderColor(ChartColors.BORDERS)
-        .addBorderWidth(1);
+BarChartDataset dataset = new BarChartDataset()
+    .addData(12, 32, 8, 45, 27, 23)
+    .setLabel("Sample Dataset")
+    .setBackgroundColor(ChartColors.BACKGROUNDS)
+    .setBorderColor(ChartColors.BORDERS)
+    .addBorderWidth(1);
 
-        BarChartData data=new BarChartData()
-        .addDataset(dataset)
-        .addLabels("Entry 1","Entry 2","Entry 3","Entry 4","Entry 5","Entry 6");
+BarChartData data = new BarChartData()
+    .addDataset(dataset)
+    .addLabels("Entry 1", "Entry 2", "Entry 3", "Entry 4", "Entry 5", "Entry 6");
 
-        ChartOptions options=new ChartOptions()
-        .setTitle(new TitleOption().setText("Sample Chart").setDisplay(true));
+ChartOptions options = new ChartOptions()
+    .setTitle(new TitleOption().setText("Sample Chart").setDisplay(true));
 
-        BarChart chart=new BarChart()
-        .setChartOptions(options)
-        .setChartData(data);
+BarChart chart = new BarChart()
+    .setChartOptions(options)
+    .setChartData(data);
 
-        JSONObject jsonChartConfiguration=chart.toJson();
+JSONObject jsonChartConfiguration=chart.toJson();
 ```
 
 HTML:
