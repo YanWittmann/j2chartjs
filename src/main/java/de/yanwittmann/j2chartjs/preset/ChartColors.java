@@ -1,6 +1,9 @@
 package de.yanwittmann.j2chartjs.preset;
 
 
+import de.yanwittmann.j2chartjs.data.*;
+import de.yanwittmann.j2chartjs.dataset.*;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -66,5 +69,49 @@ public abstract class ChartColors {
 
     private final static int a(double a) {
         return (int) (a * 255.0);
+    }
+
+    public static void applyDefaultStylePerDatapoint(ChartDataset dataset) {
+        if (dataset instanceof BarChartDataset) {
+            new BarChartData().addDataset(dataset).applyDefaultStylePerDatapoint();
+        } else if (dataset instanceof BubbleChartDataset) {
+            new BubbleChartData().addDataset(dataset).applyDefaultStylePerDatapoint();
+        } else if (dataset instanceof DoughnutPieChartDataset) {
+            new DoughnutPieChartData().addDataset(dataset).applyDefaultStylePerDatapoint();
+        } else if (dataset instanceof LineChartDataset) {
+            new LineChartData().addDataset(dataset).applyDefaultStylePerDatapoint();
+        } else if (dataset instanceof PolarAreaChartDataset) {
+            new PolarAreaChartData().addDataset(dataset).applyDefaultStylePerDatapoint();
+        } else if (dataset instanceof RadarChartDataset) {
+            new RadarChartData().addDataset(dataset).applyDefaultStylePerDatapoint();
+        } else if (dataset instanceof ScatterChartDataset) {
+            new ScatterChartData().addDataset(dataset).applyDefaultStylePerDatapoint();
+        }
+    }
+
+    public static void applyDefaultStylePerDataset(ChartDataset dataset) {
+        if (dataset instanceof BarChartDataset) {
+            new BarChartData().addDataset(dataset).applyDefaultStylePerDataset();
+        } else if (dataset instanceof BubbleChartDataset) {
+            new BubbleChartData().addDataset(dataset).applyDefaultStylePerDataset();
+        } else if (dataset instanceof DoughnutPieChartDataset) {
+            new DoughnutPieChartData().addDataset(dataset).applyDefaultStylePerDataset();
+        } else if (dataset instanceof LineChartDataset) {
+            new LineChartData().addDataset(dataset).applyDefaultStylePerDataset();
+        } else if (dataset instanceof PolarAreaChartDataset) {
+            new PolarAreaChartData().addDataset(dataset).applyDefaultStylePerDataset();
+        } else if (dataset instanceof RadarChartDataset) {
+            new RadarChartData().addDataset(dataset).applyDefaultStylePerDataset();
+        } else if (dataset instanceof ScatterChartDataset) {
+            new ScatterChartData().addDataset(dataset).applyDefaultStylePerDataset();
+        }
+    }
+
+    public static void applyDefaultStylePerDatapoint(ChartData dataset) {
+        dataset.applyDefaultStylePerDatapoint();
+    }
+
+    public static void applyDefaultStylePerDataset(ChartData dataset) {
+        dataset.applyDefaultStylePerDataset();
     }
 }

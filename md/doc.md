@@ -155,14 +155,51 @@ new Chart(ctx, jsonChartConfiguration);
 ```
 
 ### Other useful tips & tricks
-- To apply default colors to the chart dataset entries, use the `ChartColor` class.
+- To apply default colors to the chart dataset entries, use `applyDefaultStylePerDatapoint()` or
+  `applyDefaultStylePerDataset()` on a data entry depending on whether you want to apply the style for every dataset
+  or datapoint:
+  ```java
+  new ScatterChartData()
+    .addDataset(dataset)
+    .applyDefaultStylePerDatapoint();
+  new ScatterChartData()
+    .addDataset(dataset1)
+    .addDataset(dataset2)
+    .applyDefaultStylePerDataset();
+  ```
+  You can also apply these color schemes to individual datasets by using the functions with the same names in the
+  `ChartColor` class:
+  ```java
+  ChartColors.applyDefaultStylePerDatapoint(dataset);
+  ChartColors.applyDefaultStylePerDataset(dataset);
+  ```
+  Or by directly using the colors from the `ChartColor` class:
   ```java
   BarChartDataset dataset = new BarChartDataset()
-      .setData(12, 32, 8, 45, 27, 23)
-      .setLabel("Sample Dataset")
-      .setBackgroundColor(ChartColors.BACKGROUNDS)
-      .setBorderColor(ChartColors.BORDERS)
-      .addBorderWidth(1);
+    .setData(12, 32, 8, 45, 27, 23)
+    .setLabel("Sample Dataset")
+    .setBackgroundColor(ChartColors.BACKGROUNDS)
+    .setBorderColor(ChartColors.BORDERS)
+    .addBorderWidth(1);
+  ```
+- You can stack multiple different chart types into one chart by using the `MixedChart`:
+  ```java
+  BarChartDataset barChartDataset = new BarChartDataset()
+    .setData(10, 20, 30, 40)
+    .setLabel("Bar Dataset")
+    .addBorderWidth(2);
+
+  LineChartDataset lineChartDataset = new LineChartDataset()
+    .setData(23, 30, 25, 35)
+    .setLabel("Line Dataset");
+
+  MixedChartData mixedChartData = new MixedChartData()
+    .addDataset(lineChartDataset, barChartDataset)
+    .addLabels("January", "February", "March", "April")
+    .applyDefaultStylePerDataset();
+
+  MixedChart mixedChart = new MixedChart()
+    .setChartData(mixedChartData);
   ```
 
 ### Further notes

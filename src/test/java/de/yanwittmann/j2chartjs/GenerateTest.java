@@ -14,6 +14,7 @@ import de.yanwittmann.j2chartjs.options.plugins.legend.LegendTitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.tooltip.TooltipOption;
 import de.yanwittmann.j2chartjs.options.scale.*;
+import de.yanwittmann.j2chartjs.preset.ChartColors;
 import de.yanwittmann.j2chartjs.type.ChartFont;
 import de.yanwittmann.j2chartjs.type.ChartPadding;
 import org.junit.jupiter.api.Test;
@@ -24,16 +25,41 @@ import java.util.Random;
 public class GenerateTest {
 
     @Test
-    public void simpleTest() {
-        BarChartDataset dataset = new BarChartDataset()
-                .setData(12, 32, 8, 45, 27, 23)
-                .setLabel("Sample Dataset")
-                .addBorderWidth(1);
+    public void mixedChart2Test() {
+        BarChartDataset barChartDataset = new BarChartDataset()
+                .setData(10, 20, 30, 40)
+                .setLabel("Bar Dataset")
+                .addBorderWidth(2);
 
+        LineChartDataset lineChartDataset = new LineChartDataset()
+                .setData(23, 30, 25, 35)
+                .setLabel("Line Dataset");
+
+        MixedChartData mixedChartData = new MixedChartData()
+                .addDataset(lineChartDataset, barChartDataset)
+                .addLabels("January", "February", "March", "April")
+                .applyDefaultStylePerDatapoint();
+
+        MixedChart mixedChart = new MixedChart()
+                .setChartData(mixedChartData);
+
+        System.out.println(mixedChart);
+    }
+
+    @Test
+    public void simpleTest() {
         BarChartData data = new BarChartData()
-                .addDataset(dataset)
-                .addLabels("Entry 1", "Entry 2", "Entry 3", "Entry 4", "Entry 5", "Entry 6")
-                .applyDefaultStyle();
+                .addDataset(new BarChartDataset()
+                        .setData(12, 32, 8, 45, 27, 23)
+                        .setLabel("Sample Dataset")
+                        .addBorderWidth(1))
+                .addDataset(new BarChartDataset()
+                        .setData(54, 28, 17, 24, 9, 10)
+                        .setLabel("Sample Dataset")
+                        .addBorderWidth(1))
+                .addLabels("Entry 1", "Entry 2", "Entry 3", "Entry 4", "Entry 5", "Entry 6");
+
+        ChartColors.applyDefaultStylePerDataset(data);
 
         ChartOptions options = new ChartOptions()
                 .setTitle(new TitleOption().setText("Sample Chart").setDisplay(true))
@@ -63,7 +89,7 @@ public class GenerateTest {
         ScatterChartData data = new ScatterChartData()
                 .addDataset(dataset1)
                 .addDataset(dataset2)
-                .applyDefaultStyle();
+                .applyDefaultStylePerDatapoint();
 
         ChartOptions options = new ChartOptions()
                 .addScale("y", new LinearScaleOption().setSuggestedMin(0))
@@ -91,7 +117,7 @@ public class GenerateTest {
         BubbleChartData data = new BubbleChartData()
                 .addDataset(dataset1)
                 .addDataset(dataset2)
-                .applyDefaultStyle();
+                .applyDefaultStylePerDatapoint();
 
         ChartOptions options = new ChartOptions()
                 .addScale("y", new LinearScaleOption().setSuggestedMin(0))
@@ -115,7 +141,7 @@ public class GenerateTest {
         PolarAreaChartData data = new PolarAreaChartData()
                 .addDataset(dataset)
                 .addLabels("First", "Second", "Third")
-                .applyDefaultStyle();
+                .applyDefaultStylePerDatapoint();
 
         ChartOptions options = new ChartOptions()
                 .setInteraction(new InteractionOption()
@@ -144,7 +170,7 @@ public class GenerateTest {
                 .addDataset(dataset1)
                 .addDataset(dataset2)
                 .addLabels("First", "Second", "Third")
-                .applyDefaultStyle();
+                .applyDefaultStylePerDatapoint();
 
         ChartOptions options = new ChartOptions()
                 .setInteraction(new InteractionOption()
@@ -174,7 +200,7 @@ public class GenerateTest {
                 .addDataset(chartDataset1)
                 .addDataset(chartDataset2)
                 .addLabels("1", "2", "3", "4")
-                .applyDefaultStyle();
+                .applyDefaultStylePerDatapoint();
 
         RadialScaleOption scale = new RadialScaleOption()
                 .setSuggestedMax(40)
@@ -221,7 +247,7 @@ public class GenerateTest {
                     .setTension(0.3)
                     .setLabel("Day " + i));
         }
-        barChartData.applyDefaultStyle();
+        barChartData.applyDefaultStylePerDatapoint();
 
         ChartOptions chartOptions = new ChartOptions()
                 .setInteraction(new InteractionOption()

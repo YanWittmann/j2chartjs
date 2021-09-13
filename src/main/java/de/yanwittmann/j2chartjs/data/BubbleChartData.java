@@ -7,7 +7,19 @@ import de.yanwittmann.j2chartjs.preset.ChartColors;
 
 public class BubbleChartData extends ChartData<BubbleChartData, BubbleChartDataset, BubbleChartDatapoint> {
     @Override
-    public BubbleChartData applyDefaultStyle() {
+    public BubbleChartData applyDefaultStylePerDatapoint() {
+        for (ChartDataset<BubbleChartDataset, BubbleChartDatapoint> dataset : datasets) {
+            if (dataset instanceof BubbleChartDataset) {
+                ((BubbleChartDataset) dataset)
+                        .setBackgroundColor(ChartColors.BACKGROUNDS)
+                        .setBorderColor(ChartColors.BORDERS);
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public BubbleChartData applyDefaultStylePerDataset() {
         int colorIndex = 0;
         for (ChartDataset<BubbleChartDataset, BubbleChartDatapoint> dataset : datasets) {
             if (dataset instanceof BubbleChartDataset) {

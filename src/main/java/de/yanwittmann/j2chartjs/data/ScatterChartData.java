@@ -7,7 +7,19 @@ import de.yanwittmann.j2chartjs.preset.ChartColors;
 
 public class ScatterChartData extends ChartData<ScatterChartData, ScatterChartDataset, ScatterChartDatapoint> {
     @Override
-    public ScatterChartData applyDefaultStyle() {
+    public ScatterChartData applyDefaultStylePerDatapoint() {
+        for (ChartDataset<ScatterChartDataset, ScatterChartDatapoint> dataset : datasets) {
+            if (dataset instanceof ScatterChartDataset) {
+                ((ScatterChartDataset) dataset)
+                        .setBackgroundColor(ChartColors.BACKGROUNDS)
+                        .setBorderColor(ChartColors.BORDERS);
+            }
+        }
+        return this;
+    }
+
+    @Override
+    public ScatterChartData applyDefaultStylePerDataset() {
         int colorIndex = 0;
         for (ChartDataset<ScatterChartDataset, ScatterChartDatapoint> dataset : datasets) {
             if (dataset instanceof ScatterChartDataset) {

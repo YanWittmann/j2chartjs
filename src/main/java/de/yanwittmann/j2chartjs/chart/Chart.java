@@ -41,7 +41,7 @@ public abstract class Chart<C, T, DT, D> {
 
     public JSONObject toJson() {
         JSONObject chartDefinition = new JSONObject();
-        chartDefinition.put("type", typeIdentifier);
+        if (typeIdentifier != null) chartDefinition.put("type", typeIdentifier);
         if (chartData != null) chartDefinition.put("data", chartData.toJson());
         if (chartOptions != null) chartDefinition.put("options", chartOptions.toJson());
         return chartDefinition;

@@ -8,7 +8,12 @@ import java.math.BigDecimal;
 
 public class LineChartData extends ChartData<LineChartData, LineChartDataset, BigDecimal> {
     @Override
-    public LineChartData applyDefaultStyle() {
+    public LineChartData applyDefaultStylePerDatapoint() {
+        return applyDefaultStylePerDataset();
+    }
+
+    @Override
+    public LineChartData applyDefaultStylePerDataset() {
         int colorIndex = 0;
         for (ChartDataset<LineChartDataset, BigDecimal> dataset : datasets) {
             if (dataset instanceof LineChartDataset) {
