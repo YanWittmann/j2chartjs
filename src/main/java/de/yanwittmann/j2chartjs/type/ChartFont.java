@@ -4,8 +4,6 @@ import de.yanwittmann.j2chartjs.options.AbstractChartOption;
 import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
-import java.math.BigDecimal;
-
 public class ChartFont extends AbstractChartOption {
 
     /**
@@ -29,7 +27,7 @@ public class ChartFont extends AbstractChartOption {
     /**
      * Height of an individual line of text.
      */
-    private BigDecimal lineHeight;
+    private Number lineHeight;
 
     public String getFamily() {
         return family;
@@ -67,21 +65,21 @@ public class ChartFont extends AbstractChartOption {
         return this;
     }
 
-    public BigDecimal getLineHeight() {
+    public Number getLineHeight() {
         return lineHeight;
     }
 
     public ChartFont setLineHeight(int lineHeight) {
-        this.lineHeight = new BigDecimal(lineHeight);
+        this.lineHeight = lineHeight;
         return this;
     }
 
     public ChartFont setLineHeight(double lineHeight) {
-        this.lineHeight = new BigDecimal(lineHeight);
+        this.lineHeight = lineHeight;
         return this;
     }
 
-    public ChartFont setLineHeight(BigDecimal lineHeight) {
+    public ChartFont setLineHeight(Number lineHeight) {
         this.lineHeight = lineHeight;
         return this;
     }

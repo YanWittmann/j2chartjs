@@ -3,53 +3,51 @@ package de.yanwittmann.j2chartjs.datapoint;
 import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
-import java.math.BigDecimal;
-
 public class ScatterChartDatapoint {
 
-    private BigDecimal x;
-    private BigDecimal y;
+    private Number x;
+    private Number y;
 
     public ScatterChartDatapoint(int x, int y) {
-        this.x = new BigDecimal(x);
-        this.y = new BigDecimal(y);
+        this.x = x;
+        this.y = y;
     }
 
     public ScatterChartDatapoint(double x, double y) {
-        this.x = new BigDecimal(x);
-        this.y = new BigDecimal(y);
+        this.x = x;
+        this.y = y;
     }
 
     public ScatterChartDatapoint(Object x, Object y) {
-        this.x = new BigDecimal(String.valueOf(x));
-        this.y = new BigDecimal(String.valueOf(y));
+        this.x = Double.parseDouble(String.valueOf(x));
+        this.y = Double.parseDouble(String.valueOf(y));
     }
 
-    public BigDecimal getX() {
+    public Number getX() {
         return x;
     }
 
     public ScatterChartDatapoint setX(int x) {
-        this.x = new BigDecimal(x);
+        this.x = x;
         return this;
     }
 
     public ScatterChartDatapoint setX(double x) {
-        this.x = new BigDecimal(x);
+        this.x = x;
         return this;
     }
 
-    public BigDecimal getY() {
+    public Number getY() {
         return y;
     }
 
     public ScatterChartDatapoint setY(int y) {
-        this.y = new BigDecimal(y);
+        this.y = y;
         return this;
     }
 
     public ScatterChartDatapoint setY(double y) {
-        this.y = new BigDecimal(y);
+        this.y = y;
         return this;
     }
 

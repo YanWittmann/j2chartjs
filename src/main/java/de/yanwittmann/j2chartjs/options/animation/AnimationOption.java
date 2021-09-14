@@ -4,51 +4,49 @@ import de.yanwittmann.j2chartjs.options.AbstractChartOption;
 import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
-import java.math.BigDecimal;
-
 @SuppressWarnings("unchecked")
 public class AnimationOption<T> extends AbstractChartOption {
 
-    private BigDecimal duration;
-    private BigDecimal delay;
+    private Number duration;
+    private Number delay;
     private AnimationEasingType easing;
     private Boolean loop;
 
-    public BigDecimal getDuration() {
+    public Number getDuration() {
         return duration;
     }
 
-    public T setDuration(BigDecimal duration) {
+    public T setDuration(Number duration) {
         this.duration = duration;
         return (T) this;
     }
 
     public T setDuration(int duration) {
-        this.duration = new BigDecimal(duration);
+        this.duration = duration;
         return (T) this;
     }
 
     public T setDuration(double duration) {
-        this.duration = new BigDecimal(duration);
+        this.duration = duration;
         return (T) this;
     }
 
-    public BigDecimal getDelay() {
+    public Number getDelay() {
         return delay;
     }
 
-    public T setDelay(BigDecimal delay) {
+    public T setDelay(Number delay) {
         this.delay = delay;
         return (T) this;
     }
 
     public T setDelay(int delay) {
-        this.delay = new BigDecimal(delay);
+        this.delay = delay;
         return (T) this;
     }
 
     public T setDelay(double delay) {
-        this.delay = new BigDecimal(delay);
+        this.delay = delay;
         return (T) this;
     }
 

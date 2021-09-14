@@ -45,6 +45,10 @@ public class ScatterChartDataset extends ChartDataset<ScatterChartDataset, Scatt
      * </ul>
      */
     private List<String> pointStyle = null;
+    /**
+     * If true, the line will be drawn for this dataset.
+     */
+    private Boolean showLine;
 
     public String getLabel() {
         return label;
@@ -181,6 +185,15 @@ public class ScatterChartDataset extends ChartDataset<ScatterChartDataset, Scatt
         return this;
     }
 
+    public Boolean getShowLine() {
+        return showLine;
+    }
+
+    public ScatterChartDataset setShowLine(Boolean showLine) {
+        this.showLine = showLine;
+        return this;
+    }
+
     public ScatterChartDataset addBackgroundColor(Color... colors) {
         backgroundColor = Util.initializeListIfNull(backgroundColor);
         backgroundColor.addAll(Arrays.asList(colors));
@@ -253,11 +266,6 @@ public class ScatterChartDataset extends ChartDataset<ScatterChartDataset, Scatt
         return this;
     }
 
-    public ScatterChartDataset addData(ScatterChartDatapoint... datapoint) {
-        this.data.addAll(Arrays.asList(datapoint));
-        return this;
-    }
-
     @Override
     public JSONObject toJson() {
         JSONObject datasetJson = new JSONObject();
@@ -277,6 +285,7 @@ public class ScatterChartDataset extends ChartDataset<ScatterChartDataset, Scatt
         Util.addToJson(datasetJson, "hoverBorderSkipped", hoverBorderSkipped);
         Util.addToJson(datasetJson, "rotation", rotation);
         Util.addToJson(datasetJson, "pointStyle", pointStyle);
+        Util.addToJson(datasetJson, "showLine", showLine);
         return datasetJson;
     }
 }

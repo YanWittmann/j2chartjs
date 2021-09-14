@@ -140,6 +140,11 @@ public class ChartOptions extends AbstractChartOption {
         return this;
     }
 
+    public ChartOptions clearScales() {
+        this.scales.clear();
+        return this;
+    }
+
     public ChartOptions setOption(AbstractChartOption option) {
         if (option instanceof InteractionOption) {
             interaction = option;

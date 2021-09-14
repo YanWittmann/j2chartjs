@@ -15,14 +15,97 @@ import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.plugins.tooltip.TooltipOption;
 import de.yanwittmann.j2chartjs.options.scale.*;
 import de.yanwittmann.j2chartjs.preset.ChartColors;
+import de.yanwittmann.j2chartjs.quick.*;
 import de.yanwittmann.j2chartjs.type.ChartFont;
 import de.yanwittmann.j2chartjs.type.ChartPadding;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class GenerateTest {
+
+    @Test
+    public void quickChartTest() {
+        System.out.println(
+                new QuickBarChart()
+                        .addDataset("Data 1", 10, 20, 30)
+                        .addDataset("Data 2", 34, 22, 14)
+                        .addLabels("Point 1", "Point 2", "Point 3")
+                        .setTitle("Quick chart")
+                        .setGridLinesVisible(false)
+                        .setBeginAtZero(true)
+                        .toJson()
+        );
+        System.out.println(
+                new QuickLineChart()
+                        .addDataset("Data 1", 10, 20, 10)
+                        .addDataset("Data 2", 34, 50, 14)
+                        .addLabels("Point 1", "Point 2", "Point 3")
+                        .setTitle("Quick chart")
+                        .setBeginAtZero(true)
+                        .setIndexMode(true)
+                        .setTension(0.2)
+                        .toJson()
+        );
+        System.out.println(
+                new QuickBubbleChart()
+                        .addDatasets("Data 1", new QuickBubbleChartDataset()
+                                .addX(10, 20, 30)
+                                .addY(30, 20, 10)
+                                .addR(10, 20, 30))
+                        .addDatasets("Data 2", new QuickBubbleChartDataset()
+                                .addX(43, 24, 14)
+                                .addY(5, 32, 23)
+                                .addR(10, 30, 20))
+                        .addLabels("Point 1", "Point 2", "Point 3")
+                        .setTitle("Quick chart")
+                        .toJson()
+        );
+        System.out.println(
+                new QuickScatterChart()
+                        .addDatasets("Data 1", new QuickScatterChartDataset()
+                                .addX(10, 20, 30)
+                                .addY(30, 20, 10))
+                        .addDatasets("Data 2", new QuickScatterChartDataset()
+                                .addX(43, 24, 14)
+                                .addY(5, 32, 23))
+                        .addLabels("Point 1", "Point 2", "Point 3")
+                        .setTitle("Quick chart")
+                        .setShowLine(true)
+                        .setPointWidth(5)
+                        .toJson()
+        );
+        System.out.println(
+                new QuickDoughnutChart()
+                        .addDataset("Data 1", 10, 20, 30)
+                        .addDataset("Data 2", 34, 22, 14)
+                        .addLabels("Point 1", "Point 2", "Point 3")
+                        .setTitle("Quick chart")
+                        .toJson()
+        );
+        System.out.println(
+                new QuickPolarAreaChart()
+                        .addDataset("Data 1", 10, 20, 30)
+                        .addDataset("Data 2", 34, 22, 14)
+                        .addLabels("Point 1", "Point 2", "Point 3")
+                        .setTitle("Quick chart")
+                        .setIndexMode(true)
+                        .toJson()
+        );
+        System.out.println(
+                new QuickRadarChart()
+                        .addDataset("Data 1", 10, 20, 30)
+                        .addDataset("Data 2", 34, 22, 14)
+                        .addLabels("Point 1", "Point 2", "Point 3")
+                        .setTitle("Quick chart")
+                        .setIndexMode(true)
+                        .setTension(0.1)
+                        .toJson()
+        );
+    }
 
     @Test
     public void mixedChartTest() {
@@ -51,11 +134,11 @@ public class GenerateTest {
         BarChartData data = new BarChartData()
                 .addDataset(new BarChartDataset()
                         .setData(12, 32, 8, 45, 27, 23)
-                        .setLabel("Sample Dataset")
+                        .setLabel("Sample Dataset 1")
                         .addBorderWidth(1))
                 .addDataset(new BarChartDataset()
                         .setData(54, 28, 17, 24, 9, 10)
-                        .setLabel("Sample Dataset")
+                        .setLabel("Sample Dataset 2")
                         .addBorderWidth(1))
                 .addLabels("Entry 1", "Entry 2", "Entry 3", "Entry 4", "Entry 5", "Entry 6");
 
@@ -133,7 +216,7 @@ public class GenerateTest {
     @Test
     public void polarAreaTest() {
         PolarAreaChartDataset dataset = new PolarAreaChartDataset()
-                .addData(10, 34, 23)
+                .addData(new ArrayList<>(Arrays.asList(10, 34, 23)))
                 .addOffset(10)
                 .addSpacing(30)
                 .addBorderAlign("center", "inner", "center");

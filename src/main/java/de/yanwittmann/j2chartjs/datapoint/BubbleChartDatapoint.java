@@ -3,86 +3,84 @@ package de.yanwittmann.j2chartjs.datapoint;
 import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
-import java.math.BigDecimal;
-
 public class BubbleChartDatapoint {
 
-    private BigDecimal x;
-    private BigDecimal y;
-    private BigDecimal r;
+    private Number x;
+    private Number y;
+    private Number r;
 
     public BubbleChartDatapoint(int x, int y, int r) {
-        this.x = new BigDecimal(x);
-        this.y = new BigDecimal(y);
-        this.r = new BigDecimal(r);
+        this.x = x;
+        this.y = y;
+        this.r = r;
     }
 
     public BubbleChartDatapoint(double x, double y, double r) {
-        this.x = new BigDecimal(x);
-        this.y = new BigDecimal(y);
-        this.r = new BigDecimal(r);
+        this.x = x;
+        this.y = y;
+        this.r = r;
     }
 
     public BubbleChartDatapoint(Object x, Object y, Object r) {
-        this.x = new BigDecimal(String.valueOf(x));
-        this.y = new BigDecimal(String.valueOf(y));
-        this.r = new BigDecimal(String.valueOf(r));
+        this.x = Double.parseDouble(String.valueOf(x));
+        this.y = Double.parseDouble(String.valueOf(y));
+        this.r = Double.parseDouble(String.valueOf(r));
     }
 
     public BubbleChartDatapoint(int x, int y) {
-        this.x = new BigDecimal(x);
-        this.y = new BigDecimal(y);
+        this.x = x;
+        this.y = y;
     }
 
     public BubbleChartDatapoint(double x, double y) {
-        this.x = new BigDecimal(x);
-        this.y = new BigDecimal(y);
+        this.x = x;
+        this.y = y;
     }
 
     public BubbleChartDatapoint(Object x, Object y) {
-        this.x = new BigDecimal(String.valueOf(x));
-        this.y = new BigDecimal(String.valueOf(y));
+        this.x = Double.parseDouble(String.valueOf(x));
+        this.y = Double.parseDouble(String.valueOf(y));
     }
 
-    public BigDecimal getX() {
+    public Number getX() {
         return x;
     }
 
     public BubbleChartDatapoint setX(int x) {
-        this.x = new BigDecimal(x);
+        this.x = x;
         return this;
     }
 
     public BubbleChartDatapoint setX(double x) {
-        this.x = new BigDecimal(x);
+        this.x = x;
         return this;
     }
 
-    public BigDecimal getY() {
+    public Number getY() {
         return y;
     }
 
     public BubbleChartDatapoint setY(int y) {
-        this.y = new BigDecimal(y);
+        this.y = y;
         return this;
     }
 
     public BubbleChartDatapoint setY(double y) {
-        this.y = new BigDecimal(y);
+        this.y = y;
         return this;
     }
 
-    public BigDecimal getR() {
+    public Number getR() {
         return r;
     }
 
     public BubbleChartDatapoint setR(int r) {
-        this.r = new BigDecimal(r);
+        this.r = r;
         return this;
     }
 
     public BubbleChartDatapoint setR(double r) {
-        this.r = new BigDecimal(r);
+        this.r = r;
         return this;
     }
 

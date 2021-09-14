@@ -4,23 +4,22 @@ import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 import java.awt.*;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
-public class BarChartDataset extends ChartDataset<BarChartDataset, BigDecimal> {
+public class BarChartDataset extends ChartDataset<BarChartDataset, Number> {
 
     private String label;
     private String xAxisID;
     private String yAxisID;
     private String stack;
     private String indexAxis;
-    private BigDecimal base;
-    private BigDecimal barPercentage;
-    private BigDecimal barThickness;
-    private BigDecimal categoryPercentage;
-    private BigDecimal minBarLength;
+    private Number base;
+    private Number barPercentage;
+    private Number barThickness;
+    private Number categoryPercentage;
+    private Number minBarLength;
     private Boolean grouped;
     private Boolean skipNull;
 
@@ -80,78 +79,78 @@ public class BarChartDataset extends ChartDataset<BarChartDataset, BigDecimal> {
         return this;
     }
 
-    public BigDecimal getBase() {
+    public Number getBase() {
         return base;
     }
 
     public BarChartDataset setBase(int base) {
-        this.base = new BigDecimal(base);
-        return this;
-    }
-
-    public BarChartDataset setBase(double base) {
-        this.base = new BigDecimal(base);
-        return this;
-    }
-
-    public BarChartDataset setBase(BigDecimal base) {
         this.base = base;
         return this;
     }
 
-    public BigDecimal getBarPercentage() {
+    public BarChartDataset setBase(double base) {
+        this.base = base;
+        return this;
+    }
+
+    public BarChartDataset setBase(Number base) {
+        this.base = base;
+        return this;
+    }
+
+    public Number getBarPercentage() {
         return barPercentage;
     }
 
-    public BarChartDataset setBarPercentage(BigDecimal barPercentage) {
+    public BarChartDataset setBarPercentage(Number barPercentage) {
         this.barPercentage = barPercentage;
         return this;
     }
 
     public BarChartDataset setBarPercentage(int barPercentage) {
-        this.barPercentage = new BigDecimal(barPercentage);
+        this.barPercentage = barPercentage;
         return this;
     }
 
     public BarChartDataset setBarPercentage(double barPercentage) {
-        this.barPercentage = new BigDecimal(barPercentage);
+        this.barPercentage = barPercentage;
         return this;
     }
 
-    public BigDecimal getBarThickness() {
+    public Number getBarThickness() {
         return barThickness;
     }
 
-    public BarChartDataset setBarThickness(BigDecimal barThickness) {
+    public BarChartDataset setBarThickness(Number barThickness) {
         this.barThickness = barThickness;
         return this;
     }
 
-    public BigDecimal getCategoryPercentage() {
+    public Number getCategoryPercentage() {
         return categoryPercentage;
     }
 
-    public BarChartDataset setCategoryPercentage(BigDecimal categoryPercentage) {
+    public BarChartDataset setCategoryPercentage(Number categoryPercentage) {
         this.categoryPercentage = categoryPercentage;
         return this;
     }
 
-    public BigDecimal getMinBarLength() {
+    public Number getMinBarLength() {
         return minBarLength;
     }
 
-    public BarChartDataset setMinBarLength(BigDecimal minBarLength) {
+    public BarChartDataset setMinBarLength(Number minBarLength) {
         this.minBarLength = minBarLength;
         return this;
     }
 
     public BarChartDataset setMinBarLength(int minBarLength) {
-        this.minBarLength = new BigDecimal(minBarLength);
+        this.minBarLength = minBarLength;
         return this;
     }
 
     public BarChartDataset setMinBarLength(double minBarLength) {
-        this.minBarLength = new BigDecimal(minBarLength);
+        this.minBarLength = minBarLength;
         return this;
     }
 
@@ -320,27 +319,6 @@ public class BarChartDataset extends ChartDataset<BarChartDataset, BigDecimal> {
     public BarChartDataset addHoverBorderSkipped(String... edges) {
         hoverBorderSkipped = Util.initializeListIfNull(hoverBorderSkipped);
         hoverBorderSkipped.addAll(Arrays.asList(edges));
-        return this;
-    }
-
-    public BarChartDataset setData(int... data) {
-        clearData();
-        for (int d : data) this.data.add(new BigDecimal(d));
-        return this;
-    }
-
-    public BarChartDataset setData(double... data) {
-        clearData();
-        return addData(data);
-    }
-
-    public BarChartDataset addData(double... data) {
-        for (double d : data) this.data.add(new BigDecimal(d));
-        return this;
-    }
-
-    public BarChartDataset addData(int... data) {
-        for (int d : data) this.data.add(new BigDecimal(d));
         return this;
     }
 

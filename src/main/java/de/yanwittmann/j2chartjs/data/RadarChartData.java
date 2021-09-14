@@ -4,13 +4,11 @@ import de.yanwittmann.j2chartjs.dataset.ChartDataset;
 import de.yanwittmann.j2chartjs.dataset.RadarChartDataset;
 import de.yanwittmann.j2chartjs.preset.ChartColors;
 
-import java.math.BigDecimal;
-
-public class RadarChartData extends ChartData<RadarChartData, RadarChartDataset, BigDecimal> {
+public class RadarChartData extends ChartData<RadarChartData, RadarChartDataset, Number> {
     @Override
     public RadarChartData applyDefaultStylePerDatapoint() {
         int colorIndex = 0;
-        for (ChartDataset<RadarChartDataset, BigDecimal> dataset : datasets) {
+        for (ChartDataset<RadarChartDataset, Number> dataset : datasets) {
             if (dataset instanceof RadarChartDataset) {
                 ((RadarChartDataset) dataset)
                         .setBackgroundColor(ChartColors.BACKGROUNDS.get(colorIndex % ChartColors.BACKGROUNDS.size()))
@@ -24,7 +22,7 @@ public class RadarChartData extends ChartData<RadarChartData, RadarChartDataset,
     @Override
     public RadarChartData applyDefaultStylePerDataset() {
         int colorIndex = 0;
-        for (ChartDataset<RadarChartDataset, BigDecimal> dataset : datasets) {
+        for (ChartDataset<RadarChartDataset, Number> dataset : datasets) {
             if (dataset instanceof RadarChartDataset) {
                 ((RadarChartDataset) dataset)
                         .setBackgroundColor(ChartColors.BACKGROUNDS.get(colorIndex % ChartColors.BACKGROUNDS.size()))

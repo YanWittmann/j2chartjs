@@ -5,12 +5,11 @@ import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 import java.awt.*;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
-public class RadarChartDataset extends ChartDataset<RadarChartDataset, BigDecimal> {
+public class RadarChartDataset extends ChartDataset<RadarChartDataset, Number> {
 
     // general data
     private String label;
@@ -98,7 +97,7 @@ public class RadarChartDataset extends ChartDataset<RadarChartDataset, BigDecima
      * Bézier curve tension of the line. Set to 0 to draw straightlines. This option is ignored if monotone cubic interpolation is used.<br>
      * 0 - 1
      */
-    private BigDecimal tension;
+    private Number tension;
     /**
      * If false, the line is not drawn for this dataset.
      */
@@ -241,17 +240,17 @@ public class RadarChartDataset extends ChartDataset<RadarChartDataset, BigDecima
         return this;
     }
 
-    public BigDecimal getTension() {
+    public Number getTension() {
         return tension;
     }
 
     public RadarChartDataset setTension(double tension) {
-        this.tension = new BigDecimal(tension);
+        this.tension = tension;
         return this;
     }
 
     public RadarChartDataset setTension(int tension) {
-        this.tension = new BigDecimal(tension);
+        this.tension = tension;
         return this;
     }
 
@@ -279,27 +278,6 @@ public class RadarChartDataset extends ChartDataset<RadarChartDataset, BigDecima
 
     public RadarChartDataset setFill(ChartFill fill) {
         this.fill = fill;
-        return this;
-    }
-
-    public RadarChartDataset setData(int... data) {
-        clearData();
-        for (int d : data) this.data.add(new BigDecimal(d));
-        return this;
-    }
-
-    public RadarChartDataset setData(double... data) {
-        clearData();
-        return addData(data);
-    }
-
-    public RadarChartDataset addData(double... data) {
-        for (double d : data) this.data.add(new BigDecimal(d));
-        return this;
-    }
-
-    public RadarChartDataset addData(int... data) {
-        for (int d : data) this.data.add(new BigDecimal(d));
         return this;
     }
 

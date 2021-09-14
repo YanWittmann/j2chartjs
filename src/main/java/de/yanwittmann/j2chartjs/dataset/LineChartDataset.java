@@ -5,12 +5,11 @@ import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 import java.awt.*;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
-public class LineChartDataset extends ChartDataset<LineChartDataset, BigDecimal> {
+public class LineChartDataset extends ChartDataset<LineChartDataset, Number> {
 
     // general data
     private String label;
@@ -18,7 +17,7 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, BigDecimal>
     private String yAxisID;
     private String stack;
     private String indexAxis;
-    private BigDecimal base;
+    private Number base;
 
     // point styling
     /**
@@ -102,7 +101,7 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, BigDecimal>
      * Bézier curve tension of the line. Set to 0 to draw straightlines. This option is ignored if monotone cubic interpolation is used.<br>
      * 0 - 1
      */
-    private BigDecimal tension;
+    private Number tension;
     /**
      * If false, the line is not drawn for this dataset.
      */
@@ -161,21 +160,21 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, BigDecimal>
         return this;
     }
 
-    public BigDecimal getBase() {
+    public Number getBase() {
         return base;
     }
 
     public LineChartDataset setBase(int base) {
-        this.base = new BigDecimal(base);
+        this.base = base;
         return this;
     }
 
     public LineChartDataset setBase(double base) {
-        this.base = new BigDecimal(base);
+        this.base = base;
         return this;
     }
 
-    public LineChartDataset setBase(BigDecimal base) {
+    public LineChartDataset setBase(Number base) {
         this.base = base;
         return this;
     }
@@ -291,17 +290,17 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, BigDecimal>
         return this;
     }
 
-    public BigDecimal getTension() {
+    public Number getTension() {
         return tension;
     }
 
     public LineChartDataset setTension(double tension) {
-        this.tension = new BigDecimal(tension);
+        this.tension = tension;
         return this;
     }
 
     public LineChartDataset setTension(int tension) {
-        this.tension = new BigDecimal(tension);
+        this.tension = tension;
         return this;
     }
 
@@ -329,27 +328,6 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, BigDecimal>
 
     public LineChartDataset setFill(ChartFill fill) {
         this.fill = fill;
-        return this;
-    }
-
-    public LineChartDataset setData(int... data) {
-        clearData();
-        for (int d : data) this.data.add(new BigDecimal(d));
-        return this;
-    }
-
-    public LineChartDataset setData(double... data) {
-        clearData();
-        return addData(data);
-    }
-
-    public LineChartDataset addData(double... data) {
-        for (double d : data) this.data.add(new BigDecimal(d));
-        return this;
-    }
-
-    public LineChartDataset addData(int... data) {
-        for (int d : data) this.data.add(new BigDecimal(d));
         return this;
     }
 

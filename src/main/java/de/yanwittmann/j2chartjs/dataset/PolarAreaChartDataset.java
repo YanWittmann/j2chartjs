@@ -4,12 +4,11 @@ import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 import java.awt.*;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
-public class PolarAreaChartDataset extends ChartDataset<PolarAreaChartDataset, BigDecimal> {
+public class PolarAreaChartDataset extends ChartDataset<PolarAreaChartDataset, Number> {
 
     private String label;
 
@@ -211,27 +210,6 @@ public class PolarAreaChartDataset extends ChartDataset<PolarAreaChartDataset, B
     public PolarAreaChartDataset addBorderAlign(String... alignments) {
         borderAlign = Util.initializeListIfNull(borderAlign);
         borderAlign.addAll(Arrays.asList(alignments));
-        return this;
-    }
-
-    public PolarAreaChartDataset setData(int... data) {
-        clearData();
-        for (int d : data) this.data.add(new BigDecimal(d));
-        return this;
-    }
-
-    public PolarAreaChartDataset setData(double... data) {
-        clearData();
-        return addData(data);
-    }
-
-    public PolarAreaChartDataset addData(double... data) {
-        for (double d : data) this.data.add(new BigDecimal(d));
-        return this;
-    }
-
-    public PolarAreaChartDataset addData(int... data) {
-        for (int d : data) this.data.add(new BigDecimal(d));
         return this;
     }
 

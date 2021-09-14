@@ -253,11 +253,6 @@ public class BubbleChartDataset extends ChartDataset<BubbleChartDataset, BubbleC
         return this;
     }
 
-    public BubbleChartDataset addData(BubbleChartDatapoint... datapoint) {
-        this.data.addAll(Arrays.asList(datapoint));
-        return this;
-    }
-
     @Override
     public JSONObject toJson() {
         JSONObject datasetJson = new JSONObject();

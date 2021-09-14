@@ -20,8 +20,8 @@ public abstract class ChartData<T, DT, D> {
     protected List<String> labels = new ArrayList<>();
     protected List<ChartDataset<DT, D>> datasets = new ArrayList<>();
 
-    public T addDataset(ChartDataset<DT, D>... dataset) {
-        datasets.addAll(Arrays.asList(dataset));
+    public T addDataset(ChartDataset<DT, D>... datasets) {
+        this.datasets.addAll(Arrays.asList(datasets));
         return (T) this;
     }
 
@@ -40,8 +40,19 @@ public abstract class ChartData<T, DT, D> {
         return (T) this;
     }
 
-    public T addLabels(String... label) {
-        this.labels.addAll(Arrays.asList(label));
+    public T setLabels(String... labels) {
+        this.labels.clear();
+        this.labels.addAll(Arrays.asList(labels));
+        return (T) this;
+    }
+
+    public T addLabels(Collection<String> labels) {
+        this.labels.addAll(labels);
+        return (T) this;
+    }
+
+    public T addLabels(String... labels) {
+        this.labels.addAll(Arrays.asList(labels));
         return (T) this;
     }
 

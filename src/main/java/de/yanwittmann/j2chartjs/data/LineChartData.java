@@ -4,9 +4,7 @@ import de.yanwittmann.j2chartjs.dataset.ChartDataset;
 import de.yanwittmann.j2chartjs.dataset.LineChartDataset;
 import de.yanwittmann.j2chartjs.preset.ChartColors;
 
-import java.math.BigDecimal;
-
-public class LineChartData extends ChartData<LineChartData, LineChartDataset, BigDecimal> {
+public class LineChartData extends ChartData<LineChartData, LineChartDataset, Number> {
     @Override
     public LineChartData applyDefaultStylePerDatapoint() {
         return applyDefaultStylePerDataset();
@@ -15,7 +13,7 @@ public class LineChartData extends ChartData<LineChartData, LineChartDataset, Bi
     @Override
     public LineChartData applyDefaultStylePerDataset() {
         int colorIndex = 0;
-        for (ChartDataset<LineChartDataset, BigDecimal> dataset : datasets) {
+        for (ChartDataset<LineChartDataset, Number> dataset : datasets) {
             if (dataset instanceof LineChartDataset) {
                 ((LineChartDataset) dataset)
                         .setBackgroundColor(ChartColors.BACKGROUNDS.get(colorIndex % ChartColors.BACKGROUNDS.size()))

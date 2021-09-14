@@ -1,6 +1,8 @@
 package de.yanwittmann.util;
 
+import de.yanwittmann.j2chartjs.chart.MixedChart;
 import de.yanwittmann.j2chartjs.data.ChartData;
+import de.yanwittmann.j2chartjs.data.MixedChartData;
 import de.yanwittmann.j2chartjs.options.AbstractChartOption;
 import de.yanwittmann.j2chartjs.options.animation.AnimationEasingType;
 import org.json.JSONArray;
@@ -8,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.awt.*;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,14 +76,18 @@ public abstract class Util {
             return convertColorToJs((Color) object);
         } else if (object instanceof Double) {
             return roundToDecimals((Double) object, 3);
-        } else if (object instanceof BigDecimal) {
-            return roundToDecimals(((BigDecimal) object).doubleValue(), 3);
+        } else if (object instanceof Number) {
+            return roundToDecimals(((Number) object).doubleValue(), 3);
         } else if (object instanceof JSONObject || object instanceof JSONArray) {
             return object;
         } else if (object instanceof AbstractChartOption) {
             return ((AbstractChartOption) object).toJson();
         } else if (object instanceof ChartData) {
             return ((ChartData) object).toJson();
+        } else if (object instanceof MixedChartData) {
+            return ((MixedChartData) object).toJson();
+        } else if (object instanceof MixedChart) {
+            return ((MixedChart) object).toJson();
         } else if (object instanceof AnimationEasingType) {
             return ((AnimationEasingType) object).getKey();
         }

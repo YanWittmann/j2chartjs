@@ -4,12 +4,10 @@ import de.yanwittmann.j2chartjs.dataset.ChartDataset;
 import de.yanwittmann.j2chartjs.dataset.DoughnutPieChartDataset;
 import de.yanwittmann.j2chartjs.preset.ChartColors;
 
-import java.math.BigDecimal;
-
-public class DoughnutPieChartData extends ChartData<DoughnutPieChartData, DoughnutPieChartDataset, BigDecimal> {
+public class DoughnutPieChartData extends ChartData<DoughnutPieChartData, DoughnutPieChartDataset, Number> {
     @Override
     public DoughnutPieChartData applyDefaultStylePerDatapoint() {
-        for (ChartDataset<DoughnutPieChartDataset, BigDecimal> dataset : datasets) {
+        for (ChartDataset<DoughnutPieChartDataset, Number> dataset : datasets) {
             if (dataset instanceof DoughnutPieChartDataset) {
                 ((DoughnutPieChartDataset) dataset)
                         .setBackgroundColor(ChartColors.BACKGROUNDS)
@@ -22,7 +20,7 @@ public class DoughnutPieChartData extends ChartData<DoughnutPieChartData, Doughn
     @Override
     public DoughnutPieChartData applyDefaultStylePerDataset() {
         int colorIndex = 0;
-        for (ChartDataset<DoughnutPieChartDataset, BigDecimal> dataset : datasets) {
+        for (ChartDataset<DoughnutPieChartDataset, Number> dataset : datasets) {
             if (dataset instanceof DoughnutPieChartDataset) {
                 ((DoughnutPieChartDataset) dataset)
                         .addBackgroundColor(ChartColors.BACKGROUNDS.get(colorIndex % ChartColors.BACKGROUNDS.size()))

@@ -4,12 +4,11 @@ import de.yanwittmann.util.Util;
 import org.json.JSONObject;
 
 import java.awt.*;
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
 @SuppressWarnings("unchecked")
-public class DoughnutPieChartDataset extends ChartDataset<DoughnutPieChartDataset, BigDecimal> {
+public class DoughnutPieChartDataset extends ChartDataset<DoughnutPieChartDataset, Number> {
 
     private String label;
 
@@ -264,27 +263,6 @@ public class DoughnutPieChartDataset extends ChartDataset<DoughnutPieChartDatase
     public DoughnutPieChartDataset addHoverOffset(Integer... offsets) {
         hoverOffset = Util.initializeListIfNull(hoverOffset);
         hoverOffset.addAll(Arrays.asList(offsets));
-        return this;
-    }
-
-    public DoughnutPieChartDataset setData(int... data) {
-        clearData();
-        for (int d : data) this.data.add(new BigDecimal(d));
-        return this;
-    }
-
-    public DoughnutPieChartDataset setData(double... data) {
-        clearData();
-        return addData(data);
-    }
-
-    public DoughnutPieChartDataset addData(double... data) {
-        for (double d : data) this.data.add(new BigDecimal(d));
-        return this;
-    }
-
-    public DoughnutPieChartDataset addData(int... data) {
-        for (int d : data) this.data.add(new BigDecimal(d));
         return this;
     }
 

@@ -4,16 +4,16 @@ import de.yanwittmann.j2chartjs.dataset.BarChartDataset;
 import de.yanwittmann.j2chartjs.dataset.ChartDataset;
 import de.yanwittmann.j2chartjs.preset.ChartColors;
 
-import java.math.BigDecimal;
-
-public class BarChartData extends ChartData<BarChartData, BarChartDataset, BigDecimal> {
+public class BarChartData extends ChartData<BarChartData, BarChartDataset, Number> {
     @Override
     public BarChartData applyDefaultStylePerDatapoint() {
-        for (ChartDataset<BarChartDataset, BigDecimal> dataset : datasets) {
+        for (ChartDataset<BarChartDataset, Number> dataset : datasets) {
             if (dataset instanceof BarChartDataset) {
                 ((BarChartDataset) dataset)
                         .setBackgroundColor(ChartColors.BACKGROUNDS)
-                        .setBorderColor(ChartColors.BORDERS);
+                        .setBorderColor(ChartColors.BORDERS)
+                        .addHoverBorderWidth(2)
+                        .addBorderWidth(1);
             }
         }
         return this;
@@ -22,11 +22,13 @@ public class BarChartData extends ChartData<BarChartData, BarChartDataset, BigDe
     @Override
     public BarChartData applyDefaultStylePerDataset() {
         int colorIndex = 0;
-        for (ChartDataset<BarChartDataset, BigDecimal> dataset : datasets) {
+        for (ChartDataset<BarChartDataset, Number> dataset : datasets) {
             if (dataset instanceof BarChartDataset) {
                 ((BarChartDataset) dataset)
                         .addBackgroundColor(ChartColors.BACKGROUNDS.get(colorIndex % ChartColors.BACKGROUNDS.size()))
-                        .addBorderColor(ChartColors.BORDERS.get(colorIndex % ChartColors.BORDERS.size()));
+                        .addBorderColor(ChartColors.BORDERS.get(colorIndex % ChartColors.BORDERS.size()))
+                        .addHoverBorderWidth(2)
+                        .addBorderWidth(1);
                 colorIndex++;
             }
         }
