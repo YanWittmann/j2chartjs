@@ -1,6 +1,7 @@
-# j2ChartJs
+![](img\j2ChartJs_small.png)
 
-j2ChartJs allows generating configuration objects for the fantastic **[Chart.js](http://www.chartjs.org/)** JavaScript
+**j2ChartJs**
+allows generating configuration objects for the fantastic **[Chart.js](http://www.chartjs.org/)** JavaScript
 library from your Java code.
 
 - **[Project Documentation](md/doc.md)**
