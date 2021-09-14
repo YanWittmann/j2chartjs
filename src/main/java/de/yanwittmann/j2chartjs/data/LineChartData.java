@@ -17,7 +17,8 @@ public class LineChartData extends ChartData<LineChartData, LineChartDataset, Nu
             if (dataset instanceof LineChartDataset) {
                 ((LineChartDataset) dataset)
                         .setBackgroundColor(ChartColors.BACKGROUNDS.get(colorIndex % ChartColors.BACKGROUNDS.size()))
-                        .setBorderColor(ChartColors.BORDERS.get(colorIndex % ChartColors.BORDERS.size()));
+                        .setBorderColor(ChartColors.BORDERS.get(colorIndex % ChartColors.BORDERS.size()))
+                        .setTension(0.15);
                 colorIndex++;
             }
         }

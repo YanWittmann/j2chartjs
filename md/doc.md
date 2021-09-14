@@ -1,9 +1,9 @@
 # Documentation
 
 **j2ChartJs** provides almost every functionality specified in and follows the structure of the
-[official ChartJs 3.x documentation](https://www.chartjs.org/docs/latest/).
+**[official ChartJs 3.x documentation](https://www.chartjs.org/docs/latest/)**.
 
-Also check out the [examples](example.md) after reading through this documentation.
+Also check out the **[examples](example.md)** after reading through this documentation.
 
 - Creating a chart
   - General Structure
@@ -70,7 +70,7 @@ DoughnutPieChartData data = new DoughnutPieChartData()
 ### Specifying more options
 
 A wide variety of options can be set for the charts. The specification for all of them can be found on the
-[official ChartJs 3.x documentation](https://www.chartjs.org/docs/latest/configuration/).
+**[official ChartJs 3.x documentation](https://www.chartjs.org/docs/latest/configuration/)**.
 
 Here is a list of the most frequently used ones:
 
@@ -270,8 +270,16 @@ new QuickScatterChart()
   for (int i = 0; i < 5; i++)
     dataset1.addData(new ScatterChartDatapoint(random.nextInt(100), random.nextInt(100)));
   ```
+- To fill the area below a line chart, use the `ChartFill` class, where you can specify the color for above and below
+  the line. Make sure to set the `target` to `origin`.
+  ```java
+  new LineChartDataset()
+    .setFill(new ChartFill()
+      .setBelow(ChartColors.BACKGROUND_RED)
+      .setTarget("origin"));
+  ```
 
 ## Further notes
 
 These are obviously not even half of the features you can use to style and configure your chart.  
-Also take a look at the [examples](example.md).
+Also take a look at the **[examples](example.md)**.
