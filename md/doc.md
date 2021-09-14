@@ -5,7 +5,17 @@
 
 Also check out the [examples](example.md) after reading through this documentation.
 
-## General structure
+- Creating a chart
+  - General Structure
+  - Creating Data
+  - Collecting the data
+  - Specifying more options
+  - Creating the chart
+- Quick Charts
+- Other useful tips & tricks
+
+## Creating a chart
+### General structure
 
 The hierarchy of objects is the following:
 
@@ -33,13 +43,13 @@ BarChartDataset dataset = new BarChartDataset()
 Example for `BubbleChart`:
 
 ```java
-BubbleChartDataset dataset=new BubbleChartDataset()
-        .setLabel("Points in time and space")
-        .setBackgroundColor(ChartColors.BACKGROUNDS)
-        .setBorderColor(ChartColors.BORDERS)
-        .addPointStyle("star");
-        for(int i=0;i< 500;i++)
-        dataset.addData(new BubbleChartDatapoint(random.nextInt(100),random.nextInt(100),random.nextInt(30)+10));
+BubbleChartDataset dataset = new BubbleChartDataset()
+  .setLabel("Points in time and space")
+  .setBackgroundColor(ChartColors.BACKGROUNDS)
+  .setBorderColor(ChartColors.BORDERS)
+  .addPointStyle("star");
+for(int i = 0; i < 500; i++)
+  dataset.addData(new BubbleChartDatapoint(random.nextInt(100),random.nextInt(100),random.nextInt(30)+10));
 ```
 
 As seen above, the data/options/chart objects can quickly be further configured via chained API calls.
@@ -53,8 +63,8 @@ Example with `DoughnutPieChartData`:
 
 ```java
 DoughnutPieChartData data = new DoughnutPieChartData()
-    .addDataset(dataset1, dataset2)
-    .addLabels("First", "Second", "Third");
+  .addDataset(dataset1, dataset2)
+  .addLabels("First", "Second", "Third");
 ```
 
 ### Specifying more options
@@ -164,6 +174,45 @@ var ctx = document.getElementById('canvasId');
 new Chart(ctx, jsonChartConfiguration);
 ```
 
+## Quick Charts
+
+Quick charts allow you to create charts with default configurations so that you can concentrate on what matters:
+**Visualizing your data**.
+
+Every chart type has it's `QuickChart` variant. To add data to it, simply use the `addDataset(label, data)`/`addDataset(data)` function.
+This will automatically create a dataset with (or without) the given label.  
+Use `addLabels(labels)` to add labels to the individual data points.
+
+Here's an example with a bar chart:
+```java
+new QuickBarChart()
+  .addDataset("Data 1", 10, 20, 30)
+  .addDataset("Data 2", 34, 22, 14)
+  .addLabels("Point 1", "Point 2", "Point 3")
+  .setTitle("Quick chart")
+  .setGridLinesVisible(false)
+  .setBeginAtZero(true)
+  .toJson();
+```
+
+Since the data types of scatter and bubble charts are a bit more complex, you will have to define
+`QuickScatterChartDataset` and `QuickScatterChartDataset` objects that contain the `x y (r)` data of the datapoints.  
+Here's an example with a scatter chart:
+```java
+new QuickScatterChart()
+  .addDatasets("Data 1", new QuickScatterChartDataset()
+    .addX(10, 20, 30)
+    .addY(30, 20, 10))
+  .addDatasets("Data 2", new QuickScatterChartDataset()
+    .addX(43, 24, 14)
+    .addY(5, 32, 23))
+  .addLabels("Point 1", "Point 2", "Point 3")
+  .setTitle("Quick chart")
+  .setShowLine(true)
+  .setPointWidth(5)
+  .toJson();
+```
+
 ## Other useful tips & tricks
 
 - To apply default colors to the chart dataset entries, use `applyDefaultStylePerDatapoint()` or
@@ -211,6 +260,15 @@ new Chart(ctx, jsonChartConfiguration);
 
   MixedChart mixedChart = new MixedChart()
     .setChartData(mixedChartData);
+  ```
+- You can connect the data points in a scatter chart by setting the `showLine` property to `true`.
+  ```java
+  Random random = new Random();
+  ScatterChartDataset dataset1 = new ScatterChartDataset()
+    .setLabel("Points in time and space p.1")
+    .setShowLine(true);
+  for (int i = 0; i < 5; i++)
+    dataset1.addData(new ScatterChartDatapoint(random.nextInt(100), random.nextInt(100)));
   ```
 
 ## Further notes
