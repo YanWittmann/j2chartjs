@@ -196,7 +196,7 @@ new QuickBarChart()
 ```
 
 Since the data types of scatter and bubble charts are a bit more complex, you will have to define
-`QuickScatterChartDataset` and `QuickScatterChartDataset` objects that contain the `x y (r)` data of the datapoints.  
+`QuickScatterChartDataset` and `QuickBubbleChartDataset` objects that contain the `x y (r)` data of the datapoints.  
 Here's an example with a scatter chart:
 ```java
 new QuickScatterChart()
