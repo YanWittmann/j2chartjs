@@ -7,7 +7,7 @@ library from your Java code.
 - **[More examples](md/example.md)**
 
 ## Sample usage
-#### Java
+**Java**:
 Build any of the available chart types and export to json.
 ```Java
 BarChartDataset dataset = new BarChartDataset()
@@ -31,14 +31,14 @@ BarChart chart = new BarChart()
 JSONObject jsonChartConfiguration = chart.toJson();
 ```
 
-#### HTML
+**HTML**:
 Link to a ChartJs script with version >= 3.0 and define a canvas.
 ```html
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1/dist/chart.min.js"></script>
 <canvas id="canvasId" style="border: gray 2px solid;">
 ```
 
-#### JavaScript
+**JavaScript**:
 Load the exported JSON configuration together with the canvas element into a chart object.
 ```JavaScript
 var ctx = document.getElementById('canvasId');
@@ -47,8 +47,8 @@ new Chart(ctx, jsonChartConfiguration);
 
 ### Quick Charts
 Quick charts take away a lot of the configuration overhead and let you focus on your data.  
+**Java**:
 Also export to JSON when the chart is ready.
-#### Java
 ```Java
 new QuickBarChart()
     .addDataset("Data 1", 10, 20, 30)
