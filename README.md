@@ -7,6 +7,16 @@ library from your Java code.
 - **[Project Documentation](md/doc.md)**
 - **[More examples](md/example.md)**
 
+## Maven Central
+
+```xml
+<dependency>
+  <groupId>de.yanwittmann</groupId>
+  <artifactId>j2chartjs</artifactId>
+  <version>1.0</version>
+</dependency>
+```
+
 ## Sample usage
 **Java**:
 Build any of the available chart types and export to json.
@@ -65,10 +75,6 @@ new QuickBarChart()
 
 Supports only ChartJs `3.x`.  
 Might work for older versions but not all features will be supported there.
-
-## Maven Central
-
-_// TODO, also move this all the way up_
 
 ## License
 
