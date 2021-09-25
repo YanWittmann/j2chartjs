@@ -52,7 +52,7 @@ System.out.println(
     .setTitle("Quick chart")
     .setGridLinesVisible(false)
     .setBeginAtZero(true)
-    .toJson()
+    .build()
 );
 System.out.println(
   new QuickLineChart()
@@ -63,7 +63,7 @@ System.out.println(
     .setBeginAtZero(true)
     .setIndexMode(true)
     .setTension(0.2)
-    .toJson()
+    .build()
 );
 System.out.println(
   new QuickBubbleChart()
@@ -77,7 +77,7 @@ System.out.println(
       .addR(10, 30, 20))
     .addLabels("Point 1", "Point 2", "Point 3")
     .setTitle("Quick chart")
-    .toJson()
+    .build()
 );
 System.out.println(
   new QuickScatterChart()
@@ -91,7 +91,7 @@ System.out.println(
     .setTitle("Quick chart")
     .setShowLine(true)
     .setPointWidth(5)
-    .toJson()
+    .build()
 );
 System.out.println(
   new QuickDoughnutChart()
@@ -99,7 +99,7 @@ System.out.println(
     .addDataset("Data 2", 34, 22, 14)
     .addLabels("Point 1", "Point 2", "Point 3")
     .setTitle("Quick chart")
-    .toJson()
+    .build()
 );
 System.out.println(
   new QuickPolarAreaChart()
@@ -108,7 +108,7 @@ System.out.println(
     .addLabels("Point 1", "Point 2", "Point 3")
     .setTitle("Quick chart")
     .setIndexMode(true)
-    .toJson()
+    .build()
 );
 System.out.println(
   new QuickRadarChart()
@@ -118,7 +118,7 @@ System.out.println(
     .setTitle("Quick chart")
     .setIndexMode(true)
     .setTension(0.1)
-    .toJson()
+    .build()
 );
 ```
 

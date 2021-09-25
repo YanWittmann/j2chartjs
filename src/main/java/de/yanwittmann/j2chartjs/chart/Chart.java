@@ -40,7 +40,7 @@ public abstract class Chart<C, T, DT, D> {
         return (C) this;
     }
 
-    public JSONObject toJson() {
+    private JSONObject toJson() {
         JSONObject chartDefinition = new JSONObject();
         Util.addToJson(chartDefinition, "type", typeIdentifier);
         Util.addToJson(chartDefinition, "data", chartData);
@@ -48,8 +48,16 @@ public abstract class Chart<C, T, DT, D> {
         return chartDefinition;
     }
 
+    private String prepareBuild() {
+        return toJson().toString();
+    }
+
+    public String build() {
+        return Util.finalizeBuildString(prepareBuild());
+    }
+
     @Override
     public String toString() {
-        return toJson().toString();
+        return build();
     }
 }

@@ -3,7 +3,6 @@ package de.yanwittmann.j2chartjs.quick;
 import de.yanwittmann.j2chartjs.chart.BarChart;
 import de.yanwittmann.j2chartjs.data.BarChartData;
 import de.yanwittmann.j2chartjs.dataset.BarChartDataset;
-import org.json.JSONObject;
 
 import java.util.Collection;
 
@@ -34,10 +33,10 @@ public class QuickBarChart extends QuickChart<QuickBarChart, BarChartData> {
     }
 
     @Override
-    public JSONObject toJson() {
+    public String build() {
         return new BarChart()
                 .setChartOptions(chartOptions)
                 .setChartData(chartData.applyDefaultStylePerDataset())
-                .toJson();
+                .build();
     }
 }

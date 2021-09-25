@@ -4,7 +4,6 @@ import de.yanwittmann.j2chartjs.chart.LineChart;
 import de.yanwittmann.j2chartjs.data.LineChartData;
 import de.yanwittmann.j2chartjs.dataset.ChartDataset;
 import de.yanwittmann.j2chartjs.dataset.LineChartDataset;
-import org.json.JSONObject;
 
 import java.util.Collection;
 
@@ -49,10 +48,10 @@ public class QuickLineChart extends QuickChart<QuickLineChart, LineChartData> {
     }
 
     @Override
-    public JSONObject toJson() {
+    public String build() {
         return new LineChart()
                 .setChartOptions(chartOptions)
                 .setChartData(chartData.applyDefaultStylePerDataset())
-                .toJson();
+                .build();
     }
 }

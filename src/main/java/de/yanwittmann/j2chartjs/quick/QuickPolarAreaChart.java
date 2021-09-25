@@ -3,7 +3,6 @@ package de.yanwittmann.j2chartjs.quick;
 import de.yanwittmann.j2chartjs.chart.PolarAreaChart;
 import de.yanwittmann.j2chartjs.data.PolarAreaChartData;
 import de.yanwittmann.j2chartjs.dataset.PolarAreaChartDataset;
-import org.json.JSONObject;
 
 import java.util.Collection;
 
@@ -34,10 +33,10 @@ public class QuickPolarAreaChart extends QuickChart<QuickPolarAreaChart, PolarAr
     }
 
     @Override
-    public JSONObject toJson() {
+    public String build() {
         return new PolarAreaChart()
                 .setChartOptions(chartOptions)
                 .setChartData(chartData.applyDefaultStylePerDatapoint())
-                .toJson();
+                .build();
     }
 }

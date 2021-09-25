@@ -3,7 +3,6 @@ package de.yanwittmann.j2chartjs.quick;
 import de.yanwittmann.j2chartjs.chart.BubbleChart;
 import de.yanwittmann.j2chartjs.data.BubbleChartData;
 import de.yanwittmann.j2chartjs.dataset.BubbleChartDataset;
-import org.json.JSONObject;
 
 import java.util.Collection;
 
@@ -42,10 +41,10 @@ public class QuickBubbleChart extends QuickChart<QuickBubbleChart, BubbleChartDa
     }
 
     @Override
-    public JSONObject toJson() {
+    public String build() {
         return new BubbleChart()
                 .setChartOptions(chartOptions)
                 .setChartData(chartData.applyDefaultStylePerDataset())
-                .toJson();
+                .build();
     }
 }

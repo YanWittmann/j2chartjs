@@ -20,7 +20,6 @@ import de.yanwittmann.j2chartjs.options.scale.ScaleGridOption;
 import de.yanwittmann.j2chartjs.options.scale.ScaleTitleOption;
 import de.yanwittmann.j2chartjs.preset.ChartColors;
 import de.yanwittmann.j2chartjs.type.ChartFont;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
@@ -47,7 +46,7 @@ public class ExamplesTest {
                 .setChartOptions(options)
                 .setChartData(data);
 
-        JSONObject chartConfiguration = chart.toJson();
+        String chartConfiguration = chart.build();
     }
 
     @Test
@@ -179,6 +178,6 @@ public class ExamplesTest {
                 .setChartData(barChartData)
                 .setChartOptions(options);
 
-        JSONObject chartConfiguration = barChart.toJson();
+        String chartConfiguration = barChart.build();
     }
 }

@@ -8,7 +8,6 @@ import de.yanwittmann.j2chartjs.options.plugins.title.TitleOption;
 import de.yanwittmann.j2chartjs.options.scale.LinearScaleOption;
 import de.yanwittmann.j2chartjs.options.scale.RadialScaleOption;
 import de.yanwittmann.j2chartjs.options.scale.ScaleGridOption;
-import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -130,5 +129,10 @@ public abstract class QuickChart<T extends QuickChart<?, ?>, D extends ChartData
         return (T) this;
     }
 
-    public abstract JSONObject toJson();
+    public abstract String build();
+
+    @Override
+    public String toString() {
+        return build();
+    }
 }

@@ -39,7 +39,7 @@ BarChart chart = new BarChart()
     .setChartOptions(options)
     .setChartData(data);
 
-JSONObject jsonChartConfiguration = chart.toJson();
+JSONObject jsonChartConfiguration = chart.build();
 ```
 
 **HTML**:
@@ -68,7 +68,7 @@ new QuickBarChart()
     .setTitle("Quick chart")
     .setGridLinesVisible(false)
     .setBeginAtZero(true)
-    .toJson();
+    .build();
 ```
 
 ## Compatibility
