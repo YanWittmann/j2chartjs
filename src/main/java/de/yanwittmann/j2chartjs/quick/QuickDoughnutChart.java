@@ -3,7 +3,6 @@ package de.yanwittmann.j2chartjs.quick;
 import de.yanwittmann.j2chartjs.chart.DoughnutChart;
 import de.yanwittmann.j2chartjs.data.DoughnutPieChartData;
 import de.yanwittmann.j2chartjs.dataset.DoughnutPieChartDataset;
-import org.json.JSONObject;
 
 import java.util.Collection;
 
@@ -34,10 +33,10 @@ public class QuickDoughnutChart extends QuickChart<QuickDoughnutChart, DoughnutP
     }
 
     @Override
-    public JSONObject toJson() {
+    public String build() {
         return new DoughnutChart()
                 .setChartOptions(chartOptions)
                 .setChartData(chartData.applyDefaultStylePerDatapoint())
-                .toJson();
+                .build();
     }
 }

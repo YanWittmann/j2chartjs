@@ -4,7 +4,6 @@ import de.yanwittmann.j2chartjs.chart.RadarChart;
 import de.yanwittmann.j2chartjs.data.RadarChartData;
 import de.yanwittmann.j2chartjs.dataset.ChartDataset;
 import de.yanwittmann.j2chartjs.dataset.RadarChartDataset;
-import org.json.JSONObject;
 
 import java.util.Collection;
 
@@ -42,10 +41,10 @@ public class QuickRadarChart extends QuickChart<QuickRadarChart, RadarChartData>
     }
 
     @Override
-    public JSONObject toJson() {
+    public String build() {
         return new RadarChart()
                 .setChartOptions(chartOptions)
                 .setChartData(chartData.applyDefaultStylePerDatapoint())
-                .toJson();
+                .build();
     }
 }

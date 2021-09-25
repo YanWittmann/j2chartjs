@@ -166,7 +166,7 @@ BarChart chart = new BarChart()
     .setChartData(data);
   ```
 
-To export the configuration as `JSONObject`, use `.toJson()` on the chart object. This JSON can now be used to
+To export the configuration as `String`, use `.build()` on the chart object. This String can now be used to
 initialize the JS chart:
 
 ```JavaScript
@@ -192,7 +192,7 @@ new QuickBarChart()
   .setTitle("Quick chart")
   .setGridLinesVisible(false)
   .setBeginAtZero(true)
-  .toJson();
+  .build();
 ```
 
 Since the data types of scatter and bubble charts are a bit more complex, you will have to define
@@ -210,7 +210,7 @@ new QuickScatterChart()
   .setTitle("Quick chart")
   .setShowLine(true)
   .setPointWidth(5)
-  .toJson();
+  .build();
 ```
 
 ## Other useful tips & tricks

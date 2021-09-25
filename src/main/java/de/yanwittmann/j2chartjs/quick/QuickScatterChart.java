@@ -5,7 +5,6 @@ import de.yanwittmann.j2chartjs.data.ScatterChartData;
 import de.yanwittmann.j2chartjs.datapoint.ScatterChartDatapoint;
 import de.yanwittmann.j2chartjs.dataset.ChartDataset;
 import de.yanwittmann.j2chartjs.dataset.ScatterChartDataset;
-import org.json.JSONObject;
 
 import java.util.Collection;
 
@@ -58,10 +57,10 @@ public class QuickScatterChart extends QuickChart<QuickScatterChart, ScatterChar
     }
 
     @Override
-    public JSONObject toJson() {
+    public String build() {
         return new ScatterChart()
                 .setChartOptions(chartOptions)
                 .setChartData(chartData.applyDefaultStylePerDataset())
-                .toJson();
+                .build();
     }
 }

@@ -28,6 +28,20 @@ import java.util.Random;
 public class GenerateTest {
 
     @Test
+    public void repetitiveColorsTest() {
+        LineChartDataset dataset = new LineChartDataset().setBorderColor(new Color(140, 140, 140, 107)).setLabel("Dataset awesome");
+        LineChartData data = new LineChartData().addDataset(dataset);
+        for (int i = 0; i < 100; i++) {
+            dataset.addData(new Random().nextInt(10 + 86));
+            dataset.addPointBackgroundColor(new Random().nextInt(2) == 1 ? Color.RED : Color.BLUE);
+            dataset.addPointRadius(1 + new Random().nextInt(3));
+            data.addLabels("entry " + i);
+        }
+        ChartOptions options = new ChartOptions().setResponsive(false);
+        System.out.println(new LineChart().setChartOptions(options).setChartData(data).build());
+    }
+
+    @Test
     public void quickChartTest() {
         System.out.println(
                 new QuickBarChart()
@@ -37,7 +51,7 @@ public class GenerateTest {
                         .setTitle("Quick chart")
                         .setGridLinesVisible(false)
                         .setBeginAtZero(true)
-                        .toJson()
+                        .build()
         );
         System.out.println(
                 new QuickLineChart()
@@ -48,7 +62,7 @@ public class GenerateTest {
                         .setBeginAtZero(true)
                         .setIndexMode(true)
                         .setTension(0.2)
-                        .toJson()
+                        .build()
         );
         System.out.println(
                 new QuickBubbleChart()
@@ -62,7 +76,7 @@ public class GenerateTest {
                                 .addR(10, 30, 20))
                         .addLabels("Point 1", "Point 2", "Point 3")
                         .setTitle("Quick chart")
-                        .toJson()
+                        .build()
         );
         System.out.println(
                 new QuickScatterChart()
@@ -76,7 +90,7 @@ public class GenerateTest {
                         .setTitle("Quick chart")
                         .setShowLine(true)
                         .setPointWidth(5)
-                        .toJson()
+                        .build()
         );
         System.out.println(
                 new QuickDoughnutChart()
@@ -84,7 +98,7 @@ public class GenerateTest {
                         .addDataset("Data 2", 34, 22, 14)
                         .addLabels("Point 1", "Point 2", "Point 3")
                         .setTitle("Quick chart")
-                        .toJson()
+                        .build()
         );
         System.out.println(
                 new QuickPolarAreaChart()
@@ -93,7 +107,7 @@ public class GenerateTest {
                         .addLabels("Point 1", "Point 2", "Point 3")
                         .setTitle("Quick chart")
                         .setIndexMode(true)
-                        .toJson()
+                        .build()
         );
         System.out.println(
                 new QuickRadarChart()
@@ -103,7 +117,7 @@ public class GenerateTest {
                         .setTitle("Quick chart")
                         .setIndexMode(true)
                         .setTension(0.1)
-                        .toJson()
+                        .build()
         );
     }
 
