@@ -19,19 +19,19 @@ public class ChartPointStyling extends AbstractChartOption {
     /**
      * The width of the point border in pixels.
      */
-    private Integer pointBorderWidth;
+    private Number pointBorderWidth;
     /**
      * The pixel size of the non-displayed point that reacts to mouse events.
      */
-    private Integer pointHitRadius;
+    private Number pointHitRadius;
     /**
      * The radius of the point shape. If set to 0, the point is not rendered.
      */
-    private Integer pointRadius;
+    private Number pointRadius;
     /**
      * The rotation of the point in degrees.
      */
-    private Integer pointRotation;
+    private Number pointRotation;
     /**
      * Style of the point.<ul>
      * <li>circle</li>
@@ -47,6 +47,69 @@ public class ChartPointStyling extends AbstractChartOption {
      * </ul>
      */
     private String pointStyle;
+
+    public Color getPointBackgroundColor() {
+        return pointBackgroundColor;
+    }
+
+    public ChartPointStyling setPointBackgroundColor(Color pointBackgroundColor) {
+        this.pointBackgroundColor = pointBackgroundColor;
+        return this;
+    }
+
+    public Color getPointBorderColor() {
+        return pointBorderColor;
+    }
+
+    public ChartPointStyling setPointBorderColor(Color pointBorderColor) {
+        this.pointBorderColor = pointBorderColor;
+        return this;
+    }
+
+    public Number getPointBorderWidth() {
+        return pointBorderWidth;
+    }
+
+    public ChartPointStyling setPointBorderWidth(Number pointBorderWidth) {
+        this.pointBorderWidth = pointBorderWidth;
+        return this;
+    }
+
+    public Number getPointHitRadius() {
+        return pointHitRadius;
+    }
+
+    public ChartPointStyling setPointHitRadius(Number pointHitRadius) {
+        this.pointHitRadius = pointHitRadius;
+        return this;
+    }
+
+    public Number getPointRadius() {
+        return pointRadius;
+    }
+
+    public ChartPointStyling setPointRadius(Number pointRadius) {
+        this.pointRadius = pointRadius;
+        return this;
+    }
+
+    public Number getPointRotation() {
+        return pointRotation;
+    }
+
+    public ChartPointStyling setPointRotation(Number pointRotation) {
+        this.pointRotation = pointRotation;
+        return this;
+    }
+
+    public String getPointStyle() {
+        return pointStyle;
+    }
+
+    public ChartPointStyling setPointStyle(String pointStyle) {
+        this.pointStyle = pointStyle;
+        return this;
+    }
 
     @Override
     public JSONObject toJson() {

@@ -27,19 +27,19 @@ public class RadarChartDataset extends ChartDataset<RadarChartDataset, Number> {
     /**
      * The width of the point border in pixels.
      */
-    private List<Integer> pointBorderWidth = null;
+    private List<Number> pointBorderWidth = null;
     /**
      * The pixel size of the non-displayed point that reacts to mouse events.
      */
-    private List<Integer> pointHitRadius = null;
+    private List<Number> pointHitRadius = null;
     /**
      * The radius of the point shape. If set to 0, the point is not rendered.
      */
-    private List<Integer> pointRadius = null;
+    private List<Number> pointRadius = null;
     /**
      * The rotation of the point in degrees.
      */
-    private List<Integer> pointRotation = null;
+    private List<Number> pointRotation = null;
     /**
      * Style of the point.<ul>
      * <li>circle</li>
@@ -66,11 +66,11 @@ public class RadarChartDataset extends ChartDataset<RadarChartDataset, Number> {
     /**
      * Border width of point when hovered.
      */
-    private List<Integer> pointHoverBorderWidth = null;
+    private List<Number> pointHoverBorderWidth = null;
     /**
      * The radius of the point when hovered.
      */
-    private List<Integer> pointHoverRadius = null;
+    private List<Number> pointHoverRadius = null;
 
     // line styling
     /**
@@ -92,7 +92,7 @@ public class RadarChartDataset extends ChartDataset<RadarChartDataset, Number> {
     /**
      * The line width (in pixels).
      */
-    private Integer borderWidth;
+    private Number borderWidth;
     /**
      * Bézier curve tension of the line. Set to 0 to draw straightlines. This option is ignored if monotone cubic interpolation is used.<br>
      * 0 - 1
@@ -141,25 +141,25 @@ public class RadarChartDataset extends ChartDataset<RadarChartDataset, Number> {
         return this;
     }
 
-    public RadarChartDataset addPointBorderWidth(Integer... widths) {
+    public RadarChartDataset addPointBorderWidth(Number... widths) {
         pointBorderWidth = Util.initializeListIfNull(pointBorderWidth);
         pointBorderWidth.addAll(Arrays.asList(widths));
         return this;
     }
 
-    public RadarChartDataset addPointHitRadius(Integer... radiuses) {
+    public RadarChartDataset addPointHitRadius(Number... radiuses) {
         pointHitRadius = Util.initializeListIfNull(pointHitRadius);
         pointHitRadius.addAll(Arrays.asList(radiuses));
         return this;
     }
 
-    public RadarChartDataset addPointRadius(Integer... radiuses) {
+    public RadarChartDataset addPointRadius(Number... radiuses) {
         pointRadius = Util.initializeListIfNull(pointRadius);
         pointRadius.addAll(Arrays.asList(radiuses));
         return this;
     }
 
-    public RadarChartDataset addPointRotation(Integer... rotations) {
+    public RadarChartDataset addPointRotation(Number... rotations) {
         pointRotation = Util.initializeListIfNull(pointRotation);
         pointRotation.addAll(Arrays.asList(rotations));
         return this;
@@ -183,13 +183,13 @@ public class RadarChartDataset extends ChartDataset<RadarChartDataset, Number> {
         return this;
     }
 
-    public RadarChartDataset addPointHoverBorderWidth(Integer... widths) {
+    public RadarChartDataset addPointHoverBorderWidth(Number... widths) {
         pointHoverBorderWidth = Util.initializeListIfNull(pointHoverBorderWidth);
         pointHoverBorderWidth.addAll(Arrays.asList(widths));
         return this;
     }
 
-    public RadarChartDataset addPointHoverRadius(Integer... radiuses) {
+    public RadarChartDataset addPointHoverRadius(Number... radiuses) {
         pointHoverRadius = Util.initializeListIfNull(pointHoverRadius);
         pointHoverRadius.addAll(Arrays.asList(radiuses));
         return this;
@@ -231,11 +231,11 @@ public class RadarChartDataset extends ChartDataset<RadarChartDataset, Number> {
         return this;
     }
 
-    public Integer getBorderWidth() {
+    public Number getBorderWidth() {
         return borderWidth;
     }
 
-    public RadarChartDataset setBorderWidth(Integer borderWidth) {
+    public RadarChartDataset setBorderWidth(Number borderWidth) {
         this.borderWidth = borderWidth;
         return this;
     }

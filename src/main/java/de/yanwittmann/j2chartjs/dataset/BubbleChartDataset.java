@@ -18,18 +18,18 @@ public class BubbleChartDataset extends ChartDataset<BubbleChartDataset, BubbleC
 
     private List<Color> backgroundColor = null;
     private List<Color> borderColor = null;
-    private List<Integer> borderWidth = null;
-    private List<Integer> borderRadius = null;
+    private List<Number> borderWidth = null;
+    private List<Number> borderRadius = null;
     private List<String> borderSkipped = null;
     private List<Color> hoverBackgroundColor = null;
     private List<Color> hoverBorderColor = null;
-    private List<Integer> hoverBorderWidth = null;
-    private List<Integer> hoverBorderRadius = null;
+    private List<Number> hoverBorderWidth = null;
+    private List<Number> hoverBorderRadius = null;
     private List<String> hoverBorderSkipped = null;
     /**
      * The rotation of the point in degrees.
      */
-    private List<Integer> rotation = null;
+    private List<Number> rotation = null;
     /**
      * Style of the point.<ul>
      * <li>circle</li>
@@ -73,11 +73,11 @@ public class BubbleChartDataset extends ChartDataset<BubbleChartDataset, BubbleC
         return this;
     }
 
-    public List<Integer> getRotation() {
+    public List<Number> getRotation() {
         return rotation;
     }
 
-    public BubbleChartDataset setRotation(List<Integer> rotation) {
+    public BubbleChartDataset setRotation(List<Number> rotation) {
         this.rotation = rotation;
         return this;
     }
@@ -109,20 +109,20 @@ public class BubbleChartDataset extends ChartDataset<BubbleChartDataset, BubbleC
         return this;
     }
 
-    public List<Integer> getBorderWidth() {
+    public List<Number> getBorderWidth() {
         return borderWidth;
     }
 
-    public BubbleChartDataset setBorderWidth(List<Integer> borderWidth) {
+    public BubbleChartDataset setBorderWidth(List<Number> borderWidth) {
         this.borderWidth = borderWidth;
         return this;
     }
 
-    public List<Integer> getBorderRadius() {
+    public List<Number> getBorderRadius() {
         return borderRadius;
     }
 
-    public BubbleChartDataset setBorderRadius(List<Integer> borderRadius) {
+    public BubbleChartDataset setBorderRadius(List<Number> borderRadius) {
         this.borderRadius = borderRadius;
         return this;
     }
@@ -154,20 +154,20 @@ public class BubbleChartDataset extends ChartDataset<BubbleChartDataset, BubbleC
         return this;
     }
 
-    public List<Integer> getHoverBorderWidth() {
+    public List<Number> getHoverBorderWidth() {
         return hoverBorderWidth;
     }
 
-    public BubbleChartDataset setHoverBorderWidth(List<Integer> hoverBorderWidth) {
+    public BubbleChartDataset setHoverBorderWidth(List<Number> hoverBorderWidth) {
         this.hoverBorderWidth = hoverBorderWidth;
         return this;
     }
 
-    public List<Integer> getHoverBorderRadius() {
+    public List<Number> getHoverBorderRadius() {
         return hoverBorderRadius;
     }
 
-    public BubbleChartDataset setHoverBorderRadius(List<Integer> hoverBorderRadius) {
+    public BubbleChartDataset setHoverBorderRadius(List<Number> hoverBorderRadius) {
         this.hoverBorderRadius = hoverBorderRadius;
         return this;
     }
@@ -193,13 +193,13 @@ public class BubbleChartDataset extends ChartDataset<BubbleChartDataset, BubbleC
         return this;
     }
 
-    public BubbleChartDataset addBorderWidth(Integer... widths) {
+    public BubbleChartDataset addBorderWidth(Number... widths) {
         borderWidth = Util.initializeListIfNull(borderWidth);
         borderWidth.addAll(Arrays.asList(widths));
         return this;
     }
 
-    public BubbleChartDataset addBorderRadius(Integer... radiuses) {
+    public BubbleChartDataset addBorderRadius(Number... radiuses) {
         borderRadius = Util.initializeListIfNull(borderRadius);
         borderRadius.addAll(Arrays.asList(radiuses));
         return this;
@@ -223,13 +223,13 @@ public class BubbleChartDataset extends ChartDataset<BubbleChartDataset, BubbleC
         return this;
     }
 
-    public BubbleChartDataset addHoverBorderWidth(Integer... widths) {
+    public BubbleChartDataset addHoverBorderWidth(Number... widths) {
         hoverBorderWidth = Util.initializeListIfNull(hoverBorderWidth);
         hoverBorderWidth.addAll(Arrays.asList(widths));
         return this;
     }
 
-    public BubbleChartDataset addHoverBorderRadius(Integer... radiuses) {
+    public BubbleChartDataset addHoverBorderRadius(Number... radiuses) {
         hoverBorderRadius = Util.initializeListIfNull(hoverBorderRadius);
         hoverBorderRadius.addAll(Arrays.asList(radiuses));
         return this;
@@ -247,7 +247,7 @@ public class BubbleChartDataset extends ChartDataset<BubbleChartDataset, BubbleC
         return this;
     }
 
-    public BubbleChartDataset addRotation(Integer... rotations) {
+    public BubbleChartDataset addRotation(Number... rotations) {
         rotation = Util.initializeListIfNull(rotation);
         rotation.addAll(Arrays.asList(rotations));
         return this;

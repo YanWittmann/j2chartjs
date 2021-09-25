@@ -18,18 +18,18 @@ public class ScatterChartDataset extends ChartDataset<ScatterChartDataset, Scatt
 
     private List<Color> backgroundColor = null;
     private List<Color> borderColor = null;
-    private List<Integer> borderWidth = null;
-    private List<Integer> borderRadius = null;
+    private List<Number> borderWidth = null;
+    private List<Number> borderRadius = null;
     private List<String> borderSkipped = null;
     private List<Color> hoverBackgroundColor = null;
     private List<Color> hoverBorderColor = null;
-    private List<Integer> hoverBorderWidth = null;
-    private List<Integer> hoverBorderRadius = null;
+    private List<Number> hoverBorderWidth = null;
+    private List<Number> hoverBorderRadius = null;
     private List<String> hoverBorderSkipped = null;
     /**
      * The rotation of the point in degrees.
      */
-    private List<Integer> rotation = null;
+    private List<Number> rotation = null;
     /**
      * Style of the point.<ul>
      * <li>circle</li>
@@ -77,11 +77,11 @@ public class ScatterChartDataset extends ChartDataset<ScatterChartDataset, Scatt
         return this;
     }
 
-    public List<Integer> getRotation() {
+    public List<Number> getRotation() {
         return rotation;
     }
 
-    public ScatterChartDataset setRotation(List<Integer> rotation) {
+    public ScatterChartDataset setRotation(List<Number> rotation) {
         this.rotation = rotation;
         return this;
     }
@@ -113,20 +113,20 @@ public class ScatterChartDataset extends ChartDataset<ScatterChartDataset, Scatt
         return this;
     }
 
-    public List<Integer> getBorderWidth() {
+    public List<Number> getBorderWidth() {
         return borderWidth;
     }
 
-    public ScatterChartDataset setBorderWidth(List<Integer> borderWidth) {
+    public ScatterChartDataset setBorderWidth(List<Number> borderWidth) {
         this.borderWidth = borderWidth;
         return this;
     }
 
-    public List<Integer> getBorderRadius() {
+    public List<Number> getBorderRadius() {
         return borderRadius;
     }
 
-    public ScatterChartDataset setBorderRadius(List<Integer> borderRadius) {
+    public ScatterChartDataset setBorderRadius(List<Number> borderRadius) {
         this.borderRadius = borderRadius;
         return this;
     }
@@ -158,20 +158,20 @@ public class ScatterChartDataset extends ChartDataset<ScatterChartDataset, Scatt
         return this;
     }
 
-    public List<Integer> getHoverBorderWidth() {
+    public List<Number> getHoverBorderWidth() {
         return hoverBorderWidth;
     }
 
-    public ScatterChartDataset setHoverBorderWidth(List<Integer> hoverBorderWidth) {
+    public ScatterChartDataset setHoverBorderWidth(List<Number> hoverBorderWidth) {
         this.hoverBorderWidth = hoverBorderWidth;
         return this;
     }
 
-    public List<Integer> getHoverBorderRadius() {
+    public List<Number> getHoverBorderRadius() {
         return hoverBorderRadius;
     }
 
-    public ScatterChartDataset setHoverBorderRadius(List<Integer> hoverBorderRadius) {
+    public ScatterChartDataset setHoverBorderRadius(List<Number> hoverBorderRadius) {
         this.hoverBorderRadius = hoverBorderRadius;
         return this;
     }

@@ -41,11 +41,11 @@ public class DoughnutPieChartDataset extends ChartDataset<DoughnutPieChartDatase
     /**
      * Arc border width (in pixels).
      */
-    private List<Integer> borderWidth = null;
+    private List<Number> borderWidth = null;
     /**
      * Arc offset (in pixels).
      */
-    private List<Integer> offset = null;
+    private List<Number> offset = null;
     /**
      * Arc background color when hovered.
      */
@@ -57,19 +57,19 @@ public class DoughnutPieChartDataset extends ChartDataset<DoughnutPieChartDatase
     /**
      * Arc border width (in pixels) when hovered.
      */
-    private List<Integer> hoverBorderWidth = null;
+    private List<Number> hoverBorderWidth = null;
     /**
      * Arc offset (in pixels) when hovered.
      */
-    private List<Integer> hoverOffset = null;
+    private List<Number> hoverOffset = null;
     /**
      * Fixed arc offset (in pixels). Similar to <code>offset</code> but applies to all arcs.
      */
-    private List<Integer> spacing = null;
+    private List<Number> spacing = null;
     /**
      * The relative thickness of the dataset. Providing a value for weight will cause the pie or doughnut dataset to be drawn with a thickness relative to the sum of all the dataset weight values.
      */
-    private List<Integer> weight = null;
+    private List<Number> weight = null;
 
     public String getLabel() {
         return label;
@@ -134,20 +134,20 @@ public class DoughnutPieChartDataset extends ChartDataset<DoughnutPieChartDatase
         return this;
     }
 
-    public List<Integer> getBorderWidth() {
+    public List<Number> getBorderWidth() {
         return borderWidth;
     }
 
-    public DoughnutPieChartDataset setBorderWidth(List<Integer> borderWidth) {
+    public DoughnutPieChartDataset setBorderWidth(List<Number> borderWidth) {
         this.borderWidth = borderWidth;
         return this;
     }
 
-    public List<Integer> getOffset() {
+    public List<Number> getOffset() {
         return offset;
     }
 
-    public DoughnutPieChartDataset setOffset(List<Integer> offset) {
+    public DoughnutPieChartDataset setOffset(List<Number> offset) {
         this.offset = offset;
         return this;
     }
@@ -170,38 +170,38 @@ public class DoughnutPieChartDataset extends ChartDataset<DoughnutPieChartDatase
         return this;
     }
 
-    public List<Integer> getHoverBorderWidth() {
+    public List<Number> getHoverBorderWidth() {
         return hoverBorderWidth;
     }
 
-    public DoughnutPieChartDataset setHoverBorderWidth(List<Integer> hoverBorderWidth) {
+    public DoughnutPieChartDataset setHoverBorderWidth(List<Number> hoverBorderWidth) {
         this.hoverBorderWidth = hoverBorderWidth;
         return this;
     }
 
-    public List<Integer> getHoverOffset() {
+    public List<Number> getHoverOffset() {
         return hoverOffset;
     }
 
-    public DoughnutPieChartDataset setHoverOffset(List<Integer> hoverOffset) {
+    public DoughnutPieChartDataset setHoverOffset(List<Number> hoverOffset) {
         this.hoverOffset = hoverOffset;
         return this;
     }
 
-    public List<Integer> getSpacing() {
+    public List<Number> getSpacing() {
         return spacing;
     }
 
-    public DoughnutPieChartDataset setSpacing(List<Integer> spacing) {
+    public DoughnutPieChartDataset setSpacing(List<Number> spacing) {
         this.spacing = spacing;
         return this;
     }
 
-    public List<Integer> getWeight() {
+    public List<Number> getWeight() {
         return weight;
     }
 
-    public DoughnutPieChartDataset setWeight(List<Integer> weight) {
+    public DoughnutPieChartDataset setWeight(List<Number> weight) {
         this.weight = weight;
         return this;
     }
@@ -218,25 +218,25 @@ public class DoughnutPieChartDataset extends ChartDataset<DoughnutPieChartDatase
         return this;
     }
 
-    public DoughnutPieChartDataset addBorderWidth(Integer... widths) {
+    public DoughnutPieChartDataset addBorderWidth(Number... widths) {
         borderWidth = Util.initializeListIfNull(borderWidth);
         borderWidth.addAll(Arrays.asList(widths));
         return this;
     }
 
-    public DoughnutPieChartDataset addOffset(Integer... offsets) {
+    public DoughnutPieChartDataset addOffset(Number... offsets) {
         offset = Util.initializeListIfNull(offset);
         offset.addAll(Arrays.asList(offsets));
         return this;
     }
 
-    public DoughnutPieChartDataset addSpacing(Integer... spacings) {
+    public DoughnutPieChartDataset addSpacing(Number... spacings) {
         spacing = Util.initializeListIfNull(spacing);
         spacing.addAll(Arrays.asList(spacings));
         return this;
     }
 
-    public DoughnutPieChartDataset addWeight(Integer... weights) {
+    public DoughnutPieChartDataset addWeight(Number... weights) {
         weight = Util.initializeListIfNull(weight);
         weight.addAll(Arrays.asList(weights));
         return this;
@@ -254,13 +254,13 @@ public class DoughnutPieChartDataset extends ChartDataset<DoughnutPieChartDatase
         return this;
     }
 
-    public DoughnutPieChartDataset addHoverBorderWidth(Integer... widths) {
+    public DoughnutPieChartDataset addHoverBorderWidth(Number... widths) {
         hoverBorderWidth = Util.initializeListIfNull(hoverBorderWidth);
         hoverBorderWidth.addAll(Arrays.asList(widths));
         return this;
     }
 
-    public DoughnutPieChartDataset addHoverOffset(Integer... offsets) {
+    public DoughnutPieChartDataset addHoverOffset(Number... offsets) {
         hoverOffset = Util.initializeListIfNull(hoverOffset);
         hoverOffset.addAll(Arrays.asList(offsets));
         return this;

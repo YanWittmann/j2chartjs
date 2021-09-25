@@ -25,13 +25,13 @@ public class BarChartDataset extends ChartDataset<BarChartDataset, Number> {
 
     private List<Color> backgroundColor = null;
     private List<Color> borderColor = null;
-    private List<Integer> borderWidth = null;
-    private List<Integer> borderRadius = null;
+    private List<Number> borderWidth = null;
+    private List<Number> borderRadius = null;
     private List<String> borderSkipped = null;
     private List<Color> hoverBackgroundColor = null;
     private List<Color> hoverBorderColor = null;
-    private List<Integer> hoverBorderWidth = null;
-    private List<Integer> hoverBorderRadius = null;
+    private List<Number> hoverBorderWidth = null;
+    private List<Number> hoverBorderRadius = null;
     private List<String> hoverBorderSkipped = null;
 
     public String getLabel() {
@@ -190,20 +190,20 @@ public class BarChartDataset extends ChartDataset<BarChartDataset, Number> {
         return this;
     }
 
-    public List<Integer> getBorderWidth() {
+    public List<Number> getBorderWidth() {
         return borderWidth;
     }
 
-    public BarChartDataset setBorderWidth(List<Integer> borderWidth) {
+    public BarChartDataset setBorderWidth(List<Number> borderWidth) {
         this.borderWidth = borderWidth;
         return this;
     }
 
-    public List<Integer> getBorderRadius() {
+    public List<Number> getBorderRadius() {
         return borderRadius;
     }
 
-    public BarChartDataset setBorderRadius(List<Integer> borderRadius) {
+    public BarChartDataset setBorderRadius(List<Number> borderRadius) {
         this.borderRadius = borderRadius;
         return this;
     }
@@ -235,20 +235,20 @@ public class BarChartDataset extends ChartDataset<BarChartDataset, Number> {
         return this;
     }
 
-    public List<Integer> getHoverBorderWidth() {
+    public List<Number> getHoverBorderWidth() {
         return hoverBorderWidth;
     }
 
-    public BarChartDataset setHoverBorderWidth(List<Integer> hoverBorderWidth) {
+    public BarChartDataset setHoverBorderWidth(List<Number> hoverBorderWidth) {
         this.hoverBorderWidth = hoverBorderWidth;
         return this;
     }
 
-    public List<Integer> getHoverBorderRadius() {
+    public List<Number> getHoverBorderRadius() {
         return hoverBorderRadius;
     }
 
-    public BarChartDataset setHoverBorderRadius(List<Integer> hoverBorderRadius) {
+    public BarChartDataset setHoverBorderRadius(List<Number> hoverBorderRadius) {
         this.hoverBorderRadius = hoverBorderRadius;
         return this;
     }
@@ -274,13 +274,13 @@ public class BarChartDataset extends ChartDataset<BarChartDataset, Number> {
         return this;
     }
 
-    public BarChartDataset addBorderWidth(Integer... widths) {
+    public BarChartDataset addBorderWidth(Number... widths) {
         borderWidth = Util.initializeListIfNull(borderWidth);
         borderWidth.addAll(Arrays.asList(widths));
         return this;
     }
 
-    public BarChartDataset addBorderRadius(Integer... radiuses) {
+    public BarChartDataset addBorderRadius(Number... radiuses) {
         borderRadius = Util.initializeListIfNull(borderRadius);
         borderRadius.addAll(Arrays.asList(radiuses));
         return this;
@@ -304,13 +304,13 @@ public class BarChartDataset extends ChartDataset<BarChartDataset, Number> {
         return this;
     }
 
-    public BarChartDataset addHoverBorderWidth(Integer... widths) {
+    public BarChartDataset addHoverBorderWidth(Number... widths) {
         hoverBorderWidth = Util.initializeListIfNull(hoverBorderWidth);
         hoverBorderWidth.addAll(Arrays.asList(widths));
         return this;
     }
 
-    public BarChartDataset addHoverBorderRadius(Integer... radiuses) {
+    public BarChartDataset addHoverBorderRadius(Number... radiuses) {
         hoverBorderRadius = Util.initializeListIfNull(hoverBorderRadius);
         hoverBorderRadius.addAll(Arrays.asList(radiuses));
         return this;

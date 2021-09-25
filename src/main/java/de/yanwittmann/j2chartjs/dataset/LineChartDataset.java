@@ -31,19 +31,19 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, Number> {
     /**
      * The width of the point border in pixels.
      */
-    private List<Integer> pointBorderWidth = null;
+    private List<Number> pointBorderWidth = null;
     /**
      * The pixel size of the non-displayed point that reacts to mouse events.
      */
-    private List<Integer> pointHitRadius = null;
+    private List<Number> pointHitRadius = null;
     /**
      * The radius of the point shape. If set to 0, the point is not rendered.
      */
-    private List<Integer> pointRadius = null;
+    private List<Number> pointRadius = null;
     /**
      * The rotation of the point in degrees.
      */
-    private List<Integer> pointRotation = null;
+    private List<Number> pointRotation = null;
     /**
      * Style of the point.<ul>
      * <li>circle</li>
@@ -70,11 +70,11 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, Number> {
     /**
      * Border width of point when hovered.
      */
-    private List<Integer> pointHoverBorderWidth = null;
+    private List<Number> pointHoverBorderWidth = null;
     /**
      * The radius of the point when hovered.
      */
-    private List<Integer> pointHoverRadius = null;
+    private List<Number> pointHoverRadius = null;
 
     // line styling
     /**
@@ -96,7 +96,7 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, Number> {
     /**
      * The line width (in pixels).
      */
-    private Integer borderWidth;
+    private Number borderWidth;
     /**
      * Bézier curve tension of the line. Set to 0 to draw straightlines. This option is ignored if monotone cubic interpolation is used.<br>
      * 0 - 1
@@ -191,25 +191,25 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, Number> {
         return this;
     }
 
-    public LineChartDataset addPointBorderWidth(Integer... widths) {
+    public LineChartDataset addPointBorderWidth(Number... widths) {
         pointBorderWidth = Util.initializeListIfNull(pointBorderWidth);
         pointBorderWidth.addAll(Arrays.asList(widths));
         return this;
     }
 
-    public LineChartDataset addPointHitRadius(Integer... radiuses) {
+    public LineChartDataset addPointHitRadius(Number... radiuses) {
         pointHitRadius = Util.initializeListIfNull(pointHitRadius);
         pointHitRadius.addAll(Arrays.asList(radiuses));
         return this;
     }
 
-    public LineChartDataset addPointRadius(Integer... radiuses) {
+    public LineChartDataset addPointRadius(Number... radiuses) {
         pointRadius = Util.initializeListIfNull(pointRadius);
         pointRadius.addAll(Arrays.asList(radiuses));
         return this;
     }
 
-    public LineChartDataset addPointRotation(Integer... rotations) {
+    public LineChartDataset addPointRotation(Number... rotations) {
         pointRotation = Util.initializeListIfNull(pointRotation);
         pointRotation.addAll(Arrays.asList(rotations));
         return this;
@@ -233,13 +233,13 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, Number> {
         return this;
     }
 
-    public LineChartDataset addPointHoverBorderWidth(Integer... widths) {
+    public LineChartDataset addPointHoverBorderWidth(Number... widths) {
         pointHoverBorderWidth = Util.initializeListIfNull(pointHoverBorderWidth);
         pointHoverBorderWidth.addAll(Arrays.asList(widths));
         return this;
     }
 
-    public LineChartDataset addPointHoverRadius(Integer... radiuses) {
+    public LineChartDataset addPointHoverRadius(Number... radiuses) {
         pointHoverRadius = Util.initializeListIfNull(pointHoverRadius);
         pointHoverRadius.addAll(Arrays.asList(radiuses));
         return this;
@@ -281,11 +281,11 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, Number> {
         return this;
     }
 
-    public Integer getBorderWidth() {
+    public Number getBorderWidth() {
         return borderWidth;
     }
 
-    public LineChartDataset setBorderWidth(Integer borderWidth) {
+    public LineChartDataset setBorderWidth(Number borderWidth) {
         this.borderWidth = borderWidth;
         return this;
     }
@@ -299,7 +299,7 @@ public class LineChartDataset extends ChartDataset<LineChartDataset, Number> {
         return this;
     }
 
-    public LineChartDataset setTension(int tension) {
+    public LineChartDataset setTension(Number tension) {
         this.tension = tension;
         return this;
     }
