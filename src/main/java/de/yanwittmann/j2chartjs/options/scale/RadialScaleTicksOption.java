@@ -66,7 +66,7 @@ public class RadialScaleTicksOption extends AbstractChartOption {
     /**
      * User defined fixed step size for the scale.
      */
-    private Integer stepSize;
+    private Number stepSize;
 
     public Boolean getDisplay() {
         return display;
@@ -185,11 +185,11 @@ public class RadialScaleTicksOption extends AbstractChartOption {
         return this;
     }
 
-    public Integer getStepSize() {
+    public Number getStepSize() {
         return stepSize;
     }
 
-    public RadialScaleTicksOption setStepSize(Integer stepSize) {
+    public RadialScaleTicksOption setStepSize(Number stepSize) {
         this.stepSize = stepSize;
         return this;
     }

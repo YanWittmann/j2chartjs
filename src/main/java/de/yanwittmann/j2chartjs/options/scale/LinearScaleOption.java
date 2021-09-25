@@ -79,6 +79,10 @@ public class LinearScaleOption extends AbstractChartOption {
      * Whether the scale should begin at 0 no matter what.
      */
     private Boolean beginAtZero;
+    /**
+     * User defined fixed step size for the scale.
+     */
+    private Number stepSize;
 
     public LinearScaleTicksOption getTicks() {
         return ticks;
@@ -224,6 +228,15 @@ public class LinearScaleOption extends AbstractChartOption {
         return this;
     }
 
+    public Number getStepSize() {
+        return stepSize;
+    }
+
+    public LinearScaleOption setStepSize(Number stepSize) {
+        this.stepSize = stepSize;
+        return this;
+    }
+
     @Override
     public JSONObject toJson() {
         JSONObject optionsJson = new JSONObject();
@@ -243,6 +256,7 @@ public class LinearScaleOption extends AbstractChartOption {
         Util.addToJson(optionsJson, "weight", weight);
         Util.addToJson(optionsJson, "position", position);
         Util.addToJson(optionsJson, "beginAtZero", beginAtZero);
+        Util.addToJson(optionsJson, "stepSize", stepSize);
         return optionsJson;
     }
 }
