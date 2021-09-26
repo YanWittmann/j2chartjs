@@ -28,6 +28,13 @@ public class QuickBubbleChartDataset {
         return this;
     }
 
+    public QuickBubbleChartDataset addXYR(Number x, Number y, Number r) {
+        this.x.add(x);
+        this.y.add(y);
+        this.r.add(r);
+        return this;
+    }
+
     public QuickBubbleChartDataset addX(Collection<Number> data) {
         x.addAll(data);
         return this;

@@ -22,6 +22,12 @@ public class QuickScatterChartDataset {
         return this;
     }
 
+    public QuickScatterChartDataset addXY(Number x, Number y) {
+        this.x.add(x);
+        this.y.add(y);
+        return this;
+    }
+
     public QuickScatterChartDataset addX(Collection<Number> data) {
         x.addAll(data);
         return this;
