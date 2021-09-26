@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * @param <T>  Supertype of the <code>ChartData</code>
@@ -62,7 +64,14 @@ public abstract class ChartData<T, DT, D> {
 
     public JSONObject toJson() {
         JSONObject chartData = new JSONObject();
-        chartData.put("labels", getLabels());
+        int requiredLabels = datasets.stream().mapToInt(d -> d.getData().size()).max().orElse(0);
+        if (labels.size() >= requiredLabels) {
+            chartData.put("labels", labels);
+        } else {
+            List<String> completeLabels = new ArrayList<>(labels);
+            completeLabels.addAll(IntStream.range(labels.size(), requiredLabels).mapToObj(d -> "").collect(Collectors.toList()));
+            chartData.put("labels", completeLabels);
+        }
         if (datasets != null) {
             JSONArray chartDatasets = new JSONArray();
             for (ChartDataset<DT, D> genericDataset : datasets) {

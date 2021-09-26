@@ -35,7 +35,6 @@ public class GenerateTest {
             dataset.addData(new Random().nextInt(10 + 86));
             dataset.addPointBackgroundColor(new Random().nextInt(2) == 1 ? Color.RED : Color.BLUE);
             dataset.addPointRadius(1 + new Random().nextInt(3));
-            data.addLabels("entry " + i);
         }
         ChartOptions options = new ChartOptions().setResponsive(false);
         System.out.println(new LineChart().setChartOptions(options).setChartData(data).build());
