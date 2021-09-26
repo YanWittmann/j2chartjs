@@ -31,11 +31,10 @@ public class GenerateTest {
     public void repetitiveColorsTest() {
         LineChartDataset dataset = new LineChartDataset().setBorderColor(new Color(140, 140, 140, 107)).setLabel("Dataset awesome");
         LineChartData data = new LineChartData().addDataset(dataset);
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 5; i++) {
             dataset.addData(new Random().nextInt(10 + 86));
             dataset.addPointBackgroundColor(new Random().nextInt(2) == 1 ? Color.RED : Color.BLUE);
             dataset.addPointRadius(1 + new Random().nextInt(3));
-            data.addLabels("entry " + i);
         }
         ChartOptions options = new ChartOptions().setResponsive(false);
         System.out.println(new LineChart().setChartOptions(options).setChartData(data).build());
