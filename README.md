@@ -13,7 +13,7 @@ library from your Java code.
 <dependency>
   <groupId>de.yanwittmann</groupId>
   <artifactId>j2chartjs</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
 </dependency>
 ```
 
@@ -75,6 +75,9 @@ new QuickBarChart()
 
 Supports only ChartJs `3.x`.  
 Might work for older versions but not all features will be supported there.
+
+## JavaDoc
+Find the JavaDoc on **[javadoc.io](https://javadoc.io/doc/de.yanwittmann/j2chartjs)**.
 
 ## License
 

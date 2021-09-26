@@ -6,7 +6,7 @@
 
     <groupId>de.yanwittmann</groupId>
     <artifactId>j2chartjs</artifactId>
-    <version>1.0</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -48,6 +48,11 @@
             <id>ossrh</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
+        <!--<repository>
+            <id>github</id>
+            <name>GitHub OWNER Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/skyball2000/j2chartjs</url>
+        </repository>-->
     </distributionManagement>
 
     <dependencies>
