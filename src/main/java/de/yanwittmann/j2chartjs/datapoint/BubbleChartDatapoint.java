@@ -21,6 +21,12 @@ public class BubbleChartDatapoint {
         this.r = r;
     }
 
+    public BubbleChartDatapoint(Number x, Number y, Number r) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+    }
+
     public BubbleChartDatapoint(Object x, Object y, Object r) {
         this.x = Double.parseDouble(String.valueOf(x));
         this.y = Double.parseDouble(String.valueOf(y));
@@ -33,6 +39,11 @@ public class BubbleChartDatapoint {
     }
 
     public BubbleChartDatapoint(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public BubbleChartDatapoint(Number x, Number y) {
         this.x = x;
         this.y = y;
     }

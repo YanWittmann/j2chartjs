@@ -16,12 +16,12 @@
 
     <name>j2chartjs</name>
     <description>A Java Library for generating ChartJs configuration objects.</description>
-    <url>https://github.com/Skyball2000/j2chartjs</url>
+    <url>https://github.com/YanWittmann/j2chartjs</url>
 
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
 
@@ -29,14 +29,14 @@
         <developer>
             <name>Yan Wittmann</name>
             <email>order@yanwittmann.de</email>
-            <url>http://yanwittmann.de/</url>
+            <url>https://yanwittmann.de/</url>
         </developer>
     </developers>
 
     <scm>
         <connection>scm:git:git://github.com/Skyball2000/j2chartjs.git</connection>
         <developerConnection>scm:git:ssh://github.com:Skyball2000/j2chartjs.git</developerConnection>
-        <url>http://github.com/Skyball2000/j2chartjs/tree/main</url>
+        <url>https://github.com/YanWittmann/j2chartjs/tree/main</url>
     </scm>
 
     <distributionManagement>
@@ -48,11 +48,6 @@
             <id>ossrh</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
-        <!--<repository>
-            <id>github</id>
-            <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/skyball2000/j2chartjs</url>
-        </repository>-->
     </distributionManagement>
 
     <dependencies>
@@ -60,7 +55,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20210307</version>
+            <version>20230227</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->

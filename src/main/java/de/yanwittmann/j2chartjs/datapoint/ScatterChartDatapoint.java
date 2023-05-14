@@ -18,6 +18,11 @@ public class ScatterChartDatapoint {
         this.y = y;
     }
 
+    public ScatterChartDatapoint(Number x, Number y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public ScatterChartDatapoint(Object x, Object y) {
         this.x = Double.parseDouble(String.valueOf(x));
         this.y = Double.parseDouble(String.valueOf(y));
