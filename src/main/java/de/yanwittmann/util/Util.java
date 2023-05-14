@@ -79,9 +79,7 @@ public abstract class Util {
         } else if (object instanceof Double) {
             return roundToDecimals((Double) object, 3);
         } else if (object instanceof Number) {
-            double doubleValue = ((Number) object).doubleValue();
-            if (doubleValue >= 2147483) return ((Number) object).longValue();
-            return roundToDecimals(((Number) object).doubleValue(), 3);
+            return object;
         } else if (object instanceof JSONObject || object instanceof JSONArray) {
             return object;
         } else if (object instanceof AbstractChartOption) {
